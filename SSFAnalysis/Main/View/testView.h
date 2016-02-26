@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  testView.h
 //  SSFAnalysis
 //
 //  Created by 赛峰 施 on 16/2/26.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface testView : UIView
 
 @end
-

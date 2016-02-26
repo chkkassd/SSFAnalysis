@@ -8,13 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		912D50851C8028220072401E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50841C8028220072401E /* main.m */; };
-		912D50881C8028220072401E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50871C8028220072401E /* AppDelegate.m */; };
-		912D508B1C8028220072401E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D508A1C8028220072401E /* ViewController.m */; };
 		912D508E1C8028220072401E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912D508C1C8028220072401E /* Main.storyboard */; };
 		912D50901C8028220072401E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 912D508F1C8028220072401E /* Assets.xcassets */; };
 		912D50931C8028220072401E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912D50911C8028220072401E /* LaunchScreen.storyboard */; };
 		912D509E1C8028220072401E /* SSFAnalysisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D509D1C8028220072401E /* SSFAnalysisTests.m */; };
 		912D50A91C8028220072401E /* SSFAnalysisUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50A81C8028220072401E /* SSFAnalysisUITests.m */; };
+		912D50C51C8031750072401E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50BF1C8031750072401E /* AppDelegate.m */; };
+		912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50C81C80329A0072401E /* NSDate+IntervalFrom1970.m */; };
+		912D50D41C80329A0072401E /* NSDate+TimeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CA1C80329A0072401E /* NSDate+TimeString.m */; };
+		912D50D51C80329A0072401E /* NSDictionary+SafetyCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */; };
+		912D50D61C80329A0072401E /* NSString+encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CE1C80329A0072401E /* NSString+encryption.m */; };
+		912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50D01C80329A0072401E /* NSString+RegularCheck.m */; };
+		912D50D81C80329A0072401E /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50D21C80329A0072401E /* UIImage+ScaleSize.m */; };
+		912D50E21C8032AF0072401E /* CZSShowSimpleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DA1C8032AF0072401E /* CZSShowSimpleAlert.m */; };
+		912D50E31C8032AF0072401E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DC1C8032AF0072401E /* MBProgressHUD.m */; };
+		912D50E41C8032AF0072401E /* GSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DF1C8032AF0072401E /* GSReachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		912D50E51C8032AF0072401E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50E11C8032AF0072401E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		912D50E81C8045F90072401E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50E71C8045F90072401E /* ViewController.m */; };
+		912D50EB1C8046880072401E /* testView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50EA1C8046880072401E /* testView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +48,6 @@
 /* Begin PBXFileReference section */
 		912D50801C8028220072401E /* SSFAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSFAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D50841C8028220072401E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		912D50861C8028220072401E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		912D50871C8028220072401E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		912D50891C8028220072401E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		912D508A1C8028220072401E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		912D508D1C8028220072401E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		912D508F1C8028220072401E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		912D50921C8028220072401E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +58,32 @@
 		912D50A41C8028220072401E /* SSFAnalysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSFAnalysisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D50A81C8028220072401E /* SSFAnalysisUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSFAnalysisUITests.m; sourceTree = "<group>"; };
 		912D50AA1C8028220072401E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		912D50BE1C8031750072401E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		912D50BF1C8031750072401E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		912D50C71C80329A0072401E /* NSDate+IntervalFrom1970.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IntervalFrom1970.h"; sourceTree = "<group>"; };
+		912D50C81C80329A0072401E /* NSDate+IntervalFrom1970.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IntervalFrom1970.m"; sourceTree = "<group>"; };
+		912D50C91C80329A0072401E /* NSDate+TimeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeString.h"; sourceTree = "<group>"; };
+		912D50CA1C80329A0072401E /* NSDate+TimeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeString.m"; sourceTree = "<group>"; };
+		912D50CB1C80329A0072401E /* NSDictionary+SafetyCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafetyCheck.h"; sourceTree = "<group>"; };
+		912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafetyCheck.m"; sourceTree = "<group>"; };
+		912D50CD1C80329A0072401E /* NSString+encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encryption.h"; sourceTree = "<group>"; };
+		912D50CE1C80329A0072401E /* NSString+encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encryption.m"; sourceTree = "<group>"; };
+		912D50CF1C80329A0072401E /* NSString+RegularCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegularCheck.h"; sourceTree = "<group>"; };
+		912D50D01C80329A0072401E /* NSString+RegularCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegularCheck.m"; sourceTree = "<group>"; };
+		912D50D11C80329A0072401E /* UIImage+ScaleSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScaleSize.h"; sourceTree = "<group>"; };
+		912D50D21C80329A0072401E /* UIImage+ScaleSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ScaleSize.m"; sourceTree = "<group>"; };
+		912D50D91C8032AF0072401E /* CZSShowSimpleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZSShowSimpleAlert.h; sourceTree = "<group>"; };
+		912D50DA1C8032AF0072401E /* CZSShowSimpleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZSShowSimpleAlert.m; sourceTree = "<group>"; };
+		912D50DB1C8032AF0072401E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		912D50DC1C8032AF0072401E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		912D50DE1C8032AF0072401E /* GSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSReachability.h; sourceTree = "<group>"; };
+		912D50DF1C8032AF0072401E /* GSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSReachability.m; sourceTree = "<group>"; };
+		912D50E01C8032AF0072401E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		912D50E11C8032AF0072401E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		912D50E61C8045F90072401E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		912D50E71C8045F90072401E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		912D50E91C8046880072401E /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
+		912D50EA1C8046880072401E /* testView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +134,9 @@
 		912D50821C8028220072401E /* SSFAnalysis */ = {
 			isa = PBXGroup;
 			children = (
-				912D50861C8028220072401E /* AppDelegate.h */,
-				912D50871C8028220072401E /* AppDelegate.m */,
-				912D50891C8028220072401E /* ViewController.h */,
-				912D508A1C8028220072401E /* ViewController.m */,
-				912D508C1C8028220072401E /* Main.storyboard */,
-				912D508F1C8028220072401E /* Assets.xcassets */,
-				912D50911C8028220072401E /* LaunchScreen.storyboard */,
-				912D50941C8028220072401E /* Info.plist */,
+				912D50BC1C8031750072401E /* Main */,
+				912D50B61C8031750072401E /* Expansion */,
+				912D50C41C8031750072401E /* Vender */,
 				912D50831C8028220072401E /* Supporting Files */,
 			);
 			path = SSFAnalysis;
@@ -117,6 +145,10 @@
 		912D50831C8028220072401E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				912D508F1C8028220072401E /* Assets.xcassets */,
+				912D50941C8028220072401E /* Info.plist */,
+				912D508C1C8028220072401E /* Main.storyboard */,
+				912D50911C8028220072401E /* LaunchScreen.storyboard */,
 				912D50841C8028220072401E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +170,125 @@
 				912D50AA1C8028220072401E /* Info.plist */,
 			);
 			path = SSFAnalysisUITests;
+			sourceTree = "<group>";
+		};
+		912D50B61C8031750072401E /* Expansion */ = {
+			isa = PBXGroup;
+			children = (
+				912D50B71C8031750072401E /* Category */,
+				912D50B81C8031750072401E /* DataBase */,
+				912D50B91C8031750072401E /* Handler */,
+				912D50BA1C8031750072401E /* Network */,
+				912D50BB1C8031750072401E /* SystemUtils */,
+			);
+			path = Expansion;
+			sourceTree = "<group>";
+		};
+		912D50B71C8031750072401E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				912D50C71C80329A0072401E /* NSDate+IntervalFrom1970.h */,
+				912D50C81C80329A0072401E /* NSDate+IntervalFrom1970.m */,
+				912D50C91C80329A0072401E /* NSDate+TimeString.h */,
+				912D50CA1C80329A0072401E /* NSDate+TimeString.m */,
+				912D50CB1C80329A0072401E /* NSDictionary+SafetyCheck.h */,
+				912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */,
+				912D50CD1C80329A0072401E /* NSString+encryption.h */,
+				912D50CE1C80329A0072401E /* NSString+encryption.m */,
+				912D50CF1C80329A0072401E /* NSString+RegularCheck.h */,
+				912D50D01C80329A0072401E /* NSString+RegularCheck.m */,
+				912D50D11C80329A0072401E /* UIImage+ScaleSize.h */,
+				912D50D21C80329A0072401E /* UIImage+ScaleSize.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		912D50B81C8031750072401E /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		912D50B91C8031750072401E /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		912D50BA1C8031750072401E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		912D50BB1C8031750072401E /* SystemUtils */ = {
+			isa = PBXGroup;
+			children = (
+				912D50D91C8032AF0072401E /* CZSShowSimpleAlert.h */,
+				912D50DA1C8032AF0072401E /* CZSShowSimpleAlert.m */,
+				912D50DB1C8032AF0072401E /* MBProgressHUD.h */,
+				912D50DC1C8032AF0072401E /* MBProgressHUD.m */,
+				912D50DD1C8032AF0072401E /* reachabilty */,
+			);
+			path = SystemUtils;
+			sourceTree = "<group>";
+		};
+		912D50BC1C8031750072401E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				912D50BD1C8031750072401E /* Controller */,
+				912D50C21C8031750072401E /* Model */,
+				912D50C31C8031750072401E /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		912D50BD1C8031750072401E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				912D50BE1C8031750072401E /* AppDelegate.h */,
+				912D50BF1C8031750072401E /* AppDelegate.m */,
+				912D50E61C8045F90072401E /* ViewController.h */,
+				912D50E71C8045F90072401E /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		912D50C21C8031750072401E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		912D50C31C8031750072401E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				912D50E91C8046880072401E /* testView.h */,
+				912D50EA1C8046880072401E /* testView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		912D50C41C8031750072401E /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		912D50DD1C8032AF0072401E /* reachabilty */ = {
+			isa = PBXGroup;
+			children = (
+				912D50DE1C8032AF0072401E /* GSReachability.h */,
+				912D50DF1C8032AF0072401E /* GSReachability.m */,
+				912D50E01C8032AF0072401E /* Reachability.h */,
+				912D50E11C8032AF0072401E /* Reachability.m */,
+			);
+			path = reachabilty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +421,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				912D508B1C8028220072401E /* ViewController.m in Sources */,
-				912D50881C8028220072401E /* AppDelegate.m in Sources */,
+				912D50E51C8032AF0072401E /* Reachability.m in Sources */,
+				912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */,
+				912D50D81C80329A0072401E /* UIImage+ScaleSize.m in Sources */,
+				912D50D41C80329A0072401E /* NSDate+TimeString.m in Sources */,
+				912D50E31C8032AF0072401E /* MBProgressHUD.m in Sources */,
+				912D50D51C80329A0072401E /* NSDictionary+SafetyCheck.m in Sources */,
+				912D50E81C8045F90072401E /* ViewController.m in Sources */,
+				912D50E41C8032AF0072401E /* GSReachability.m in Sources */,
+				912D50C51C8031750072401E /* AppDelegate.m in Sources */,
+				912D50E21C8032AF0072401E /* CZSShowSimpleAlert.m in Sources */,
+				912D50EB1C8046880072401E /* testView.m in Sources */,
+				912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */,
+				912D50D61C80329A0072401E /* NSString+encryption.m in Sources */,
 				912D50851C8028220072401E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

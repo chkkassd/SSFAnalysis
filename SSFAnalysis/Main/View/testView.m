@@ -21,14 +21,17 @@ IB_DESIGNABLE
     }
     return self;
 }
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextAddArc(context, 80, 100, 60, 0, 2*M_PI, 0);
-    CGContextSetFillColorWithColor(context,self.color.CGColor);
-    CGContextDrawPath(context, kCGPathFill);
+    CGContextSetStrokeColorWithColor(context, self.color.CGColor);
+    //1.creating a path
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 20, 20);
+    CGContextAddLineToPoint(context, 100, 100);
+    CGContextClosePath(context);
+    
+    
 }
 
 

@@ -10,7 +10,7 @@
 
 IB_DESIGNABLE
 #define GapWidth 8
-#define DefaultComponentHeight  25
+#define DefaultComponentHeight  30
 
 @interface SSFLoginView()
 @property (nonatomic, strong) UIView *alertView;
@@ -78,11 +78,18 @@ IB_DESIGNABLE
 }
 
 - (void)cancelButtonPressed {
-    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:5 options:UIViewAnimationOptionTransitionNone animations:^{
-        self.alertView.frame = CGRectMake(0,-(4*GapWidth + 3*DefaultComponentHeight),self.frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
+    [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:5 options:UIViewAnimationOptionTransitionNone animations:^{
+        self.alertView.frame = CGRectMake(0,self.frame.size.height,self.frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.alpha = 0;
     } completion:^(BOOL finished) {
         [self endEditing:YES];
-        
+        [self removeFromSuperview];
     }];
 }
 

@@ -15,12 +15,12 @@
 + (void)showSimpleAlertWithTitle:(NSString *)title message:(NSString *)message controller:(UIViewController *)controller {
     if (CurrentSystemVersion < 8.0) {
         //ios8以下uialert
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"sure", nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"确定"otherButtonTitles: nil];
         [alert show];
     } else {
         //iOS8以后uialertcontroller
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"sure", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
         [alertController addAction:cancelAction];
         [controller presentViewController:alertController animated:YES completion:NULL];
     }

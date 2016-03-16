@@ -10,7 +10,8 @@
 
 IB_DESIGNABLE
 @interface testView()
-@property (nonatomic, strong) IBInspectable UIColor *color;
+@property (nonatomic, strong) IBInspectable UIColor *strokeColor;
+@property (nonatomic, strong) IBInspectable UIColor *fillColor;
 @end
 
 @implementation testView
@@ -24,13 +25,26 @@ IB_DESIGNABLE
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, self.color.CGColor);
-    //1.creating a path
-    CGContextBeginPath(context);
-    CGContextMoveToPoint(context, 20, 20);
-    CGContextAddLineToPoint(context, 100, 100);
-    CGContextClosePath(context);
+    CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
+    CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
+    CGContextSetLineWidth(context, 1.0);
+    CGContextSetAlpha(context, 0.5);
     
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(10, 200)];
+    [path addLineToPoint:CGPointMake(20, 199)];
+    [path addLineToPoint:CGPointMake(30, 189)];
+    [path addLineToPoint:CGPointMake(40, 100)];
+    [path addLineToPoint:CGPointMake(50, 136)];
+    [path addLineToPoint:CGPointMake(60, 179)];
+    
+    path.lineWidth = 2.0;
+    path.lineJoinStyle = kCGLineJoinRound;
+    path.lineCapStyle = kCGLineCapRound;
+//    [path closePath];
+    [path stroke];
+//    [path fill];
+
     
 }
 

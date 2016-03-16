@@ -1,0 +1,23 @@
+//
+//  PrefixHeader.pch
+//  SSFAnalysis
+//
+//  Created by 赛峰 施 on 16/3/16.
+//  Copyright © 2016年 赛峰 施. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define ScreenWidth  [UIApplication sharedApplication].keyWindow.bounds.size.width
+#define ScreenHeight  [UIApplication sharedApplication].keyWindow.bounds.size.height
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
+#endif /* PrefixHeader_pch */

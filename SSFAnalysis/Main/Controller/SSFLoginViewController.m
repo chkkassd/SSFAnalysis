@@ -8,6 +8,8 @@
 
 #import "SSFLoginViewController.h"
 #import "SSFLoginView.h"
+#import "SSFAnalysisManager.h"
+#import "AppDelegate+ShowLoginOrMain.h"
 
 @interface SSFLoginViewController ()
 
@@ -17,9 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SSFLoginView *loginView = [[SSFLoginView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:loginView];
+    
 }
 
+#pragma mark - Action
+- (IBAction)registerButtonPressed:(id)sender {
+    
+}
+
+- (IBAction)loginButtonPressed:(id)sender {
+    __weak typeof(self) weakSelf = self;
+    SSFLoginView *loginView = [[SSFLoginView alloc] initWithFrame:self.view.frame loginHandler:^{
+        [weakSelf.delegate SSFLoginViewControllerDidSignInWithController:self];
+    }];
+    [self.view addSubview:loginView];
+}
 
 @end

@@ -11,6 +11,7 @@
 
 #define ScreenWidth  [UIApplication sharedApplication].keyWindow.bounds.size.width
 #define ScreenHeight  [UIApplication sharedApplication].keyWindow.bounds.size.height
+#define LOGIN_USER_ID_KEY  @"login_user_id_key"
 
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)

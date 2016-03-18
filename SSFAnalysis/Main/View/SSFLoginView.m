@@ -7,6 +7,9 @@
 //
 
 #import "SSFLoginView.h"
+#import "SSFGravityCollisionBehavior.h"
+#import "SSFAnalysisManager.h"
+#import "CZSShowSimpleAlert.h"
 
 IB_DESIGNABLE
 #define GapWidth 8
@@ -14,13 +17,17 @@ IB_DESIGNABLE
 
 @interface SSFLoginView()
 @property (nonatomic, strong) UIView *alertView;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, strong) UILabel *infoLabel;
 @end
 
 @implementation SSFLoginView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame loginHandler:(LoginHandler)logHandler {
     self = [super initWithFrame:frame];
     if (self) {
+        self.loginHandler = logHandler;
         [self configureViewWithFrame:frame];
     }
     return self;
@@ -35,27 +42,28 @@ IB_DESIGNABLE
     [self addSubview:backgroundView];
     
     self.alertView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/6, frame.size.height/6, frame.size.width*2/3, 0)];
-    self.alertView.backgroundColor = [UIColor whiteColor];
-    self.alertView.layer.cornerRadius = 5.0;
+    _alertView.backgroundColor = [UIColor whiteColor];
+    _alertView.layer.cornerRadius = 5.0;
     
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(-8, -8, 16, 16)];
-    [cancelButton setImage:[UIImage imageNamed:@"close_loding"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(cancelButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_alertView addSubview:cancelButton];
+//    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, -10, 20, 20)];
+//    [cancelButton setImage:[UIImage imageNamed:@"close_loding"] forState:UIControlStateNormal];
+//    [cancelButton addTarget:self action:@selector(cancelButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [_alertView addSubview:cancelButton];
     
-    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(GapWidth, GapWidth, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
-    nameTextField.placeholder = @"请输入账号";
-    nameTextField.borderStyle = UITextBorderStyleRoundedRect;
-    nameTextField.backgroundColor = [UIColor colorWithWhite:230/255.0 alpha:1.0];
-    [_alertView addSubview:nameTextField];
+    _nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(GapWidth, GapWidth, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
+    _nameTextField.placeholder = @"请输入账号";
+    _nameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _nameTextField.backgroundColor = [UIColor colorWithWhite:230/255.0 alpha:1.0];
+    [_alertView addSubview:_nameTextField];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(GapWidth, GapWidth*2 + nameTextField.frame.size.height, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
-    passwordTextField.placeholder = @"请输入密码";
-    passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-    passwordTextField.backgroundColor = [UIColor colorWithWhite:230/255.0 alpha:1.0];
-    [_alertView addSubview:passwordTextField];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(GapWidth, GapWidth*2 + _nameTextField.frame.size.height, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
+    _passwordTextField.secureTextEntry = YES;
+    _passwordTextField.placeholder = @"请输入密码";
+    _passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _passwordTextField.backgroundColor = [UIColor colorWithWhite:230/255.0 alpha:1.0];
+    [_alertView addSubview:_passwordTextField];
     
-    UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(GapWidth,GapWidth*3 + nameTextField.frame.size.height + passwordTextField.frame.size.height, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
+    UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(GapWidth,GapWidth*3 + _nameTextField.frame.size.height + _passwordTextField.frame.size.height, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
     loginButton.layer.borderWidth = 0.5f;
     loginButton.layer.borderColor = [UIColor colorWithWhite:220/255.0 alpha:1.0].CGColor;
     loginButton.layer.cornerRadius = 5.0;
@@ -65,25 +73,37 @@ IB_DESIGNABLE
     [_alertView addSubview:loginButton];
     
     _alertView.frame= CGRectMake(0,-(4*GapWidth + 3*DefaultComponentHeight),frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
-//    _alertView.frame = CGRectMake(frame.size.width/6, frame.size.height/6, frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
-    [self addSubview:self.alertView];
+    [self addSubview:_alertView];
     
-    //animation
-    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:5 options:UIViewAnimationOptionTransitionNone animations:^{
+    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width/6 + GapWidth, frame.size.height/6 - DefaultComponentHeight- GapWidth/2, _alertView.frame.size.width - 2*GapWidth, DefaultComponentHeight)];
+    _infoLabel.textAlignment = NSTextAlignmentCenter;
+    _infoLabel.textColor = [UIColor whiteColor];
+    _infoLabel.hidden = YES;
+    [self addSubview:_infoLabel];
+    
+    //spring animation
+    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:5 options:UIViewAnimationOptionCurveLinear animations:^{
         _alertView.frame = CGRectMake(frame.size.width/6, frame.size.height/6, frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
     } completion:^(BOOL finished) {
-        [nameTextField becomeFirstResponder];
     }];
+    [_nameTextField becomeFirstResponder];
+    
+    //gesture
+    [self configureTapGesture];
     
 }
 
-- (void)cancelButtonPressed {
-    [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:5 options:UIViewAnimationOptionTransitionNone animations:^{
+- (void)configureTapGesture {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCancel)];
+    [self addGestureRecognizer:tap];
+}
+
+- (void)tapCancel {
+    [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1 options:UIViewAnimationOptionCurveLinear animations:^{
         self.alertView.frame = CGRectMake(0,self.frame.size.height,self.frame.size.width*2/3, 4*GapWidth + 3*DefaultComponentHeight);
     } completion:^(BOOL finished) {
         
     }];
-    
     
     [UIView animateWithDuration:1.0 animations:^{
         self.alpha = 0;
@@ -94,7 +114,50 @@ IB_DESIGNABLE
 }
 
 - (void)loginButtonPressed {
+    if ([self checkEmailAndPassword]) {
+        UIView *indicatorBgView = [self loadingIndicatorView];
+        [[SSFAnalysisManager sharedManager] userLoginAndSaveWithEmail:self.nameTextField.text password:self.passwordTextField.text completionHandler:^(NSString *description,BOOL success) {
+            if (success) {
+                self.loginHandler();
+            } else {
+                [indicatorBgView removeFromSuperview];
+                [self showAlertWithText:description];
+            }
+        }];
+    }
     
 }
 
+- (UIView *)loadingIndicatorView {
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.color = [UIColor lightGrayColor];
+    indicator.hidesWhenStopped = YES;
+    [indicator startAnimating];
+    UIView *indicatorBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.alertView.frame.size.width, self.alertView.frame.size.height)];
+    indicatorBgView.backgroundColor = [UIColor whiteColor];
+    [indicatorBgView addSubview:indicator];
+    indicator.center = indicatorBgView.center;
+    [self.alertView addSubview:indicatorBgView];
+    return indicatorBgView;
+}
+
+- (BOOL)checkEmailAndPassword {
+    if (!self.nameTextField.text.length) {
+        [self showAlertWithText:@"请输入用户名"];
+        return NO;
+    } else if (!self.passwordTextField.text.length) {
+        [self showAlertWithText:@"请输入密码"];
+        return NO;
+    } else return YES;
+}
+
+- (void)showAlertWithText:(NSString *)text {
+    self.infoLabel.text = text;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.infoLabel.alpha = 1;
+    }completion:^(BOOL finished) {
+        self.infoLabel.hidden = NO;
+    }];
+
+}
 @end

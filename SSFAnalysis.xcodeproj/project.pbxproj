@@ -17,7 +17,6 @@
 		912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50C81C80329A0072401E /* NSDate+IntervalFrom1970.m */; };
 		912D50D41C80329A0072401E /* NSDate+TimeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CA1C80329A0072401E /* NSDate+TimeString.m */; };
 		912D50D51C80329A0072401E /* NSDictionary+SafetyCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */; };
-		912D50D61C80329A0072401E /* NSString+encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50CE1C80329A0072401E /* NSString+encryption.m */; };
 		912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50D01C80329A0072401E /* NSString+RegularCheck.m */; };
 		912D50D81C80329A0072401E /* UIImage+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50D21C80329A0072401E /* UIImage+ScaleSize.m */; };
 		912D50E21C8032AF0072401E /* CZSShowSimpleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DA1C8032AF0072401E /* CZSShowSimpleAlert.m */; };
@@ -27,6 +26,19 @@
 		912D50EB1C8046880072401E /* testView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50EA1C8046880072401E /* testView.m */; };
 		912D50EE1C993F020072401E /* SSFLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50ED1C993F020072401E /* SSFLoginView.m */; };
 		912D50F21C995E4E0072401E /* SSFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F11C995E4E0072401E /* SSFLoginViewController.m */; };
+		912D50F51C9A489F0072401E /* SSFGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F41C9A489F0072401E /* SSFGravityCollisionBehavior.m */; };
+		912D50FA1C9A82A40072401E /* SSFNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F71C9A82A40072401E /* SSFNetWork.m */; };
+		912D50FB1C9A82A40072401E /* SSFNetWorkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F91C9A82A40072401E /* SSFNetWorkDelegate.m */; };
+		912D50FE1C9A85D30072401E /* NSString+Tony.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50FD1C9A85D30072401E /* NSString+Tony.m */; };
+		912D51011C9A8BA80072401E /* SSFAnalysisManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51001C9A8BA80072401E /* SSFAnalysisManager.m */; };
+		912D51041C9A9F870072401E /* RoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51031C9A9F870072401E /* RoundButton.m */; };
+		912D51071C9AAEE70072401E /* SSFMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51061C9AAEE70072401E /* SSFMainTabBarViewController.m */; };
+		912D510A1C9BA2D00072401E /* Analysis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 912D51081C9BA2D00072401E /* Analysis.xcdatamodeld */; };
+		912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D510C1C9BA7280072401E /* User+CoreDataProperties.m */; };
+		912D51101C9BA7280072401E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D510E1C9BA7280072401E /* User.m */; };
+		912D51131C9BE2020072401E /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51121C9BE2020072401E /* CoreDataManager.m */; };
+		912D51161C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51151C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m */; };
+		912D51191C9BFDE20072401E /* SSFTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51181C9BFDE20072401E /* SSFTodayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +79,6 @@
 		912D50CA1C80329A0072401E /* NSDate+TimeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeString.m"; sourceTree = "<group>"; };
 		912D50CB1C80329A0072401E /* NSDictionary+SafetyCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafetyCheck.h"; sourceTree = "<group>"; };
 		912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafetyCheck.m"; sourceTree = "<group>"; };
-		912D50CD1C80329A0072401E /* NSString+encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encryption.h"; sourceTree = "<group>"; };
-		912D50CE1C80329A0072401E /* NSString+encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encryption.m"; sourceTree = "<group>"; };
 		912D50CF1C80329A0072401E /* NSString+RegularCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegularCheck.h"; sourceTree = "<group>"; };
 		912D50D01C80329A0072401E /* NSString+RegularCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegularCheck.m"; sourceTree = "<group>"; };
 		912D50D11C80329A0072401E /* UIImage+ScaleSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScaleSize.h"; sourceTree = "<group>"; };
@@ -88,6 +98,31 @@
 		912D50EF1C9946B00072401E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		912D50F01C995E4E0072401E /* SSFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFLoginViewController.h; sourceTree = "<group>"; };
 		912D50F11C995E4E0072401E /* SSFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFLoginViewController.m; sourceTree = "<group>"; };
+		912D50F31C9A489F0072401E /* SSFGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFGravityCollisionBehavior.h; sourceTree = "<group>"; };
+		912D50F41C9A489F0072401E /* SSFGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFGravityCollisionBehavior.m; sourceTree = "<group>"; };
+		912D50F61C9A82A40072401E /* SSFNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFNetWork.h; sourceTree = "<group>"; };
+		912D50F71C9A82A40072401E /* SSFNetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFNetWork.m; sourceTree = "<group>"; };
+		912D50F81C9A82A40072401E /* SSFNetWorkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFNetWorkDelegate.h; sourceTree = "<group>"; };
+		912D50F91C9A82A40072401E /* SSFNetWorkDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFNetWorkDelegate.m; sourceTree = "<group>"; };
+		912D50FC1C9A85D30072401E /* NSString+Tony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tony.h"; sourceTree = "<group>"; };
+		912D50FD1C9A85D30072401E /* NSString+Tony.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tony.m"; sourceTree = "<group>"; };
+		912D50FF1C9A8BA80072401E /* SSFAnalysisManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFAnalysisManager.h; sourceTree = "<group>"; };
+		912D51001C9A8BA80072401E /* SSFAnalysisManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFAnalysisManager.m; sourceTree = "<group>"; };
+		912D51021C9A9F870072401E /* RoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundButton.h; sourceTree = "<group>"; };
+		912D51031C9A9F870072401E /* RoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundButton.m; sourceTree = "<group>"; };
+		912D51051C9AAEE70072401E /* SSFMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFMainTabBarViewController.h; sourceTree = "<group>"; };
+		912D51061C9AAEE70072401E /* SSFMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFMainTabBarViewController.m; sourceTree = "<group>"; };
+		912D51091C9BA2D00072401E /* Analysis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Analysis.xcdatamodel; sourceTree = "<group>"; };
+		912D510B1C9BA7280072401E /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		912D510C1C9BA7280072401E /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		912D510D1C9BA7280072401E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		912D510E1C9BA7280072401E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		912D51111C9BE2020072401E /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		912D51121C9BE2020072401E /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		912D51141C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ShowLoginOrMain.h"; sourceTree = "<group>"; };
+		912D51151C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShowLoginOrMain.m"; sourceTree = "<group>"; };
+		912D51171C9BFDE20072401E /* SSFTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFTodayViewController.h; sourceTree = "<group>"; };
+		912D51181C9BFDE20072401E /* SSFTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFTodayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,14 +227,14 @@
 		912D50B71C8031750072401E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				912D50FC1C9A85D30072401E /* NSString+Tony.h */,
+				912D50FD1C9A85D30072401E /* NSString+Tony.m */,
 				912D50C71C80329A0072401E /* NSDate+IntervalFrom1970.h */,
 				912D50C81C80329A0072401E /* NSDate+IntervalFrom1970.m */,
 				912D50C91C80329A0072401E /* NSDate+TimeString.h */,
 				912D50CA1C80329A0072401E /* NSDate+TimeString.m */,
 				912D50CB1C80329A0072401E /* NSDictionary+SafetyCheck.h */,
 				912D50CC1C80329A0072401E /* NSDictionary+SafetyCheck.m */,
-				912D50CD1C80329A0072401E /* NSString+encryption.h */,
-				912D50CE1C80329A0072401E /* NSString+encryption.m */,
 				912D50CF1C80329A0072401E /* NSString+RegularCheck.h */,
 				912D50D01C80329A0072401E /* NSString+RegularCheck.m */,
 				912D50D11C80329A0072401E /* UIImage+ScaleSize.h */,
@@ -211,6 +246,13 @@
 		912D50B81C8031750072401E /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				912D51111C9BE2020072401E /* CoreDataManager.h */,
+				912D51121C9BE2020072401E /* CoreDataManager.m */,
+				912D51081C9BA2D00072401E /* Analysis.xcdatamodeld */,
+				912D510B1C9BA7280072401E /* User+CoreDataProperties.h */,
+				912D510C1C9BA7280072401E /* User+CoreDataProperties.m */,
+				912D510D1C9BA7280072401E /* User.h */,
+				912D510E1C9BA7280072401E /* User.m */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -218,6 +260,8 @@
 		912D50B91C8031750072401E /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				912D50FF1C9A8BA80072401E /* SSFAnalysisManager.h */,
+				912D51001C9A8BA80072401E /* SSFAnalysisManager.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -225,6 +269,10 @@
 		912D50BA1C8031750072401E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				912D50F61C9A82A40072401E /* SSFNetWork.h */,
+				912D50F71C9A82A40072401E /* SSFNetWork.m */,
+				912D50F81C9A82A40072401E /* SSFNetWorkDelegate.h */,
+				912D50F91C9A82A40072401E /* SSFNetWorkDelegate.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -232,11 +280,15 @@
 		912D50BB1C8031750072401E /* SystemUtils */ = {
 			isa = PBXGroup;
 			children = (
+				912D50DD1C8032AF0072401E /* reachabilty */,
 				912D50D91C8032AF0072401E /* CZSShowSimpleAlert.h */,
 				912D50DA1C8032AF0072401E /* CZSShowSimpleAlert.m */,
 				912D50DB1C8032AF0072401E /* MBProgressHUD.h */,
 				912D50DC1C8032AF0072401E /* MBProgressHUD.m */,
-				912D50DD1C8032AF0072401E /* reachabilty */,
+				912D50F31C9A489F0072401E /* SSFGravityCollisionBehavior.h */,
+				912D50F41C9A489F0072401E /* SSFGravityCollisionBehavior.m */,
+				912D51021C9A9F870072401E /* RoundButton.h */,
+				912D51031C9A9F870072401E /* RoundButton.m */,
 			);
 			path = SystemUtils;
 			sourceTree = "<group>";
@@ -256,8 +308,14 @@
 			children = (
 				912D50BE1C8031750072401E /* AppDelegate.h */,
 				912D50BF1C8031750072401E /* AppDelegate.m */,
+				912D51141C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.h */,
+				912D51151C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m */,
 				912D50F01C995E4E0072401E /* SSFLoginViewController.h */,
 				912D50F11C995E4E0072401E /* SSFLoginViewController.m */,
+				912D51051C9AAEE70072401E /* SSFMainTabBarViewController.h */,
+				912D51061C9AAEE70072401E /* SSFMainTabBarViewController.m */,
+				912D51171C9BFDE20072401E /* SSFTodayViewController.h */,
+				912D51181C9BFDE20072401E /* SSFTodayViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -428,20 +486,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912D50FA1C9A82A40072401E /* SSFNetWork.m in Sources */,
 				912D50E51C8032AF0072401E /* Reachability.m in Sources */,
+				912D51131C9BE2020072401E /* CoreDataManager.m in Sources */,
+				912D51191C9BFDE20072401E /* SSFTodayViewController.m in Sources */,
+				912D51161C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m in Sources */,
+				912D50FE1C9A85D30072401E /* NSString+Tony.m in Sources */,
+				912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */,
 				912D50EE1C993F020072401E /* SSFLoginView.m in Sources */,
 				912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */,
+				912D50FB1C9A82A40072401E /* SSFNetWorkDelegate.m in Sources */,
 				912D50D81C80329A0072401E /* UIImage+ScaleSize.m in Sources */,
+				912D51101C9BA7280072401E /* User.m in Sources */,
+				912D510A1C9BA2D00072401E /* Analysis.xcdatamodeld in Sources */,
 				912D50D41C80329A0072401E /* NSDate+TimeString.m in Sources */,
 				912D50E31C8032AF0072401E /* MBProgressHUD.m in Sources */,
+				912D50F51C9A489F0072401E /* SSFGravityCollisionBehavior.m in Sources */,
 				912D50D51C80329A0072401E /* NSDictionary+SafetyCheck.m in Sources */,
 				912D50E41C8032AF0072401E /* GSReachability.m in Sources */,
 				912D50C51C8031750072401E /* AppDelegate.m in Sources */,
+				912D51071C9AAEE70072401E /* SSFMainTabBarViewController.m in Sources */,
 				912D50E21C8032AF0072401E /* CZSShowSimpleAlert.m in Sources */,
 				912D50EB1C8046880072401E /* testView.m in Sources */,
 				912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */,
+				912D51041C9A9F870072401E /* RoundButton.m in Sources */,
 				912D50F21C995E4E0072401E /* SSFLoginViewController.m in Sources */,
-				912D50D61C80329A0072401E /* NSString+encryption.m in Sources */,
+				912D51011C9A8BA80072401E /* SSFAnalysisManager.m in Sources */,
 				912D50851C8028220072401E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +758,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		912D51081C9BA2D00072401E /* Analysis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				912D51091C9BA2D00072401E /* Analysis.xcdatamodel */,
+			);
+			currentVersion = 912D51091C9BA2D00072401E /* Analysis.xcdatamodel */;
+			path = Analysis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 912D50781C8028220072401E /* Project object */;
 }

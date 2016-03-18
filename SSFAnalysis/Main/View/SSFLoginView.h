@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^LoginHandler)();
+typedef void(^LoginHandler)(void);
 
 @interface SSFLoginView : UIView
+- (instancetype)initWithFrame:(CGRect)frame loginHandler:(LoginHandler)logHandler;
 @property (nonatomic, copy)LoginHandler loginHandler;
 @end

@@ -1,5 +1,5 @@
 //
-//  User+CoreDataProperties.m
+//  Bill+CoreDataProperties.m
 //  SSFAnalysis
 //
 //  Created by 赛峰 施 on 16/3/21.
@@ -9,17 +9,17 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "User+CoreDataProperties.h"
+#import "Bill+CoreDataProperties.h"
 
-@implementation User (CoreDataProperties)
+@implementation Bill (CoreDataProperties)
 
 @dynamic user_id;
-@dynamic email;
-@dynamic display_name;
-@dynamic account;
-@dynamic country_code;
-@dynamic phone;
-@dynamic status;
-@dynamic myBills;
+@dynamic amount;
+@dynamic type;
+@dynamic subtype;
+@dynamic time;
+@dynamic remark;
+@dynamic bill_id;
+@dynamic owner;
 
 @end

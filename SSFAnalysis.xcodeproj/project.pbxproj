@@ -39,6 +39,8 @@
 		912D51131C9BE2020072401E /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51121C9BE2020072401E /* CoreDataManager.m */; };
 		912D51161C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51151C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m */; };
 		912D51191C9BFDE20072401E /* SSFTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51181C9BFDE20072401E /* SSFTodayViewController.m */; };
+		912D511E1C9FE18A0072401E /* Bill+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D511B1C9FE18A0072401E /* Bill+CoreDataProperties.m */; };
+		912D511F1C9FE18A0072401E /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D511D1C9FE18A0072401E /* Bill.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,10 @@
 		912D51151C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShowLoginOrMain.m"; sourceTree = "<group>"; };
 		912D51171C9BFDE20072401E /* SSFTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFTodayViewController.h; sourceTree = "<group>"; };
 		912D51181C9BFDE20072401E /* SSFTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFTodayViewController.m; sourceTree = "<group>"; };
+		912D511A1C9FE18A0072401E /* Bill+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bill+CoreDataProperties.h"; sourceTree = "<group>"; };
+		912D511B1C9FE18A0072401E /* Bill+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bill+CoreDataProperties.m"; sourceTree = "<group>"; };
+		912D511C1C9FE18A0072401E /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
+		912D511D1C9FE18A0072401E /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +259,10 @@
 				912D510C1C9BA7280072401E /* User+CoreDataProperties.m */,
 				912D510D1C9BA7280072401E /* User.h */,
 				912D510E1C9BA7280072401E /* User.m */,
+				912D511A1C9FE18A0072401E /* Bill+CoreDataProperties.h */,
+				912D511B1C9FE18A0072401E /* Bill+CoreDataProperties.m */,
+				912D511C1C9FE18A0072401E /* Bill.h */,
+				912D511D1C9FE18A0072401E /* Bill.m */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -511,7 +521,9 @@
 				912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */,
 				912D51041C9A9F870072401E /* RoundButton.m in Sources */,
 				912D50F21C995E4E0072401E /* SSFLoginViewController.m in Sources */,
+				912D511F1C9FE18A0072401E /* Bill.m in Sources */,
 				912D51011C9A8BA80072401E /* SSFAnalysisManager.m in Sources */,
+				912D511E1C9FE18A0072401E /* Bill+CoreDataProperties.m in Sources */,
 				912D50851C8028220072401E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

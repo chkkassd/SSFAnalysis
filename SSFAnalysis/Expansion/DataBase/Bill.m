@@ -31,7 +31,7 @@
 + (Bill *)updateBillWithInfo:(NSDictionary *)info inManagedObjectContext:(NSManagedObjectContext *)context {
     Bill *obj = nil;
     NSString *billid = [info objectForKey:BILL_BILL_ID_KEY];
-    if ([billid integerValue] > 0) {
+    if (billid.length) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Bill"];
         request.predicate = [NSPredicate predicateWithFormat:@"bill_id = %@",billid];
         request.sortDescriptors = nil;
@@ -49,6 +49,13 @@
         [obj setValuesForKeysWithDictionary:info];
     }
     return obj;
+}
+
++ (void)deleteBillWithBillId:(NSString *)billid inManagedObjectContext:(NSManagedObjectContext *)context {
+    Bill *obj = [Bill billWithBillId:billid inManagedObjectContext:context];
+    if (obj) {
+        [context deleteObject:obj];
+    }
 }
 
 #pragma mark - kvc

@@ -18,12 +18,21 @@
 + (NSString *)base64StringFromData:(NSData *)data;
 + (NSData *) dataFromBase64String:(NSString *)string;
 
++ (NSString *)stringTranslatedFromDate:(NSDate *)date;//NSDate转化为标准格式时间字符串，年月日时分秒
++ (NSString *)stringToDayTranslatedFromDate:(NSDate *)date;//NSDate转化为标准格式时间字符串,年月日
++ (NSString *)stringToMonthTranslatedFromDate:(NSDate *)date;//NSDate转化为标准格式时间字符串,年月
++ (NSString *)stringToYearTranslatedFromDate:(NSDate *)date;//NSDate转化为标准格式时间字符串,年
+
++ (NSString *)getTimeYearFromDate:(NSDate *)date;//获得给定时间的年
++ (NSString *)getTimeMonthFromDate:(NSDate *)date;//获得给定时间的月
++ (NSString *)getTimeDayFromDate:(NSDate *)date;//获得给定时间的日
 
 + (NSString *)timeStringForTime:(NSUInteger)time;//整形时间转化为00:00字符串
-+ (NSString *)stringTranslatedFromDate:(NSDate *)date;//NSDate转化为标准格式时间字符串
-+(NSDate *) convertDateFromString:(NSString*)uiDate;//nsstring转化为nsdate
++(NSDate *) convertDateFromString:(NSString*)uiDate;//nsstring转化为nsdate,年月日时分秒
++(NSDate *)convertDateToDayFromString:(NSString*)uiDate;//nsstring转化为nsdate,年月日
 +(int)compareOneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay;//比较2个日期大小
 + (NSDate *)fetchDateFromDay:(NSInteger)day Hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;//获取时间，转化为nsdate
+
 
 +(NSString *)formatStringToSaveWithString:(NSString *)string digit:(NSInteger)digit decimalStyle:(BOOL)flag;//将一个数字字符串保留指定的位数,string为字符串，digit为保留的位数
 +(NSString *)decimalwithFormat:(NSString *)format floatV:(float)floatV;//四舍五入方法

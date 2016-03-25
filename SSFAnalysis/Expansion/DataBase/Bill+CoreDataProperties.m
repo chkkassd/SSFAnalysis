@@ -20,6 +20,9 @@
 @dynamic time;
 @dynamic remark;
 @dynamic bill_id;
+@dynamic day;
+@dynamic month;
+@dynamic year;
 @dynamic owner;
 
 @end

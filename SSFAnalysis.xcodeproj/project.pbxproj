@@ -41,6 +41,11 @@
 		912D51191C9BFDE20072401E /* SSFTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51181C9BFDE20072401E /* SSFTodayViewController.m */; };
 		912D511E1C9FE18A0072401E /* Bill+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D511B1C9FE18A0072401E /* Bill+CoreDataProperties.m */; };
 		912D511F1C9FE18A0072401E /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D511D1C9FE18A0072401E /* Bill.m */; };
+		912D51221CA380FF0072401E /* CoreDataFetchedResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51211CA380FF0072401E /* CoreDataFetchedResultsTableViewController.m */; };
+		912D51251CA393A70072401E /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D51241CA393A70072401E /* BillTableViewCell.m */; };
+		914791771CA3C6DD0036A40D /* SSFRecordBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914791761CA3C6DD0036A40D /* SSFRecordBillViewController.m */; };
+		9147917A1CA3C99E0036A40D /* OptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */; };
+		9147917D1CA3EB870036A40D /* SSFMoneyTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9147917C1CA3EB870036A40D /* SSFMoneyTypeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +134,16 @@
 		912D511B1C9FE18A0072401E /* Bill+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bill+CoreDataProperties.m"; sourceTree = "<group>"; };
 		912D511C1C9FE18A0072401E /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
 		912D511D1C9FE18A0072401E /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
+		912D51201CA380FF0072401E /* CoreDataFetchedResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataFetchedResultsTableViewController.h; sourceTree = "<group>"; };
+		912D51211CA380FF0072401E /* CoreDataFetchedResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataFetchedResultsTableViewController.m; sourceTree = "<group>"; };
+		912D51231CA393A70072401E /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
+		912D51241CA393A70072401E /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
+		914791751CA3C6DD0036A40D /* SSFRecordBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFRecordBillViewController.h; sourceTree = "<group>"; };
+		914791761CA3C6DD0036A40D /* SSFRecordBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFRecordBillViewController.m; sourceTree = "<group>"; };
+		914791781CA3C99E0036A40D /* OptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionCollectionViewCell.h; sourceTree = "<group>"; };
+		914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionCollectionViewCell.m; sourceTree = "<group>"; };
+		9147917B1CA3EB870036A40D /* SSFMoneyTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFMoneyTypeManager.h; sourceTree = "<group>"; };
+		9147917C1CA3EB870036A40D /* SSFMoneyTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFMoneyTypeManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +287,8 @@
 			children = (
 				912D50FF1C9A8BA80072401E /* SSFAnalysisManager.h */,
 				912D51001C9A8BA80072401E /* SSFAnalysisManager.m */,
+				9147917B1CA3EB870036A40D /* SSFMoneyTypeManager.h */,
+				9147917C1CA3EB870036A40D /* SSFMoneyTypeManager.m */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -326,6 +343,10 @@
 				912D51061C9AAEE70072401E /* SSFMainTabBarViewController.m */,
 				912D51171C9BFDE20072401E /* SSFTodayViewController.h */,
 				912D51181C9BFDE20072401E /* SSFTodayViewController.m */,
+				912D51201CA380FF0072401E /* CoreDataFetchedResultsTableViewController.h */,
+				912D51211CA380FF0072401E /* CoreDataFetchedResultsTableViewController.m */,
+				914791751CA3C6DD0036A40D /* SSFRecordBillViewController.h */,
+				914791761CA3C6DD0036A40D /* SSFRecordBillViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,6 +365,10 @@
 				912D50EA1C8046880072401E /* testView.m */,
 				912D50EC1C993F020072401E /* SSFLoginView.h */,
 				912D50ED1C993F020072401E /* SSFLoginView.m */,
+				912D51231CA393A70072401E /* BillTableViewCell.h */,
+				912D51241CA393A70072401E /* BillTableViewCell.m */,
+				914791781CA3C99E0036A40D /* OptionCollectionViewCell.h */,
+				914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,10 +526,13 @@
 				912D51131C9BE2020072401E /* CoreDataManager.m in Sources */,
 				912D51191C9BFDE20072401E /* SSFTodayViewController.m in Sources */,
 				912D51161C9BF2C00072401E /* AppDelegate+ShowLoginOrMain.m in Sources */,
+				912D51221CA380FF0072401E /* CoreDataFetchedResultsTableViewController.m in Sources */,
 				912D50FE1C9A85D30072401E /* NSString+Tony.m in Sources */,
 				912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */,
 				912D50EE1C993F020072401E /* SSFLoginView.m in Sources */,
+				912D51251CA393A70072401E /* BillTableViewCell.m in Sources */,
 				912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */,
+				9147917D1CA3EB870036A40D /* SSFMoneyTypeManager.m in Sources */,
 				912D50FB1C9A82A40072401E /* SSFNetWorkDelegate.m in Sources */,
 				912D50D81C80329A0072401E /* UIImage+ScaleSize.m in Sources */,
 				912D51101C9BA7280072401E /* User.m in Sources */,
@@ -524,7 +552,9 @@
 				912D511F1C9FE18A0072401E /* Bill.m in Sources */,
 				912D51011C9A8BA80072401E /* SSFAnalysisManager.m in Sources */,
 				912D511E1C9FE18A0072401E /* Bill+CoreDataProperties.m in Sources */,
+				914791771CA3C6DD0036A40D /* SSFRecordBillViewController.m in Sources */,
 				912D50851C8028220072401E /* main.m in Sources */,
+				9147917A1CA3C99E0036A40D /* OptionCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +782,7 @@
 				912D50AF1C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		912D50B01C8028220072401E /* Build configuration list for PBXNativeTarget "SSFAnalysisTests" */ = {
 			isa = XCConfigurationList;
@@ -760,6 +791,7 @@
 				912D50B21C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		912D50B31C8028220072401E /* Build configuration list for PBXNativeTarget "SSFAnalysisUITests" */ = {
 			isa = XCConfigurationList;
@@ -768,6 +800,7 @@
 				912D50B51C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

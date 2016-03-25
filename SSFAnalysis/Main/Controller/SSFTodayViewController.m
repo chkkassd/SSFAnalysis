@@ -11,40 +11,91 @@
 #import "AppDelegate+ShowLoginOrMain.h"
 #import "Bill+CoreDataProperties.h"
 #import "CoreDataManager.h"
+#import "BillTableViewCell.h"
+#import "SSFMoneyTypeManager.h"
+#import "NSString+Tony.h"
 
 @interface SSFTodayViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *costLabel;
 @property (nonatomic, weak) IBOutlet UILabel *incomeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *monthSurplesLabel;
+@property (nonatomic, weak) IBOutlet UILabel *yearLabel;
+@property (nonatomic, weak) IBOutlet UILabel *monthLabel;
+@property (nonatomic, strong) User *currentUser;
+@property (nonatomic, strong) NSManagedObjectContext *mainContext;
 @end
 
 @implementation SSFTodayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [SSFAnalysisManager sharedManager].currentUser.display_name;
+    self.navigationItem.title = self.currentUser.display_name;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_id = %@",self.currentUser.user_id];
+    [self setUpFetchedResultsControllerWithPredicate:predicate];
 }
 
-- (IBAction)signOut:(id)sender {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateHeadView];
+}
+
+- (void)setUpFetchedResultsControllerWithPredicate:(NSPredicate *)predicate {
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Bill"];
+    request.predicate = predicate;
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO]];
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.mainContext sectionNameKeyPath:@"day" cacheName:BILL_FETCHED_RESULTS_CACHE_NAME];
+    self.fetchedResultsController = fetchedResultsController;
+}
+
+- (void)updateHeadView {
+    self.costLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] costOfTodayWithUser]];
+    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] incomeOfTodayWithUser]];
+    self.monthSurplesLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] surplesOfThisMonthWithUser]];
+    self.yearLabel.text = [NSString getTimeYearFromDate:[NSDate date]];
+    self.monthLabel.text = [NSString stringWithFormat:@"%@月",[NSString getTimeMonthFromDate:[NSDate date]]];
+}
+
+#pragma mark - properties
+
+- (User *)currentUser {
+    return [SSFAnalysisManager sharedManager].currentUser;
+}
+
+- (NSManagedObjectContext *)mainContext {
+    return [CoreDataManager sharedManager].mainQueueContext;
+}
+
+#pragma mark - table data source
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *nameString = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+    return [nameString componentsSeparatedByString:@" "][0];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"BillTableViewCell";
+    BillTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    Bill *bill = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.nameLabel.text = [SSFMoneyTypeManager moneyTypeStringWithNumber:bill.subtype];
+    cell.moneyLabel.text = [NSString stringWithFormat:@"%.2f",bill.amount.floatValue];
+    if ([bill.type integerValue] == BILL_TYPE_COST) {
+        cell.moneyLabel.textColor = [UIColor blackColor];
+    } else if ([bill.type integerValue] == BILL_TYPE_INCOME) {
+        cell.moneyLabel.textColor = [UIColor colorWithRed:13/255.0 green:185/255.0 blue:63/255.0 alpha:1.0];
+    }
+    return cell;
+}
+
+#pragma mark - action
+-(IBAction)loginOut {
     [[SSFAnalysisManager sharedManager] signOut];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate showLoginAndRegisterView];
 }
-
-- (IBAction)test:(id)sender {
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    NSDictionary *info = @{BILL_AMOUNT_KEY:@(100),
-                           BILL_BILL_ID_KEY:uuid,
-                           BILL_REMARK_KEY:@"dd",
-                           BILL_SUBTYPE_KEY:@(1),
-                           BILL_TIME_KEY:[NSDate date],
-                           BILL_TYPE_KEY:@(2),
-                           BILL_USER_ID_KEY:[SSFAnalysisManager sharedManager].currentUser.user_id
-                           };
-    Bill *bill = [Bill updateBillWithInfo:info inManagedObjectContext:[CoreDataManager sharedManager].mainQueueContext];
-    [[SSFAnalysisManager sharedManager].currentUser addMyBillsObject:bill];
-    [[CoreDataManager sharedManager].mainQueueContext save:NULL];
-    self.costLabel.text = [NSString stringWithFormat:@"%d",[SSFAnalysisManager sharedManager].currentUser.myBills.count];
-    self.incomeLabel.text = [Bill billWithBillId:uuid inManagedObjectContext:[CoreDataManager sharedManager].mainQueueContext].owner.display_name;
-}
-
 @end

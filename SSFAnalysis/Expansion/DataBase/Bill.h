@@ -17,12 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 #define BILL_SUBTYPE_KEY @"subtype"
 #define BILL_TIME_KEY @"time"
 #define BILL_REMARK_KEY @"remark"
+#define BILL_DAY_KEY @"day"
+#define BILL_MONTH_KEY @"month"
+#define BILL_YEAR_KEY @"year"
 #define BILL_OWNER_KEY @"owner"
 
 @interface Bill : NSManagedObject
 
 +(Bill *)billWithBillId:(NSString *)billid inManagedObjectContext:(NSManagedObjectContext*)context;
 +(Bill *)updateBillWithInfo:(NSDictionary *)info inManagedObjectContext:(NSManagedObjectContext*)context;
++(void)deleteBillWithBillId:(NSString *)billid inManagedObjectContext:(NSManagedObjectContext*)context;
 @end
 
 NS_ASSUME_NONNULL_END

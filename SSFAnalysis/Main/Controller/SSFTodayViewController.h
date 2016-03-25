@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataFetchedResultsTableViewController.h"
 
-@interface SSFTodayViewController : UIViewController
+@interface SSFTodayViewController : CoreDataFetchedResultsTableViewController
 
 @end

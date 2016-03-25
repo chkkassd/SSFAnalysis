@@ -9,12 +9,15 @@
 #import "SSFAnalysisManager.h"
 #import "SSFNetWork.h"
 #import "CoreDataManager.h"
+#import "NSString+Tony.h"
 
 @interface SSFAnalysisManager()
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainQueueContext;
 @end
 
 @implementation SSFAnalysisManager
+
+#pragma mark - about network
 
 -(void)userLoginAndSaveWithEmail:(NSString *)email password:(NSString *)password completionHandler:(void (^)(NSString *,BOOL))handler {
     [[SSFNetWork sharedNetWork] signInWithEmail:email password:password completion:^(NSString *obj, NSData *resumeData) {
@@ -43,6 +46,76 @@
     [[CoreDataManager sharedManager] stopConnectCoreData];
     [[NSUserDefaults standardUserDefaults] setObject:NULL forKey:LOGIN_USER_ID_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [NSFetchedResultsController deleteCacheWithName:BILL_FETCHED_RESULTS_CACHE_NAME];
+}
+
+#pragma mark - about data
+
+- (float)costOfTodayWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",[NSString stringToDayTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)incomeOfTodayWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",[NSString stringToDayTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)surplesOfTodayWithUser {
+    return ([self incomeOfTodayWithUser] - [self costOfTodayWithUser]);
+}
+
+- (float)costOfThisMonthWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)incomeOfThisMonthWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)surplesOfThisMonthWithUser {
+    NSLog(@"==========%f,%f",[self incomeOfThisMonthWithUser],[self costOfThisMonthWithUser]);
+    return ([self incomeOfThisMonthWithUser] - [self costOfThisMonthWithUser]);
+}
+
+- (float)costOfThisYearWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)incomeOfThisYearWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)surplesOfThisYearWithUser {
+    return ([self incomeOfThisYearWithUser] - [self costOfThisYearWithUser]);
+}
+
+- (float)getTotalWithPredicate:(NSPredicate *)predicate {
+    float total = 0.00;
+    NSArray *bills = [self getAllMyBills];
+    NSArray *filteredBills = [self getBillsWithAllBills:bills Predicate:predicate];
+    if (filteredBills.count) {
+        for (Bill * obj in filteredBills) {
+            total += [obj.amount floatValue];
+        }
+    }
+    return total;
+}
+
+- (NSArray *)getAllMyBills {
+    NSSet *myBills = self.currentUser.myBills;
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO]];
+    NSArray *bills = [myBills sortedArrayUsingDescriptors:sortDesc];
+    return bills;
+}
+
+- (NSArray *)getBillsWithAllBills:(NSArray *)allBills Predicate:(NSPredicate *)predicate {
+    NSArray *bills = [allBills filteredArrayUsingPredicate:predicate];
+    return bills;
 }
 
 #pragma mark - properties

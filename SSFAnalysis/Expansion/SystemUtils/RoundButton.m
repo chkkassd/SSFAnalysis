@@ -18,4 +18,12 @@ IB_DESIGNABLE
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.layer.cornerRadius = 3.0;
+    }
+    return self;
+}
+
 @end

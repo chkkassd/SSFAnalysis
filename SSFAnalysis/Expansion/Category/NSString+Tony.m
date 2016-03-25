@@ -129,12 +129,68 @@ static char base64EncodingTable[64] = {
     return strDate;
 }
 
++ (NSString *)stringToDayTranslatedFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return strDate;
+}
+
++ (NSString *)stringToMonthTranslatedFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return strDate;
+}
+
++ (NSString *)stringToYearTranslatedFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return strDate;
+}
+
 +(NSDate*) convertDateFromString:(NSString*)uiDate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date=[formatter dateFromString:uiDate];
     return date;
+}
+
++(NSDate *)convertDateToDayFromString:(NSString*)uiDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date=[formatter dateFromString:uiDate];
+    return date;
+}
+
++ (NSString *)getTimeYearFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return [strDate componentsSeparatedByString:@"-"][0];
+}
+
++ (NSString *)getTimeMonthFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return [strDate componentsSeparatedByString:@"-"][1];
+}
+
++ (NSString *)getTimeDayFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return [strDate componentsSeparatedByString:@"-"][2];
 }
 
 +(NSString *)formatStringForPercentageWithString:(NSString *)string

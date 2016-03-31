@@ -22,7 +22,7 @@
 		912D50E31C8032AF0072401E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DC1C8032AF0072401E /* MBProgressHUD.m */; };
 		912D50E41C8032AF0072401E /* GSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50DF1C8032AF0072401E /* GSReachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		912D50E51C8032AF0072401E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50E11C8032AF0072401E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		912D50EB1C8046880072401E /* testView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50EA1C8046880072401E /* testView.m */; };
+		912D50EB1C8046880072401E /* SSFLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50EA1C8046880072401E /* SSFLineChartView.m */; };
 		912D50EE1C993F020072401E /* SSFLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50ED1C993F020072401E /* SSFLoginView.m */; };
 		912D50F51C9A489F0072401E /* SSFGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F41C9A489F0072401E /* SSFGravityCollisionBehavior.m */; };
 		912D50FA1C9A82A40072401E /* SSFNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50F71C9A82A40072401E /* SSFNetWork.m */; };
@@ -96,8 +96,8 @@
 		912D50DF1C8032AF0072401E /* GSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSReachability.m; sourceTree = "<group>"; };
 		912D50E01C8032AF0072401E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		912D50E11C8032AF0072401E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		912D50E91C8046880072401E /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
-		912D50EA1C8046880072401E /* testView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testView.m; sourceTree = "<group>"; };
+		912D50E91C8046880072401E /* SSFLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFLineChartView.h; sourceTree = "<group>"; };
+		912D50EA1C8046880072401E /* SSFLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFLineChartView.m; sourceTree = "<group>"; };
 		912D50EC1C993F020072401E /* SSFLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFLoginView.h; sourceTree = "<group>"; };
 		912D50ED1C993F020072401E /* SSFLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFLoginView.m; sourceTree = "<group>"; };
 		912D50EF1C9946B00072401E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -351,8 +351,8 @@
 		912D50C31C8031750072401E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				912D50E91C8046880072401E /* testView.h */,
-				912D50EA1C8046880072401E /* testView.m */,
+				912D50E91C8046880072401E /* SSFLineChartView.h */,
+				912D50EA1C8046880072401E /* SSFLineChartView.m */,
 				912D50EC1C993F020072401E /* SSFLoginView.h */,
 				912D50ED1C993F020072401E /* SSFLoginView.m */,
 				912D51231CA393A70072401E /* BillTableViewCell.h */,
@@ -576,7 +576,7 @@
 				914144391CA90AD30091B5B1 /* SSFMainTabBarViewController.m in Sources */,
 				912D50E41C8032AF0072401E /* GSReachability.m in Sources */,
 				912D50E21C8032AF0072401E /* CZSShowSimpleAlert.m in Sources */,
-				912D50EB1C8046880072401E /* testView.m in Sources */,
+				912D50EB1C8046880072401E /* SSFLineChartView.m in Sources */,
 				912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */,
 				9141443B1CA90AD30091B5B1 /* SSFTodayViewController.m in Sources */,
 				912D51041C9A9F870072401E /* RoundButton.m in Sources */,
@@ -727,8 +727,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SSFAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -739,8 +741,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SSFAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";

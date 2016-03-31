@@ -97,7 +97,7 @@
 - (float)getTotalWithPredicate:(NSPredicate *)predicate {
     float total = 0.00;
     NSArray *bills = [self getAllMyBills];
-    NSArray *filteredBills = [self getBillsWithAllBills:bills Predicate:predicate];
+    NSArray *filteredBills = [bills filteredArrayUsingPredicate:predicate];
     if (filteredBills.count) {
         for (Bill * obj in filteredBills) {
             total += [obj.amount floatValue];
@@ -110,11 +110,6 @@
     NSSet *myBills = self.currentUser.myBills;
     NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO]];
     NSArray *bills = [myBills sortedArrayUsingDescriptors:sortDesc];
-    return bills;
-}
-
-- (NSArray *)getBillsWithAllBills:(NSArray *)allBills Predicate:(NSPredicate *)predicate {
-    NSArray *bills = [allBills filteredArrayUsingPredicate:predicate];
     return bills;
 }
 

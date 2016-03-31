@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface testView : UIView
+@interface SSFLineChartView : UIView
 
 @end

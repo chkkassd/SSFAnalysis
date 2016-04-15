@@ -7,17 +7,20 @@
 //
 
 #import "SSFLineChartView.h"
+#import "SSFAnalysisManager.h"
 
 #define DefaultLineGapWidth 5
 #define DefaultLineTopGapHeight 35
 #define DefaultLineBottomGapHeight 20
 #define DefaultDateGapWidth 20
+#define DefaultMoneyHeightRatio 50 //金钱比例尺
 
 IB_DESIGNABLE
 @interface SSFLineChartView()
 @property (nonatomic, strong) IBInspectable UIColor *strokeColor;
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
-
+@property (nonatomic, strong) UIBezierPath *chartPath;
+@property (nonatomic, assign) LineChartType lineChartType;
 @end
 
 @implementation SSFLineChartView
@@ -43,13 +46,11 @@ IB_DESIGNABLE
     CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
     CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
     CGContextSetLineWidth(context, 1.0);
-    CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineJoin(context, kCGLineJoinRound);
     
     [self setGradientBackgroundWithStartPoint:CGPointMake(0, 0) endPoint:CGPointMake(0, self.frame.size.height)];
     [self setSeparateLine];
     [self drawText];
-    [self drawLineChart];
+    [self.chartPath stroke];
 }
 
 //绘制渐变背景
@@ -84,14 +85,31 @@ IB_DESIGNABLE
                                 NSForegroundColorAttributeName:[UIColor whiteColor],
                                 NSFontAttributeName:[UIFont systemFontOfSize:12.0],
                                 };
+    
+    NSString *leftString;
+    NSString *rightString;
+    float averageMoney,totalMoney;
+    if (self.lineChartType == LineChartType_Cost) {
+        leftString = @"日均支出";
+        rightString = @"本月总计支出";
+        averageMoney = [[SSFAnalysisManager sharedManager] averageOfCostThisMonthWithUser];
+        totalMoney = [[SSFAnalysisManager sharedManager] costOfThisMonthWithUser];
+    } else if (self.lineChartType == LineChartType_Income) {
+        leftString = @"日均收入";
+        rightString = @"本月总计收入";
+        averageMoney = [[SSFAnalysisManager sharedManager] averageOfIncomeThisMonthWithUser];
+        totalMoney = [[SSFAnalysisManager sharedManager] incomeOfThisMonthWithUser];
+    }
+
     //绘制顶部统计
-    NSString *string = @"日均支出";
+    NSString *string = [NSString stringWithFormat:@"%@:%.2f",leftString,averageMoney] ;
     CGSize averageTextSize = [string boundingRectWithSize:self.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     [string drawAtPoint:CGPointMake(DefaultLineGapWidth, (DefaultLineTopGapHeight-averageTextSize.height)/2) withAttributes:attribute];
     
-    NSString *totalString = @"本月总计支出";
+    NSString *totalString = [NSString stringWithFormat:@"%@:%.2f",rightString,totalMoney];
     CGSize totalTextSize = [totalString boundingRectWithSize:self.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     [totalString drawAtPoint:CGPointMake(self.frame.size.width - DefaultLineGapWidth - totalTextSize.width, (DefaultLineTopGapHeight-totalTextSize.height)/2) withAttributes:attribute];
+    
     
     //绘制底部日期
     CGFloat average = (self.frame.size.width - DefaultDateGapWidth*2)/31.0;
@@ -114,27 +132,77 @@ IB_DESIGNABLE
     NSString *dateFive = @"28";
     CGSize dateFiveSize = [dateFive boundingRectWithSize:self.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
     [dateFive drawAtPoint:CGPointMake(DefaultDateGapWidth + average*28 - dateFiveSize.width/2, self.frame.size.height - DefaultLineBottomGapHeight +(DefaultLineBottomGapHeight-dateFiveSize.height)/2) withAttributes:attribute];
+    
+    NSString *unitStringX = @"(日)";
+    CGSize unitStringXSize = [unitStringX boundingRectWithSize:self.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    [unitStringX drawAtPoint:CGPointMake(self.frame.size.width - unitStringXSize.width, self.frame.size.height - DefaultLineBottomGapHeight +(DefaultLineBottomGapHeight-unitStringXSize.height)/2) withAttributes:attribute];
+    
+    
+    NSDictionary *attribute2 = @{
+                                NSForegroundColorAttributeName:[UIColor whiteColor],
+                                NSFontAttributeName:[UIFont systemFontOfSize:8.0],
+                                };
+    
+    NSString *minMoney = @"0";
+    CGSize minMoneySize = [minMoney boundingRectWithSize:self.frame.size options:NSStringDrawingUsesFontLeading attributes:attribute2 context:nil].size;
+    [minMoney drawAtPoint:CGPointMake(DefaultLineGapWidth, self.frame.size.height - DefaultLineBottomGapHeight - minMoneySize.height) withAttributes:attribute2];
+    
+    NSInteger maxMoneyNumber = (self.frame.size.height - DefaultLineTopGapHeight - DefaultLineBottomGapHeight)*DefaultMoneyHeightRatio;
+    NSString *maxMoney = [NSString stringWithFormat:@"%ld(元)",(long)maxMoneyNumber];
+    [maxMoney drawAtPoint:CGPointMake(DefaultLineGapWidth, DefaultLineTopGapHeight) withAttributes:attribute2];
 }
 
-//绘制折线
-- (void)drawLineChart {
+//绘制折线:month 0 represent current month;otherwise,represent the correspondding month
+- (void)drawLineChartWithMonth:(NSInteger)month chartType:(LineChartType)type {
+    self.lineChartType = type;
+    self.chartPath = nil;
+    self.chartPath = [UIBezierPath bezierPath];
+    self.chartPath.lineWidth = 1.0;
+    self.chartPath.lineJoinStyle = kCGLineJoinRound;
+    self.chartPath.lineCapStyle = kCGLineCapRound;
+    
+    if (month == 0) {
+        //当前月
+        NSArray *bills = nil;
+        if (type == LineChartType_Cost) {
+            bills = [[SSFAnalysisManager sharedManager] getAllMyCostBillOfCurrentMonth];
+        } else if (type == LineChartType_Income) {
+            bills = [[SSFAnalysisManager sharedManager] getAllMyIncomeBillOfCurrentMonth];
+        }
+        if (bills.count) {
+            for (NSInteger i = 0; i < bills.count; i++) {
+                if (i == 0) {
+                    Bill *bill = bills[i];
+                    [self.chartPath moveToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:bill], [self yValueForPotinTranslatedFromBill:bill])];
+                } else {
+                    Bill *bill = bills[i];
+                    [self.chartPath addLineToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:bill], [self yValueForPotinTranslatedFromBill:bill])];
+                }
+            }
+        }
+        
+    } else {
+        //其他月
+    }
+    
+    [self setNeedsDisplay];
+}
+
+//账单时间转化为x坐标
+- (CGFloat)xValueForPotinTranslatedFromBill:(Bill *)bill {
+    CGFloat x = 0.00;
     CGFloat average = (self.frame.size.width - DefaultDateGapWidth*2)/31.0;
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(DefaultDateGapWidth + average, self.frame.size.height-DefaultLineBottomGapHeight - 6000/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*2, self.frame.size.height-DefaultLineBottomGapHeight -1600/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*3, self.frame.size.height-DefaultLineBottomGapHeight -2600/100.0)];
-    
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*7, self.frame.size.height-DefaultLineBottomGapHeight -3600/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*10, self.frame.size.height-DefaultLineBottomGapHeight -1400/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*15, self.frame.size.height-DefaultLineBottomGapHeight -600/100.0)];
-    
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*20, self.frame.size.height-DefaultLineBottomGapHeight -4600/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*25, self.frame.size.height-DefaultLineBottomGapHeight -10000/100.0)];
-    [path addLineToPoint:CGPointMake(DefaultDateGapWidth + average*30, self.frame.size.height-DefaultLineBottomGapHeight -8600/100.0)];
-    
-    path.lineWidth = 1.0;
-    path.lineJoinStyle = kCGLineJoinRound;
-    path.lineCapStyle = kCGLineCapRound;
-    [path stroke];
+    NSString *dayString = [[bill.day componentsSeparatedByString:@"-"] lastObject];
+    NSInteger day = [dayString integerValue];
+    x = DefaultDateGapWidth + average * day;
+    return x;
+}
+
+//账单金额转化为y坐标
+- (CGFloat)yValueForPotinTranslatedFromBill:(Bill *)bill {
+    CGFloat y = 0.00;
+    float amount = [bill.amount floatValue];
+    y = self.frame.size.height - DefaultLineBottomGapHeight - amount/DefaultMoneyHeightRatio;
+    return y;
 }
 @end

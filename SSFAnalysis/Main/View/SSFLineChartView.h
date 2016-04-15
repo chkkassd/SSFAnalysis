@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Bill+CoreDataProperties.h"
+
+typedef enum {
+    LineChartType_Cost = 1,
+    LineChartType_Income = 2
+}LineChartType;
 
 @interface SSFLineChartView : UIView
-
+- (void)drawLineChartWithMonth:(NSInteger)month chartType:(LineChartType)type;
 @end

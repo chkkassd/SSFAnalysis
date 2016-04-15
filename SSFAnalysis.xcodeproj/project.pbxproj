@@ -46,6 +46,7 @@
 		9141443B1CA90AD30091B5B1 /* SSFTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914144341CA90AD30091B5B1 /* SSFTodayViewController.m */; };
 		9147917A1CA3C99E0036A40D /* OptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */; };
 		9147917D1CA3EB870036A40D /* SSFMoneyTypeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9147917C1CA3EB870036A40D /* SSFMoneyTypeManager.m */; };
+		91B339081CC0C7E40055D017 /* SSFAnalysisChartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B339071CC0C7E40055D017 /* SSFAnalysisChartTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,8 @@
 		914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionCollectionViewCell.m; sourceTree = "<group>"; };
 		9147917B1CA3EB870036A40D /* SSFMoneyTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFMoneyTypeManager.h; sourceTree = "<group>"; };
 		9147917C1CA3EB870036A40D /* SSFMoneyTypeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFMoneyTypeManager.m; sourceTree = "<group>"; };
+		91B339061CC0C7E40055D017 /* SSFAnalysisChartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFAnalysisChartTableViewController.h; sourceTree = "<group>"; };
+		91B339071CC0C7E40055D017 /* SSFAnalysisChartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFAnalysisChartTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +340,8 @@
 				914144261CA90AD30091B5B1 /* LoginAndRegister */,
 				9141442D1CA90AD30091B5B1 /* MainController */,
 				914144301CA90AD30091B5B1 /* Today */,
+				91B339061CC0C7E40055D017 /* SSFAnalysisChartTableViewController.h */,
+				91B339071CC0C7E40055D017 /* SSFAnalysisChartTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				912D50FE1C9A85D30072401E /* NSString+Tony.m in Sources */,
 				912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */,
 				912D50EE1C993F020072401E /* SSFLoginView.m in Sources */,
+				91B339081CC0C7E40055D017 /* SSFAnalysisChartTableViewController.m in Sources */,
 				912D51251CA393A70072401E /* BillTableViewCell.m in Sources */,
 				912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */,
 				9147917D1CA3EB870036A40D /* SSFMoneyTypeManager.m in Sources */,
@@ -799,6 +805,88 @@
 			};
 			name = Release;
 		};
+		91395B341CB3B1A00080E051 /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"UAT=2",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = UAT;
+		};
+		91395B351CB3B1A00080E051 /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
+				INFOPLIST_FILE = SSFAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = UAT;
+		};
+		91395B361CB3B1A00080E051 /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SSFAnalysisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSFAnalysis.app/SSFAnalysis";
+			};
+			name = UAT;
+		};
+		91395B371CB3B1A00080E051 /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SSFAnalysisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SSFAnalysis;
+				USES_XCTRUNNER = YES;
+			};
+			name = UAT;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -806,6 +894,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				912D50AB1C8028220072401E /* Debug */,
+				91395B341CB3B1A00080E051 /* UAT */,
 				912D50AC1C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -815,6 +904,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				912D50AE1C8028220072401E /* Debug */,
+				91395B351CB3B1A00080E051 /* UAT */,
 				912D50AF1C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -824,6 +914,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				912D50B11C8028220072401E /* Debug */,
+				91395B361CB3B1A00080E051 /* UAT */,
 				912D50B21C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -833,6 +924,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				912D50B41C8028220072401E /* Debug */,
+				91395B371CB3B1A00080E051 /* UAT */,
 				912D50B51C8028220072401E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

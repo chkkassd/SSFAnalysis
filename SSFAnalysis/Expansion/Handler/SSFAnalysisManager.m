@@ -51,6 +51,7 @@
 
 #pragma mark - about data
 
+//today
 - (float)costOfTodayWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",[NSString stringToDayTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
     return [self getTotalWithPredicate:predicate];
@@ -65,6 +66,7 @@
     return ([self incomeOfTodayWithUser] - [self costOfTodayWithUser]);
 }
 
+//this month
 - (float)costOfThisMonthWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
     return [self getTotalWithPredicate:predicate];
@@ -80,6 +82,17 @@
     return ([self incomeOfThisMonthWithUser] - [self costOfThisMonthWithUser]);
 }
 
+- (float)averageOfCostThisMonthWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    return [self getAverageWithPredicate:predicate];
+}
+
+- (float)averageOfIncomeThisMonthWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    return [self getAverageWithPredicate:predicate];
+}
+
+//this year
 - (float)costOfThisYearWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
     return [self getTotalWithPredicate:predicate];
@@ -88,6 +101,16 @@
 - (float)incomeOfThisYearWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
     return [self getTotalWithPredicate:predicate];
+}
+
+- (float)averageOfCostThisYearWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    return [self getAverageWithPredicate:predicate];
+}
+
+- (float)averageOfIncomeThisYearWithUser {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    return [self getAverageWithPredicate:predicate];
 }
 
 - (float)surplesOfThisYearWithUser {
@@ -106,6 +129,18 @@
     return total;
 }
 
+- (float)getAverageWithPredicate:(NSPredicate *)predicate {
+    float total = 0.00;
+    NSArray *bills = [self getAllMyBills];
+    NSArray *filteredBills = [bills filteredArrayUsingPredicate:predicate];
+    if (filteredBills.count) {
+        for (Bill * obj in filteredBills) {
+            total += [obj.amount floatValue];
+        }
+        return total/filteredBills.count;
+    } else return 0.0;
+}
+
 - (NSArray *)getAllMyBills {
     NSSet *myBills = self.currentUser.myBills;
     NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:NO]];
@@ -113,6 +148,23 @@
     return bills;
 }
 
+- (NSArray *)getAllMyCostBillOfCurrentMonth {
+    NSSet *myBills = self.currentUser.myBills;
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES]];
+    NSArray *bills = [myBills sortedArrayUsingDescriptors:sortDesc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
+    NSArray *costArrs = [bills filteredArrayUsingPredicate:predicate];
+    return costArrs;
+}
+
+- (NSArray *)getAllMyIncomeBillOfCurrentMonth {
+    NSSet *myBills = self.currentUser.myBills;
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES]];
+    NSArray *bills = [myBills sortedArrayUsingDescriptors:sortDesc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
+    NSArray *incomeArrs = [bills filteredArrayUsingPredicate:predicate];
+    return incomeArrs;
+}
 #pragma mark - properties
 
 - (NSManagedObjectContext *)mainQueueContext {

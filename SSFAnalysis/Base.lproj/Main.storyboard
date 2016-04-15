@@ -1,46 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvG-UQ-A4E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kvG-UQ-A4E">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--分析-->
-        <scene sceneID="KxC-38-VXC">
-            <objects>
-                <viewController id="aiZ-il-lBY" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q7E-fE-2sz"/>
-                        <viewControllerLayoutGuide type="bottom" id="MvY-ue-zNF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pOr-du-ybm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cP-kn-i70" customClass="SSFLineChartView">
-                                <rect key="frame" x="12" y="96" width="350" height="208"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                        <color key="value" red="1" green="0.67374571698905639" blue="0.56617144726060098" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="分析" id="3bp-lG-m6X"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O2S-qK-Iu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1113.5" y="1441.5"/>
-        </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="K3b-GR-XaC">
             <objects>
@@ -552,12 +518,71 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aiZ-il-lBY" kind="relationship" relationship="rootViewController" id="h0H-8f-Jdi"/>
+                        <segue destination="pPq-m6-Uwk" kind="relationship" relationship="rootViewController" id="3Tz-08-hNQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIT-Rg-14z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="517.5" y="1441.5"/>
+        </scene>
+        <!--Analysis Chart Table View Controller-->
+        <scene sceneID="L9u-eH-9S5">
+            <objects>
+                <tableViewController id="pPq-m6-Uwk" customClass="SSFAnalysisChartTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lsB-LN-0jn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TaC-f2-f0i">
+                            <rect key="frame" x="0.0" y="64" width="375" height="205"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQC-UA-Y8f" customClass="SSFLineChartView">
+                                    <rect key="frame" x="9" y="0.0" width="357" height="205"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                            <color key="value" red="1" green="0.7891424802" blue="0.63651648370000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="0vt-we-BZG"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="Aju-3q-drX"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="top" secondItem="TaC-f2-f0i" secondAttribute="top" id="i8L-Zo-oti"/>
+                                <constraint firstAttribute="bottom" secondItem="GQC-UA-Y8f" secondAttribute="bottom" id="mAL-cw-59D"/>
+                            </constraints>
+                        </view>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="pPq-m6-Uwk" id="NBs-wW-XYv"/>
+                            <outlet property="delegate" destination="pPq-m6-Uwk" id="UI5-hz-ItL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qeH-nM-xof">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="WgQ-7l-9im">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="支出"/>
+                                <segment title="收入"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="segmentPressed:" destination="pPq-m6-Uwk" eventType="valueChanged" id="94r-rn-xQH"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lineChartView" destination="GQC-UA-Y8f" id="za0-aN-Ygd"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVf-ZQ-km3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.5" y="1441.5"/>
         </scene>
     </scenes>
     <resources>

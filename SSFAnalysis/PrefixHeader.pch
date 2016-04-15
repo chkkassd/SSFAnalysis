@@ -11,17 +11,22 @@
 
 #define ScreenWidth  [UIApplication sharedApplication].keyWindow.bounds.size.width
 #define ScreenHeight  [UIApplication sharedApplication].keyWindow.bounds.size.height
-
+#define CurrentSystemVersion [[[UIDevice currentDevice] systemVersion] floatValue]
 
 
 #define LOGIN_USER_ID_KEY  @"login_user_id_key"
 #define BILL_FETCHED_RESULTS_CACHE_NAME   @"bill_fetched_results_cache_name"
 
 
-
+//配置了多个configuration
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
 #define debugMethod() NSLog(@"%s", __func__)
+
+#elif UAT
+#define NSLog(...)
+#define debugMethod()
+
 #else
 #define NSLog(...)
 #define debugMethod()

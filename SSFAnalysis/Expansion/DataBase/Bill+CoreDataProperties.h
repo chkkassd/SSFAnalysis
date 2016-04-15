@@ -41,9 +41,9 @@ typedef enum {
 @property (nullable, nonatomic, retain) NSDate *time;
 @property (nullable, nonatomic, retain) NSString *remark;
 @property (nullable, nonatomic, retain) NSString *bill_id;
-@property (nullable, nonatomic, retain) NSString *day;
-@property (nullable, nonatomic, retain) NSString *month;
-@property (nullable, nonatomic, retain) NSString *year;
+@property (nullable, nonatomic, retain) NSString *day;//2015-03-07
+@property (nullable, nonatomic, retain) NSString *month;//2015-03
+@property (nullable, nonatomic, retain) NSString *year;//2015
 @property (nullable, nonatomic, retain) User *owner;
 
 @end

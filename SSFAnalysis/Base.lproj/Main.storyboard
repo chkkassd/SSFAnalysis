@@ -259,7 +259,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHG-DE-5q8" customClass="RoundButton">
                                     <rect key="frame" x="157" y="7" width="60" height="30"/>
-                                    <color key="backgroundColor" red="1" green="0.69473192889116686" blue="0.21267056158761377" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="0.69473192890000002" blue="0.2126705616" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="9hT-Wp-FzR"/>
                                         <constraint firstAttribute="height" constant="30" id="wTB-Il-R72"/>
@@ -534,11 +534,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="TaC-f2-f0i">
-                            <rect key="frame" x="0.0" y="64" width="375" height="205"/>
+                            <rect key="frame" x="0.0" y="64" width="375" height="210"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQC-UA-Y8f" customClass="SSFLineChartView">
-                                    <rect key="frame" x="9" y="0.0" width="357" height="205"/>
+                                    <rect key="frame" x="9" y="2" width="357" height="205"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
@@ -549,11 +549,16 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="0vt-we-BZG"/>
-                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="Aju-3q-drX"/>
-                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="top" secondItem="TaC-f2-f0i" secondAttribute="top" id="i8L-Zo-oti"/>
-                                <constraint firstAttribute="bottom" secondItem="GQC-UA-Y8f" secondAttribute="bottom" id="mAL-cw-59D"/>
+                                <constraint firstAttribute="bottom" secondItem="GQC-UA-Y8f" secondAttribute="bottom" constant="3" id="FdK-K7-K99"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="top" secondItem="TaC-f2-f0i" secondAttribute="top" constant="2" id="e11-Av-GlX"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="eMl-PW-QVw"/>
+                                <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="yAi-tx-XIq"/>
                             </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="SWP-GI-wcM" customClass="SSFCalendarView">
+                            <rect key="frame" x="0.0" y="274" width="375" height="232"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <sections/>
                         <connections>

@@ -12,18 +12,22 @@
 #import "CoreDataManager.h"
 #import "SSFMoneyTypeManager.h"
 #import "NSString+Tony.h"
+#import "SSFCalendarViewController.h"
 
-@interface SSFRecordBillViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface SSFRecordBillViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SSFCalendarViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextField *remarkTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (nonatomic, strong) NSDate *recordDate;
 @property (nonatomic, strong) NSArray *options;
 @property (nonatomic, strong) User *currentUser;
 @property (nonatomic, strong) NSManagedObjectContext *mainContext;
 @property (nonatomic, strong) NSNumber *subTypeNumber;
 @end
+
 
 @implementation SSFRecordBillViewController
 
@@ -31,6 +35,7 @@
     [super viewDidLoad];
     [self.textField becomeFirstResponder];
     self.options = @[@"吃饭",@"交通",@"服饰",@"住宿",@"娱乐",@"购物",@"其他支出"];//@[@"工资",@"投资",@"兼职"];
+    self.recordDate = [NSDate date];
 }
 
 #pragma mark - properties
@@ -41,6 +46,20 @@
 
 - (NSManagedObjectContext *)mainContext {
     return [CoreDataManager sharedManager].mainQueueContext;
+}
+
+- (void)setRecordDate:(NSDate *)recordDate {
+    _recordDate = recordDate;
+    self.timeLabel.text = [NSString stringToDayTranslatedFromDate:_recordDate];
+}
+
+#pragma mark - segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"IdForShowCalendar"]) {
+        SSFCalendarViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
 
 #pragma mark - action
@@ -68,15 +87,14 @@
 
 - (IBAction)recordButtonPressed:(id)sender {
     NSString *uuid = [[NSUUID UUID] UUIDString];
-    NSDate *now = [NSDate date];
-    NSString *dayString = [NSString stringToDayTranslatedFromDate:now];
-    NSString *monthString = [NSString stringToMonthTranslatedFromDate:now];
-    NSString *yearString = [NSString stringToYearTranslatedFromDate:now];
+    NSString *dayString = [NSString stringToDayTranslatedFromDate:self.recordDate];
+    NSString *monthString = [NSString stringToMonthTranslatedFromDate:self.recordDate];
+    NSString *yearString = [NSString stringToYearTranslatedFromDate:self.recordDate];
     NSDictionary *info = @{BILL_AMOUNT_KEY:@([self.textField.text floatValue]),
                            BILL_BILL_ID_KEY:uuid,
                            BILL_REMARK_KEY:self.remarkTextField.text,
                            BILL_SUBTYPE_KEY:self.subTypeNumber,
-                           BILL_TIME_KEY:now,
+                           BILL_TIME_KEY:self.recordDate,
                            BILL_TYPE_KEY:@(self.segment.selectedSegmentIndex),
                            BILL_USER_ID_KEY:self.currentUser.user_id,
                            BILL_DAY_KEY:dayString,
@@ -111,5 +129,13 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.descriptionLabel.text = self.options[indexPath.row];
     self.subTypeNumber = [SSFMoneyTypeManager numberWithMoneyTypeString:self.options[indexPath.row]];
+}
+
+#pragma mark - SSFCalendarViewControllerDelegate
+
+- (void)SSFCalendarViewController:(SSFCalendarViewController *)controller didSelectedTime:(NSDate *)date {
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        self.recordDate = date;
+    }];
 }
 @end

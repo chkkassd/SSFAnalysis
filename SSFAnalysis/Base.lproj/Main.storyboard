@@ -383,13 +383,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZh-Df-W8y">
-                                        <rect key="frame" x="262" y="23.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="262" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.90645484901660067" blue="0.71231238784904294" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.90645484899999995" blue="0.71231238779999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kn2-NN-wJ3" secondAttribute="height" multiplier="125:16" id="Jbp-mP-uEM"/>
                                     <constraint firstItem="Few-PZ-kAl" firstAttribute="leading" secondItem="Kn2-NN-wJ3" secondAttribute="leading" constant="8" id="VAv-g4-cgk"/>
@@ -472,22 +472,48 @@
                                     <action selector="recordButtonPressed:" destination="zrr-Bv-w0a" eventType="touchUpInside" id="ULE-hf-rnR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZK-NN-UPr">
+                                <rect key="frame" x="8" y="241" width="63" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="63" id="OTw-G7-gpW"/>
+                                    <constraint firstAttribute="height" constant="25" id="u6n-Uj-SOP"/>
+                                </constraints>
+                                <state key="normal" title="时间:">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jXb-Sr-hKL" kind="show" identifier="IdForShowCalendar" id="9A1-4N-LpR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ee9-kY-jfU">
+                                <rect key="frame" x="79" y="241" width="30" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="nag-Mj-z1d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Kn2-NN-wJ3" firstAttribute="top" secondItem="O2r-Yo-ydB" secondAttribute="bottom" constant="8" id="0mm-FB-e5T"/>
                             <constraint firstItem="O2r-Yo-ydB" firstAttribute="top" secondItem="vh2-J7-0qb" secondAttribute="bottom" id="1dG-oZ-CxZ"/>
                             <constraint firstItem="P9t-7B-Soj" firstAttribute="top" secondItem="0FE-ux-KGQ" secondAttribute="bottom" constant="8" id="7c3-dR-RvA"/>
+                            <constraint firstItem="sZK-NN-UPr" firstAttribute="leading" secondItem="xpP-6s-kmL" secondAttribute="leading" constant="8" id="8EY-Fa-hR8"/>
                             <constraint firstItem="jiq-3F-Qf7" firstAttribute="top" secondItem="P9t-7B-Soj" secondAttribute="bottom" constant="41" id="9Bh-yz-O7S"/>
                             <constraint firstAttribute="trailing" secondItem="P9t-7B-Soj" secondAttribute="trailing" constant="8" id="EvN-5B-jZI"/>
                             <constraint firstItem="Eve-Qi-ru4" firstAttribute="top" secondItem="vh2-J7-0qb" secondAttribute="bottom" constant="3" id="SNI-XM-N8x"/>
+                            <constraint firstItem="sZK-NN-UPr" firstAttribute="top" secondItem="P9t-7B-Soj" secondAttribute="bottom" constant="8" id="Xzk-Wc-bD5"/>
                             <constraint firstAttribute="trailing" secondItem="0FE-ux-KGQ" secondAttribute="trailing" id="ZDc-tM-g2C"/>
                             <constraint firstItem="O2r-Yo-ydB" firstAttribute="centerX" secondItem="xpP-6s-kmL" secondAttribute="centerX" id="a9y-ro-WAp"/>
+                            <constraint firstItem="Ee9-kY-jfU" firstAttribute="top" secondItem="P9t-7B-Soj" secondAttribute="bottom" constant="8" id="bDZ-Yu-6z8"/>
                             <constraint firstAttribute="trailing" secondItem="jiq-3F-Qf7" secondAttribute="trailing" constant="20" id="dDf-SD-Atl"/>
                             <constraint firstItem="0FE-ux-KGQ" firstAttribute="leading" secondItem="xpP-6s-kmL" secondAttribute="leading" id="fAf-rA-uD2"/>
                             <constraint firstItem="P9t-7B-Soj" firstAttribute="leading" secondItem="xpP-6s-kmL" secondAttribute="leading" constant="8" id="ibe-u8-A4R"/>
                             <constraint firstItem="Kn2-NN-wJ3" firstAttribute="leading" secondItem="xpP-6s-kmL" secondAttribute="leading" id="n8V-F5-RZY"/>
                             <constraint firstAttribute="trailing" secondItem="Kn2-NN-wJ3" secondAttribute="trailing" id="oQv-FM-AJP"/>
+                            <constraint firstItem="Ee9-kY-jfU" firstAttribute="leading" secondItem="sZK-NN-UPr" secondAttribute="trailing" constant="8" id="r9j-qO-sdS"/>
                             <constraint firstItem="0FE-ux-KGQ" firstAttribute="top" secondItem="Kn2-NN-wJ3" secondAttribute="bottom" constant="8" id="sI9-Ay-vq3"/>
                             <constraint firstAttribute="trailing" secondItem="Eve-Qi-ru4" secondAttribute="trailing" constant="5" id="swg-eS-DvJ"/>
                             <constraint firstItem="jiq-3F-Qf7" firstAttribute="leading" secondItem="xpP-6s-kmL" secondAttribute="leading" constant="20" id="x9R-gK-8e6"/>
@@ -500,11 +526,30 @@
                         <outlet property="remarkTextField" destination="P9t-7B-Soj" id="RUY-iS-4ut"/>
                         <outlet property="segment" destination="O2r-Yo-ydB" id="X9L-it-uVP"/>
                         <outlet property="textField" destination="Few-PZ-kAl" id="uWv-72-1bI"/>
+                        <outlet property="timeLabel" destination="Ee9-kY-jfU" id="JXs-Lb-gIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIh-Ek-5Bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1613.5" y="642.5"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="mfw-2P-d6r">
+            <objects>
+                <viewController id="jXb-Sr-hKL" customClass="SSFCalendarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8lS-2L-DP7"/>
+                        <viewControllerLayoutGuide type="bottom" id="oc9-BF-tM3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g8Y-L2-cex">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHG-gD-r4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091.5" y="642.5"/>
         </scene>
         <!--分析-->
         <scene sceneID="AE4-wu-sy9">
@@ -554,11 +599,6 @@
                                 <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="eMl-PW-QVw"/>
                                 <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="yAi-tx-XIq"/>
                             </constraints>
-                        </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="SWP-GI-wcM" customClass="SSFCalendarView">
-                            <rect key="frame" x="0.0" y="274" width="375" height="232"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <sections/>
                         <connections>

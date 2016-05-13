@@ -10,5 +10,5 @@
 
 @interface CalendarCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UILabel *dayTextLabel;
-- (void)configureWithData:(NSString *)dataString;
+- (void)configureWithData:(NSString *)dataString monthYear:(NSString *)monthYear;
 @end

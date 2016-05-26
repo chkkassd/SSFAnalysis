@@ -23,6 +23,10 @@
 - (float)averageOfCostThisMonthWithUser;//今月平均支出
 - (float)averageOfIncomeThisMonthWithUser;//今月平均收入
 - (float)surplesOfThisMonthWithUser;//今月结余
+- (NSArray *)getAllSubTypesOfCostThisMonth;//本月支出的详细类型
+- (NSArray *)getAllSubTypesOfIncomeThisMonth;//本月收入的详细类型
+- (float)percentOfCostThisMonthWithSubtype:(BILL_SUBTYPE)subtype;//本月某项支出占比
+- (float)percentOfIncomeThisMonthWithSubtype:(BILL_SUBTYPE)subtype;//本月某项收入占比
 
 - (float)costOfThisYearWithUser;//今年支出总计
 - (float)incomeOfThisYearWithUser;//今年收入总计

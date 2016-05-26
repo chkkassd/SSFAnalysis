@@ -92,6 +92,46 @@
     return [self getAverageWithPredicate:predicate];
 }
 
+- (NSArray *)getAllSubTypesOfCostThisMonth {
+    NSArray *bills = [self getAllMyCostBillOfCurrentMonth];
+    if (!bills.count) return nil;
+    
+    NSMutableArray *subTypes = [[NSMutableArray alloc] init];
+    for (Bill *bill in bills) {
+        NSNumber *subtype = bill.subtype;
+        if (![subTypes containsObject:subtype]) {
+            [subTypes addObject:subtype];
+        }
+    }
+    return subTypes;
+}
+
+- (NSArray *)getAllSubTypesOfIncomeThisMonth {
+    NSArray *bills = [self getAllMyIncomeBillOfCurrentMonth];
+    if (!bills.count) return nil;
+    
+    NSMutableArray *subTypes = [[NSMutableArray alloc] init];
+    for (Bill *bill in bills) {
+        NSNumber *subtype = bill.subtype;
+        if (![subTypes containsObject:subtype]) {
+            [subTypes addObject:subtype];
+        }
+    }
+    return subTypes;
+}
+
+- (float)percentOfCostThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
+    float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
+    return totalMoneyOfSubtype/[self costOfThisMonthWithUser];
+}
+
+- (float)percentOfIncomeThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
+    float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
+    return totalMoneyOfSubtype/[self incomeOfThisMonthWithUser];
+}
+
 //this year
 - (float)costOfThisYearWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@ && type = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
@@ -116,6 +156,7 @@
 - (float)surplesOfThisYearWithUser {
     return ([self incomeOfThisYearWithUser] - [self costOfThisYearWithUser]);
 }
+
 
 - (float)getTotalWithPredicate:(NSPredicate *)predicate {
     float total = 0.00;
@@ -165,6 +206,7 @@
     NSArray *incomeArrs = [bills filteredArrayUsingPredicate:predicate];
     return incomeArrs;
 }
+
 #pragma mark - properties
 
 - (NSManagedObjectContext *)mainQueueContext {

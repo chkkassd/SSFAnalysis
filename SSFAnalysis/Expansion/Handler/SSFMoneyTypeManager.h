@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface SSFMoneyTypeManager : NSObject
 + (NSNumber *)numberWithMoneyTypeString:(NSString *)string;
 + (NSString *)moneyTypeStringWithNumber:(NSNumber *)number;
++ (UIColor *)colorOfSubtypeWithNumber:(NSNumber *)number;
 @end

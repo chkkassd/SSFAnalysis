@@ -43,6 +43,7 @@
         CalendarFlowLayout *flowLayout = [[CalendarFlowLayout alloc] initWithCalendarView:self];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
     }

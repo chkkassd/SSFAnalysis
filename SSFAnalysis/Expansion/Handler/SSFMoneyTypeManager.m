@@ -59,4 +59,28 @@
     } else return nil;
 }
 
++ (UIColor *)colorOfSubtypeWithNumber:(NSNumber *)number {
+    NSInteger integerNumber = [number integerValue];
+    if (integerNumber == BILL_SUBTYPE_EAT) {
+        return [UIColor redColor];
+    } else if (integerNumber == BILL_SUBTYPE_TRAFFIC) {
+        return [UIColor orangeColor];
+    } else if (integerNumber == BILL_SUBTYPE_CLOTHES) {
+        return [UIColor blueColor];
+    } else if (integerNumber == BILL_SUBTYPE_STAY) {
+        return [UIColor greenColor];
+    } else if (integerNumber == BILL_SUBTYPE_ENTERTAINMENT) {
+        return [UIColor grayColor];
+    } else if (integerNumber == BILL_SUBTYPE_SHOPPING) {
+        return [UIColor yellowColor];
+    } else if (integerNumber == BILL_SUBTYPE_OTHERCOST) {
+        return [UIColor redColor];
+    } else if (integerNumber == BILL_SUBTYPE_SALARY) {
+        return [UIColor redColor];
+    } else if (integerNumber == BILL_SUBTYPE_INVESTMENT) {
+        return [UIColor orangeColor];
+    } else if (integerNumber == BILL_SUBTYPE_PART_TIME_JOB) {
+        return [UIColor blueColor];
+    } else return [UIColor redColor];
+}
 @end

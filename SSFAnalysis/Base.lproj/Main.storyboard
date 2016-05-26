@@ -491,7 +491,7 @@
                                     <constraint firstAttribute="height" constant="25" id="nag-Mj-z1d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -544,7 +544,30 @@
                     <view key="view" contentMode="scaleToFill" id="g8Y-L2-cex">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-SR-q8I">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ri8-Qj-gzK"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="选择日期" id="oJX-Vm-1US">
+                                        <barButtonItem key="leftBarButtonItem" title="返回" id="aE5-BN-MWg">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="jXb-Sr-hKL" id="qR8-iA-YIV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sBb-SR-q8I" firstAttribute="leading" secondItem="g8Y-L2-cex" secondAttribute="leading" id="joC-uI-USt"/>
+                            <constraint firstItem="sBb-SR-q8I" firstAttribute="top" secondItem="8lS-2L-DP7" secondAttribute="bottom" id="png-WK-DNV"/>
+                            <constraint firstAttribute="trailing" secondItem="sBb-SR-q8I" secondAttribute="trailing" id="rSg-Kt-CM4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHG-gD-r4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -574,31 +597,65 @@
         <scene sceneID="L9u-eH-9S5">
             <objects>
                 <tableViewController id="pPq-m6-Uwk" customClass="SSFAnalysisChartTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lsB-LN-0jn">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lsB-LN-0jn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="TaC-f2-f0i">
-                            <rect key="frame" x="0.0" y="64" width="375" height="210"/>
+                            <rect key="frame" x="0.0" y="64" width="375" height="281"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="趋势图" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3L-3x-hHZ">
+                                    <rect key="frame" x="8" y="8" width="52" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="52" id="5er-a1-hTw"/>
+                                        <constraint firstAttribute="height" constant="21" id="Et9-o5-90K"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQC-UA-Y8f" customClass="SSFLineChartView">
-                                    <rect key="frame" x="9" y="2" width="357" height="205"/>
+                                    <rect key="frame" x="9" y="37" width="357" height="205"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="GQC-UA-Y8f" secondAttribute="height" multiplier="357:205" id="swS-OQ-Qkh"/>
+                                    </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
                                             <color key="value" red="1" green="0.7891424802" blue="0.63651648370000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="占比图" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psh-wU-P8C">
+                                    <rect key="frame" x="9" y="250" width="52" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="52" id="I67-kM-tmM"/>
+                                        <constraint firstAttribute="height" constant="21" id="XDh-uC-NnW"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="GQC-UA-Y8f" secondAttribute="bottom" constant="3" id="FdK-K7-K99"/>
+                                <constraint firstItem="psh-wU-P8C" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="NOE-LV-KUs"/>
+                                <constraint firstItem="P3L-3x-hHZ" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="8" id="U29-np-J5x"/>
                                 <constraint firstItem="GQC-UA-Y8f" firstAttribute="top" secondItem="TaC-f2-f0i" secondAttribute="top" constant="2" id="e11-Av-GlX"/>
-                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="eMl-PW-QVw"/>
-                                <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="yAi-tx-XIq"/>
+                                <constraint firstItem="P3L-3x-hHZ" firstAttribute="top" secondItem="TaC-f2-f0i" secondAttribute="top" constant="8" id="gkK-Ra-fuw"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="top" secondItem="P3L-3x-hHZ" secondAttribute="bottom" constant="8" id="hpP-XH-uBe"/>
+                                <constraint firstAttribute="trailing" secondItem="GQC-UA-Y8f" secondAttribute="trailing" constant="9" id="kyj-yY-Pll"/>
+                                <constraint firstItem="GQC-UA-Y8f" firstAttribute="leading" secondItem="TaC-f2-f0i" secondAttribute="leading" constant="9" id="lX6-Ia-hqv"/>
+                                <constraint firstItem="psh-wU-P8C" firstAttribute="top" secondItem="GQC-UA-Y8f" secondAttribute="bottom" constant="8" id="yNo-jA-v3o"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="FdK-K7-K99"/>
+                                    <exclude reference="e11-Av-GlX"/>
+                                </mask>
+                            </variation>
                         </view>
                         <sections/>
                         <connections>

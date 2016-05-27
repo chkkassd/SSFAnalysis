@@ -10,7 +10,6 @@
 #import "SSFMoneyTypeManager.h"
 
 @implementation SSFAnalysisChartTableViewController (Handler)
-//@dynamic pieChartData;
 
 - (void)configureCostPieChartData {
     NSArray *subtypes = [[SSFAnalysisManager sharedManager] getAllSubTypesOfCostThisMonth];
@@ -23,6 +22,7 @@
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
         model.percent = [[SSFAnalysisManager sharedManager] percentOfCostThisMonthWithSubtype:[subtype integerValue]];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
+        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:[subtype integerValue]];
         [self.pieChartData addObject:model];
     }
 }
@@ -36,8 +36,9 @@
     for (NSNumber *subtype in subtypes) {
         PieChartModel *model = [[PieChartModel alloc] init];
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
-        model.percent = [[SSFAnalysisManager sharedManager] percentOfCostThisMonthWithSubtype:[subtype integerValue]];
+        model.percent = [[SSFAnalysisManager sharedManager] percentOfIncomeThisMonthWithSubtype:[subtype integerValue]];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
+        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:[subtype integerValue]];
         [self.pieChartData addObject:model];
     }
 }

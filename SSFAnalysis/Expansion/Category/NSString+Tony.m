@@ -199,11 +199,16 @@ static char base64EncodingTable[64] = {
     
     float a = [string floatValue];
     float b = a * 100;
-    NSString * bstring = [NSString stringWithFormat:@"%f",b];
-    NSArray *arr = [bstring componentsSeparatedByString:@"."];
-    NSString *beforeString = arr[0];
-    NSString *afterString = [arr[1] substringToIndex:2];
-    return [NSString stringWithFormat:@"%@.%@%%",beforeString,afterString];
+    return [NSString stringWithFormat:@"%.2f%%",b];
+}
+
++(NSString *)formatStringForPercentageWithNumber:(NSNumber *)number
+{
+    if (!number) return @"";
+    
+    float a = [number floatValue];
+    float b = a * 100;
+    return [NSString stringWithFormat:@"%.2f%%",b];
 }
 
 + (NSString *)formatStringToSaveWithString:(NSString *)string digit:(NSInteger)digit decimalStyle:(BOOL)flag

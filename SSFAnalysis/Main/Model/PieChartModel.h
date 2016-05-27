@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSString *nameString;
 @property (nonatomic, assign) float percent;
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, assign) float money;
 @end

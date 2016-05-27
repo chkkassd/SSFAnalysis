@@ -54,6 +54,8 @@
 		9184CBF41CE5B816007F4C05 /* SSFCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9184CBF01CE5B816007F4C05 /* SSFCalendarView.m */; };
 		9184CBF71CE5C2B6007F4C05 /* CalendarHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9184CBF61CE5C2B6007F4C05 /* CalendarHeadView.m */; };
 		9184CBF91CE5C4E9007F4C05 /* CalendarHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9184CBF81CE5C4E9007F4C05 /* CalendarHeadView.xib */; };
+		9191CC671CF824ED0085AF4E /* AnalysisChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */; };
+		9191CC6A1CF847C90085AF4E /* LineChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC691CF847C90085AF4E /* LineChartModel.m */; };
 		91AF80721CF2E76B000F5D27 /* SSFPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF80711CF2E76B000F5D27 /* SSFPieChartView.m */; };
 		91AF80781CF6CD3A000F5D27 /* PieChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF80771CF6CD3A000F5D27 /* PieChartModel.m */; };
 		91AF80811CF70C8E000F5D27 /* SSFAnalysisChartTableViewController+Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF807E1CF70C8E000F5D27 /* SSFAnalysisChartTableViewController+Handler.m */; };
@@ -170,6 +172,10 @@
 		9184CBF51CE5C2B6007F4C05 /* CalendarHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarHeadView.h; sourceTree = "<group>"; };
 		9184CBF61CE5C2B6007F4C05 /* CalendarHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarHeadView.m; sourceTree = "<group>"; };
 		9184CBF81CE5C4E9007F4C05 /* CalendarHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeadView.xib; sourceTree = "<group>"; };
+		9191CC651CF824ED0085AF4E /* AnalysisChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisChartTableViewCell.h; sourceTree = "<group>"; };
+		9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisChartTableViewCell.m; sourceTree = "<group>"; };
+		9191CC681CF847C90085AF4E /* LineChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartModel.h; sourceTree = "<group>"; };
+		9191CC691CF847C90085AF4E /* LineChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartModel.m; sourceTree = "<group>"; };
 		91AF80701CF2E76B000F5D27 /* SSFPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFPieChartView.h; sourceTree = "<group>"; };
 		91AF80711CF2E76B000F5D27 /* SSFPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFPieChartView.m; sourceTree = "<group>"; };
 		91AF80761CF6CD3A000F5D27 /* PieChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartModel.h; sourceTree = "<group>"; };
@@ -384,6 +390,8 @@
 			children = (
 				91AF80761CF6CD3A000F5D27 /* PieChartModel.h */,
 				91AF80771CF6CD3A000F5D27 /* PieChartModel.m */,
+				9191CC681CF847C90085AF4E /* LineChartModel.h */,
+				9191CC691CF847C90085AF4E /* LineChartModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +409,8 @@
 				912D51241CA393A70072401E /* BillTableViewCell.m */,
 				914791781CA3C99E0036A40D /* OptionCollectionViewCell.h */,
 				914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */,
+				9191CC651CF824ED0085AF4E /* AnalysisChartTableViewCell.h */,
+				9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,7 +637,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9191CC671CF824ED0085AF4E /* AnalysisChartTableViewCell.m in Sources */,
 				912D50FA1C9A82A40072401E /* SSFNetWork.m in Sources */,
+				9191CC6A1CF847C90085AF4E /* LineChartModel.m in Sources */,
 				914144351CA90AD30091B5B1 /* CoreDataFetchedResultsTableViewController.m in Sources */,
 				912D50E51C8032AF0072401E /* Reachability.m in Sources */,
 				912D51131C9BE2020072401E /* CoreDataManager.m in Sources */,

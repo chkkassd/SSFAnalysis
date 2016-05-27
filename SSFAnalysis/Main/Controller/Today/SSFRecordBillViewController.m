@@ -103,7 +103,10 @@
                            BILL_OWNER_KEY:self.currentUser
                            };
     [Bill updateBillWithInfo:info inManagedObjectContext:self.mainContext];
-    [self.mainContext save:NULL];
+    if ([self.mainContext save:NULL]) {
+        //记录保存成功后，通知图表页面
+        [[NSNotificationCenter defaultCenter] postNotificationName:DefaultRecordSuccessNotification object:nil userInfo:@{BILL_TYPE_KEY:@(self.segment.selectedSegmentIndex)}];
+    };
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

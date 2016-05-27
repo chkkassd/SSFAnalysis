@@ -37,7 +37,7 @@
 +(NSString *)formatStringToSaveWithString:(NSString *)string digit:(NSInteger)digit decimalStyle:(BOOL)flag;//将一个数字字符串保留指定的位数,string为字符串，digit为保留的位数
 +(NSString *)decimalwithFormat:(NSString *)format floatV:(float)floatV;//四舍五入方法
 +(NSString *)formatStringForPercentageWithString:(NSString *)string;//将一个数字字符串转换为百分号显示,保留2位
-
++(NSString *)formatStringForPercentageWithNumber:(NSNumber *)number;//将一个nsnumber换为百分号显示,保留2位
 //得到两位随机数
 + (NSString *)twoCharRandom;
 

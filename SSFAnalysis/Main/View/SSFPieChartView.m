@@ -40,7 +40,7 @@
 - (void)drawBigCircle {
     CAShapeLayer *bigCircleLayer = [CAShapeLayer layer];
     bigCircleLayer.path = self.circlePath.CGPath;
-    bigCircleLayer.strokeColor = [UIColor whiteColor].CGColor;
+    bigCircleLayer.strokeColor = [UIColor colorWithWhite:240/255.0 alpha:1.0].CGColor;
     bigCircleLayer.fillColor = [UIColor clearColor].CGColor;
     bigCircleLayer.lineWidth = DefaultWidth;
     [self.layer addSublayer:bigCircleLayer];
@@ -48,7 +48,7 @@
 
 //绘制百分比圆饼图
 - (void)drawSubregionWithModel:(NSArray *)modelArr {
-    if (!modelArr.count) return;
+    if (!modelArr.count) {[self clearAllSubregions]; return;}
     else [self clearAllSubregions];
     
     CGFloat startAngler = 0.0;

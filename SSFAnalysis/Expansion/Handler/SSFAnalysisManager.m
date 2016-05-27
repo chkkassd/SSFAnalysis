@@ -66,6 +66,20 @@
     return ([self incomeOfTodayWithUser] - [self costOfTodayWithUser]);
 }
 
+- (float)costWithUserOfDay:(NSString *)day {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",day,@(BILL_TYPE_COST)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)incomeWithUserOfDay:(NSString *)day {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",day,@(BILL_TYPE_INCOME)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)surplesWithUserOfDay:(NSString *)day {
+    return ([self incomeWithUserOfDay:day] - [self costWithUserOfDay:day]);
+}
+
 //this month
 - (float)costOfThisMonthWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_COST)];
@@ -130,6 +144,40 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
     float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
     return totalMoneyOfSubtype/[self incomeOfThisMonthWithUser];
+}
+
+- (float)moneyOfThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
+    float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
+    return totalMoneyOfSubtype;
+}
+
+- (NSArray *)getAllDatesOfCostThisMonth {
+    NSArray *bills = [self getAllMyCostBillOfCurrentMonth];
+    if (!bills.count) return nil;
+    
+    NSMutableArray *days = [[NSMutableArray alloc] init];
+    for (Bill *bill in bills) {
+        NSString *day = bill.day;
+        if (![days containsObject:day]) {
+            [days addObject:day];
+        }
+    }
+    return days;
+}
+
+- (NSArray *)getAllDatesOfIncomeThisMonth {
+    NSArray *bills = [self getAllMyIncomeBillOfCurrentMonth];
+    if (!bills.count) return nil;
+    
+    NSMutableArray *days = [[NSMutableArray alloc] init];
+    for (Bill *bill in bills) {
+        NSString *day = bill.day;
+        if (![days containsObject:day]) {
+            [days addObject:day];
+        }
+    }
+    return days;
 }
 
 //this year

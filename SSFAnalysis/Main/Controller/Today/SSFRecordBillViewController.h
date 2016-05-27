@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define DefaultRecordSuccessNotification  @"DefaultRecordSuccessNotification"
 
 @interface SSFRecordBillViewController : UIViewController
 

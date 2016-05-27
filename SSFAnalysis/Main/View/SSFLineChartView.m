@@ -8,6 +8,7 @@
 
 #import "SSFLineChartView.h"
 #import "SSFAnalysisManager.h"
+#import "LineChartModel.h"
 
 #define DefaultLineGapWidth 5
 #define DefaultLineTopGapHeight 35
@@ -18,8 +19,8 @@
 IB_DESIGNABLE
 @interface SSFLineChartView()
 @property (nonatomic, strong) IBInspectable UIColor *strokeColor;
-@property (nonatomic, strong) IBInspectable UIColor *fillColor;
 @property (nonatomic, strong) UIBezierPath *chartPath;
+@property (nonatomic, strong) CAShapeLayer *lineChartlayer;
 @property (nonatomic, assign) LineChartType lineChartType;
 @end
 
@@ -28,7 +29,7 @@ IB_DESIGNABLE
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.layer.cornerRadius = 6;
+        self.strokeColor = [UIColor colorWithRed:255/255.0 green:201/255.0 blue:162/255.0 alpha:1.0];
     }
     return self;
 }
@@ -36,7 +37,6 @@ IB_DESIGNABLE
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.layer.cornerRadius = 6;
     }
     return self;
 }
@@ -44,13 +44,12 @@ IB_DESIGNABLE
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, self.strokeColor.CGColor);
-    CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
     CGContextSetLineWidth(context, 1.0);
     
     [self setGradientBackgroundWithStartPoint:CGPointMake(0, 0) endPoint:CGPointMake(0, self.frame.size.height)];
     [self setSeparateLine];
     [self drawText];
-    [self.chartPath stroke];
+//    [self.chartPath stroke];
 }
 
 //绘制渐变背景
@@ -163,20 +162,20 @@ IB_DESIGNABLE
     
     if (month == 0) {
         //当前月
-        NSArray *bills = nil;
+        NSArray *models = nil;
         if (type == LineChartType_Cost) {
-            bills = [[SSFAnalysisManager sharedManager] getAllMyCostBillOfCurrentMonth];
+            models = [self setLineChartModelOfCost];
         } else if (type == LineChartType_Income) {
-            bills = [[SSFAnalysisManager sharedManager] getAllMyIncomeBillOfCurrentMonth];
+            models = [self setLineChartModelOfIncome];
         }
-        if (bills.count) {
-            for (NSInteger i = 0; i < bills.count; i++) {
+        if (models.count) {
+            for (NSInteger i = 0; i < models.count; i++) {
                 if (i == 0) {
-                    Bill *bill = bills[i];
-                    [self.chartPath moveToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:bill], [self yValueForPotinTranslatedFromBill:bill])];
+                    LineChartModel *model = models[i];
+                    [self.chartPath moveToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:model], [self yValueForPotinTranslatedFromBill:model])];
                 } else {
-                    Bill *bill = bills[i];
-                    [self.chartPath addLineToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:bill], [self yValueForPotinTranslatedFromBill:bill])];
+                    LineChartModel *model = models[i];
+                    [self.chartPath addLineToPoint:CGPointMake([self xValueForPotinTranslatedFromBill:model], [self yValueForPotinTranslatedFromBill:model])];
                 }
             }
         }
@@ -185,24 +184,82 @@ IB_DESIGNABLE
         //其他月
     }
     
+    [self configureLineChartLayerWithPath:self.chartPath];
+    
     [self setNeedsDisplay];
 }
 
+//构建数据模型
+- (NSArray *)setLineChartModelOfCost {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSArray *days = [[SSFAnalysisManager sharedManager] getAllDatesOfCostThisMonth];
+    if (!days.count) arr = nil;
+    
+    for (NSString * day in days) {
+        float total = [[SSFAnalysisManager sharedManager] costWithUserOfDay:day];
+        LineChartModel *model = [[LineChartModel alloc] init];
+        model.dayString = day;
+        model.amount = total;
+        [arr addObject:model];
+    }
+    return arr;
+}
+
+- (NSArray *)setLineChartModelOfIncome {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSArray *days = [[SSFAnalysisManager sharedManager] getAllDatesOfIncomeThisMonth];
+    if (!days.count) arr = nil;
+    
+    for (NSString * day in days) {
+        float total = [[SSFAnalysisManager sharedManager] incomeWithUserOfDay:day];
+        LineChartModel *model = [[LineChartModel alloc] init];
+        model.dayString = day;
+        model.amount = total;
+        [arr addObject:model];
+    }
+    return arr;
+}
+
 //账单时间转化为x坐标
-- (CGFloat)xValueForPotinTranslatedFromBill:(Bill *)bill {
+- (CGFloat)xValueForPotinTranslatedFromBill:(LineChartModel *)model {
     CGFloat x = 0.00;
     CGFloat average = (self.frame.size.width - DefaultDateGapWidth*2)/31.0;
-    NSString *dayString = [[bill.day componentsSeparatedByString:@"-"] lastObject];
+    NSString *dayString = [[model.dayString componentsSeparatedByString:@"-"] lastObject];
     NSInteger day = [dayString integerValue];
     x = DefaultDateGapWidth + average * day;
     return x;
 }
 
 //账单金额转化为y坐标
-- (CGFloat)yValueForPotinTranslatedFromBill:(Bill *)bill {
+- (CGFloat)yValueForPotinTranslatedFromBill:(LineChartModel *)model {
     CGFloat y = 0.00;
-    float amount = [bill.amount floatValue];
-    y = self.frame.size.height - DefaultLineBottomGapHeight - amount/DefaultMoneyHeightRatio;
+    y = self.frame.size.height - DefaultLineBottomGapHeight - model.amount/DefaultMoneyHeightRatio;
     return y;
+}
+
+//折线用layer来显示，不直接绘制，因为layer可以做动画
+- (void)configureLineChartLayerWithPath:(UIBezierPath *)path {
+    [self.lineChartlayer removeFromSuperlayer];
+    self.lineChartlayer = nil;
+    self.lineChartlayer = [CAShapeLayer layer];
+    self.lineChartlayer.path = path.CGPath;
+    self.lineChartlayer.strokeColor = [UIColor whiteColor].CGColor;
+    self.lineChartlayer.fillColor = [UIColor clearColor].CGColor;
+    self.lineChartlayer.lineWidth = 1.0f;
+    self.lineChartlayer.strokeStart = 0.0f;
+    self.lineChartlayer.strokeEnd = 1.0f;
+    [self.layer addSublayer:self.lineChartlayer];
+    [self animationWithSubregionLayer:self.lineChartlayer];
+}
+
+//animation
+- (void)animationWithSubregionLayer:(CAShapeLayer *)layer {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.duration = 1.0f;
+    animation.fromValue = @(layer.strokeStart);
+    animation.toValue = @(layer.strokeEnd);
+    animation.autoreverses = NO;
+    animation.delegate = self;
+    [layer addAnimation:animation forKey:@"strokeEnd"];
 }
 @end

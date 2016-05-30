@@ -72,15 +72,15 @@
     } else if (integerNumber == BILL_SUBTYPE_ENTERTAINMENT) {
         return [UIColor grayColor];
     } else if (integerNumber == BILL_SUBTYPE_SHOPPING) {
-        return [UIColor yellowColor];
+        return [UIColor colorWithRed:255/255.0 green:167/255.0 blue:170/255.0 alpha:1.0];
     } else if (integerNumber == BILL_SUBTYPE_OTHERCOST) {
-        return [UIColor redColor];
+        return [UIColor colorWithRed:152/255.0 green:82/255.0 blue:195/255.0 alpha:1.0];
     } else if (integerNumber == BILL_SUBTYPE_SALARY) {
-        return [UIColor redColor];
+        return [UIColor colorWithRed:54/255.0 green:182/255.0 blue:195/255.0 alpha:1.0];
     } else if (integerNumber == BILL_SUBTYPE_INVESTMENT) {
-        return [UIColor orangeColor];
+        return [UIColor colorWithRed:195/255.0 green:170/255.0 blue:71/255.0 alpha:1.0];
     } else if (integerNumber == BILL_SUBTYPE_PART_TIME_JOB) {
-        return [UIColor blueColor];
+        return [UIColor colorWithRed:154/255.0 green:165/255.0 blue:215/255.0 alpha:1.0];
     } else return [UIColor redColor];
 }
 @end

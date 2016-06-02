@@ -21,4 +21,5 @@
     _colorView = colorView;
     _colorView.layer.cornerRadius = 5.0f;
 }
+
 @end

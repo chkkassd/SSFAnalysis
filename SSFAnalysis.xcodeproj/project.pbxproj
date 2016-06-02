@@ -56,6 +56,10 @@
 		9184CBF91CE5C4E9007F4C05 /* CalendarHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9184CBF81CE5C4E9007F4C05 /* CalendarHeadView.xib */; };
 		9191CC671CF824ED0085AF4E /* AnalysisChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */; };
 		9191CC6A1CF847C90085AF4E /* LineChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC691CF847C90085AF4E /* LineChartModel.m */; };
+		9191CC6D1D0032620085AF4E /* SSFFlowStatisticTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC6C1D0032620085AF4E /* SSFFlowStatisticTableViewController.m */; };
+		9191CC701D00335D0085AF4E /* FlowStatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC6F1D00335D0085AF4E /* FlowStatisticTableViewCell.m */; };
+		9191CC731D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC721D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.m */; };
+		9191CC761D003EC80085AF4E /* FlowStatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191CC751D003EC80085AF4E /* FlowStatisticModel.m */; };
 		91AF80721CF2E76B000F5D27 /* SSFPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF80711CF2E76B000F5D27 /* SSFPieChartView.m */; };
 		91AF80781CF6CD3A000F5D27 /* PieChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF80771CF6CD3A000F5D27 /* PieChartModel.m */; };
 		91AF80811CF70C8E000F5D27 /* SSFAnalysisChartTableViewController+Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AF807E1CF70C8E000F5D27 /* SSFAnalysisChartTableViewController+Handler.m */; };
@@ -176,6 +180,14 @@
 		9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisChartTableViewCell.m; sourceTree = "<group>"; };
 		9191CC681CF847C90085AF4E /* LineChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartModel.h; sourceTree = "<group>"; };
 		9191CC691CF847C90085AF4E /* LineChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartModel.m; sourceTree = "<group>"; };
+		9191CC6B1D0032620085AF4E /* SSFFlowStatisticTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFFlowStatisticTableViewController.h; sourceTree = "<group>"; };
+		9191CC6C1D0032620085AF4E /* SSFFlowStatisticTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFFlowStatisticTableViewController.m; sourceTree = "<group>"; };
+		9191CC6E1D00335D0085AF4E /* FlowStatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowStatisticTableViewCell.h; sourceTree = "<group>"; };
+		9191CC6F1D00335D0085AF4E /* FlowStatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowStatisticTableViewCell.m; sourceTree = "<group>"; };
+		9191CC711D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SSFFlowStatisticTableViewController+Handler.h"; sourceTree = "<group>"; };
+		9191CC721D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SSFFlowStatisticTableViewController+Handler.m"; sourceTree = "<group>"; };
+		9191CC741D003EC80085AF4E /* FlowStatisticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowStatisticModel.h; sourceTree = "<group>"; };
+		9191CC751D003EC80085AF4E /* FlowStatisticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowStatisticModel.m; sourceTree = "<group>"; };
 		91AF80701CF2E76B000F5D27 /* SSFPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFPieChartView.h; sourceTree = "<group>"; };
 		91AF80711CF2E76B000F5D27 /* SSFPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFPieChartView.m; sourceTree = "<group>"; };
 		91AF80761CF6CD3A000F5D27 /* PieChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartModel.h; sourceTree = "<group>"; };
@@ -376,11 +388,11 @@
 		912D50BD1C8031750072401E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				91AF807C1CF70C8E000F5D27 /* Analysis */,
 				914144231CA90AD30091B5B1 /* CoreDataFetchedResultsController */,
 				914144261CA90AD30091B5B1 /* LoginAndRegister */,
 				9141442D1CA90AD30091B5B1 /* MainController */,
 				914144301CA90AD30091B5B1 /* Today */,
+				91AF807C1CF70C8E000F5D27 /* Analysis */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -392,6 +404,8 @@
 				91AF80771CF6CD3A000F5D27 /* PieChartModel.m */,
 				9191CC681CF847C90085AF4E /* LineChartModel.h */,
 				9191CC691CF847C90085AF4E /* LineChartModel.m */,
+				9191CC741D003EC80085AF4E /* FlowStatisticModel.h */,
+				9191CC751D003EC80085AF4E /* FlowStatisticModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,6 +425,8 @@
 				914791791CA3C99E0036A40D /* OptionCollectionViewCell.m */,
 				9191CC651CF824ED0085AF4E /* AnalysisChartTableViewCell.h */,
 				9191CC661CF824ED0085AF4E /* AnalysisChartTableViewCell.m */,
+				9191CC6E1D00335D0085AF4E /* FlowStatisticTableViewCell.h */,
+				9191CC6F1D00335D0085AF4E /* FlowStatisticTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,6 +517,10 @@
 				91AF807E1CF70C8E000F5D27 /* SSFAnalysisChartTableViewController+Handler.m */,
 				91AF807F1CF70C8E000F5D27 /* SSFAnalysisChartTableViewController.h */,
 				91AF80801CF70C8E000F5D27 /* SSFAnalysisChartTableViewController.m */,
+				9191CC6B1D0032620085AF4E /* SSFFlowStatisticTableViewController.h */,
+				9191CC6C1D0032620085AF4E /* SSFFlowStatisticTableViewController.m */,
+				9191CC711D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.h */,
+				9191CC721D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.m */,
 			);
 			path = Analysis;
 			sourceTree = "<group>";
@@ -647,6 +667,7 @@
 				91AF80721CF2E76B000F5D27 /* SSFPieChartView.m in Sources */,
 				912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */,
 				9184CBF31CE5B816007F4C05 /* CalendarFlowLayout.m in Sources */,
+				9191CC6D1D0032620085AF4E /* SSFFlowStatisticTableViewController.m in Sources */,
 				912D50EE1C993F020072401E /* SSFLoginView.m in Sources */,
 				912D51251CA393A70072401E /* BillTableViewCell.m in Sources */,
 				912D50D31C80329A0072401E /* NSDate+IntervalFrom1970.m in Sources */,
@@ -662,7 +683,9 @@
 				912D50D41C80329A0072401E /* NSDate+TimeString.m in Sources */,
 				914144361CA90AD30091B5B1 /* AppDelegate+ShowLoginOrMain.m in Sources */,
 				912D50E31C8032AF0072401E /* MBProgressHUD.m in Sources */,
+				9191CC701D00335D0085AF4E /* FlowStatisticTableViewCell.m in Sources */,
 				912D50F51C9A489F0072401E /* SSFGravityCollisionBehavior.m in Sources */,
+				9191CC761D003EC80085AF4E /* FlowStatisticModel.m in Sources */,
 				91AF80781CF6CD3A000F5D27 /* PieChartModel.m in Sources */,
 				912D50D51C80329A0072401E /* NSDictionary+SafetyCheck.m in Sources */,
 				914144391CA90AD30091B5B1 /* SSFMainTabBarViewController.m in Sources */,
@@ -674,6 +697,7 @@
 				9184CBF41CE5B816007F4C05 /* SSFCalendarView.m in Sources */,
 				912D50D71C80329A0072401E /* NSString+RegularCheck.m in Sources */,
 				9141443B1CA90AD30091B5B1 /* SSFTodayViewController.m in Sources */,
+				9191CC731D003A150085AF4E /* SSFFlowStatisticTableViewController+Handler.m in Sources */,
 				912D51041C9A9F870072401E /* RoundButton.m in Sources */,
 				912D511F1C9FE18A0072401E /* Bill.m in Sources */,
 				91AF80821CF70C8E000F5D27 /* SSFAnalysisChartTableViewController.m in Sources */,

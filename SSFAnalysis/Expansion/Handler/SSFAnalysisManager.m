@@ -49,6 +49,10 @@
     [NSFetchedResultsController deleteCacheWithName:BILL_FETCHED_RESULTS_CACHE_NAME];
 }
 
+- (void)clearMyBills {
+   
+}
+
 #pragma mark - about data
 
 //today
@@ -104,6 +108,21 @@
 - (float)averageOfIncomeThisMonthWithUser {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
     return [self getAverageWithPredicate:predicate];
+}
+
+- (float)costWithUserOfMonth:(NSString *)month {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",month,@(BILL_TYPE_COST)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)incomeWithUserOfMonth:(NSString *)month {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",month,@(BILL_TYPE_INCOME)];
+    return [self getTotalWithPredicate:predicate];
+}
+
+- (float)surplesWithUserOfMonth:(NSString *)month {
+    NSLog(@"==========%f,%f",[self incomeOfThisMonthWithUser],[self costOfThisMonthWithUser]);
+    return ([self incomeWithUserOfMonth:month] - [self costWithUserOfMonth:month]);
 }
 
 - (NSArray *)getAllSubTypesOfCostThisMonth {
@@ -205,6 +224,20 @@
     return ([self incomeOfThisYearWithUser] - [self costOfThisYearWithUser]);
 }
 
+- (NSArray *)getAllMonthsOfThisYear {
+    NSArray *bills = [self getAllMyBillOfThisYear];
+    if (!bills.count) return nil;
+    
+    NSMutableArray *months = [[NSMutableArray alloc] init];
+    for (Bill *bill in bills) {
+        NSString *month = bill.month;
+        if (![months containsObject:month]) {
+            [months addObject:month];
+        }
+    }
+    return months;
+}
+
 
 - (float)getTotalWithPredicate:(NSPredicate *)predicate {
     float total = 0.00;
@@ -253,6 +286,15 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(BILL_TYPE_INCOME)];
     NSArray *incomeArrs = [bills filteredArrayUsingPredicate:predicate];
     return incomeArrs;
+}
+
+- (NSArray *)getAllMyBillOfThisYear {
+    NSSet *myBills = self.currentUser.myBills;
+    NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES]];
+    NSArray *bills = [myBills sortedArrayUsingDescriptors:sortDesc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"year = %@",[NSString stringToYearTranslatedFromDate:[NSDate date]]];
+    NSArray *Arrs = [bills filteredArrayUsingPredicate:predicate];
+    return Arrs;
 }
 
 #pragma mark - properties

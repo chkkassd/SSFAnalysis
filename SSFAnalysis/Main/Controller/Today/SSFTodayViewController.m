@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.currentUser.display_name;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_id = %@",self.currentUser.user_id];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_id = %@ && month = %@",self.currentUser.user_id,[NSString stringToMonthTranslatedFromDate:[NSDate date]]];
     [self setUpFetchedResultsControllerWithPredicate:predicate];
 }
 

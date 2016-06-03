@@ -11,8 +11,8 @@
 @implementation FlowStatisticTableViewCell
 - (void)configureCellWithModel:(FlowStatisticModel *)model {
     self.monthLabel.text = model.month;
-    self.monthIncomeLabel.text = [NSString stringWithFormat:@"%f", model.monthIncome];
-    self.monthCostLabel.text = [NSString stringWithFormat:@"%f", model.monthCost];
-    self.monthSurplusLabel.text = [NSString stringWithFormat:@"%f", model.monthSurplus];
+    self.monthIncomeLabel.text = [NSString stringWithFormat:@"%.2f", model.monthIncome];
+    self.monthCostLabel.text = [NSString stringWithFormat:@"%.2f", model.monthCost];
+    self.monthSurplusLabel.text = [NSString stringWithFormat:@"%.2f", model.monthSurplus];
 }
 @end

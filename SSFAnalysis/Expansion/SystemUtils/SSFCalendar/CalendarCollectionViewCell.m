@@ -21,11 +21,22 @@
     self.layer.borderColor = [UIColor colorWithWhite:240/255.0 alpha:1.0].CGColor;
     self.dayTextLabel.text = dataString;
     
-    NSString *timeString = [monthYear stringByAppendingString:[NSString stringWithFormat:@"-%@",dataString]];
+    NSString *timeString = [monthYear stringByAppendingString:[self dayStringWithString:dataString]];
+    NSLog(@"opopopopopopopo:%@",timeString);
     if ([[NSString stringToDayTranslatedFromDate:[NSDate date]] isEqualToString:timeString]) {
         self.backgroundColor = [UIColor redColor];
     } else {
         self.backgroundColor = [UIColor whiteColor];
     }
+}
+
+- (NSString *)dayStringWithString:(NSString *)dayString {
+    NSInteger a = [dayString integerValue];
+    if (a < 10 && a > 0) {
+        dayString = [NSString stringWithFormat:@"-0%@",dayString];
+    } else if (a >= 10) {
+        dayString = [NSString stringWithFormat:@"-%@",dayString];
+    }
+    return dayString;
 }
 @end

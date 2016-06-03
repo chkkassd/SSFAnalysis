@@ -16,7 +16,7 @@
 @interface SSFCalendarView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CalendarHeadViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray *daysOfMonth;//某月所有天数数据源，包括第一周空出的天数和周日到周六的表头
+@property (nonatomic, strong) NSMutableArray *daysOfMonth;//某月所有天数数据源，包括第一周空出的天数
 @property (nonatomic, strong) NSDate *dateOfMonth;//某月的某一日期的date
 @end
 

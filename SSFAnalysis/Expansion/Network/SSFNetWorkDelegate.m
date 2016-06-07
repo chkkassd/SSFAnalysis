@@ -65,7 +65,7 @@
     return _progressHandlerDirectory;
 }
 
-#pragma mark - NSURLSessionDateDelegate
+#pragma mark - NSURLSessionDataDelegate
 //require
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     NSMutableData *resultData = [self.resultDataDirectrory objectForKey:[NSString stringWithFormat:@"%lu",(unsigned long)dataTask.taskIdentifier]];

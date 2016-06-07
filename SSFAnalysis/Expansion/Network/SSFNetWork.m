@@ -153,6 +153,20 @@
     [self sendHttpRequestWithUrl:url body:body withCompletion:handler];
 }
 
+- (void)signUpWithEmail:(NSString *)email displayName:(NSString *)displayName password:(NSString *)password completion:(void (^)(NSString *obj,NSData *resumeData))handler {
+    NSURL *url = [NSURL URLWithString:[[self baseURL] stringByAppendingString:@"SignUp"]];
+    password = [NSString md5:password];
+//    NSDictionary *dic = @{
+//                          @"email":email,
+//                          @"display_name":displayName,
+//                          @"password":password
+//                          };
+//    NSData *body = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *bodyString = [NSString stringWithFormat:@"email=%@&password=%@&display_name=%@",email, password,displayName];
+    NSData *body = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    [self sendHttpRequestWithUrl:url body:body withCompletion:handler];
+}
+
 //test defaultSession downloadTask
 - (NSURLSessionDownloadTask *)downloadFileWithProgressHandler:(void (^)(double))progressHandler Completion:(void (^)(NSString *obj,NSData *resumeData))handler {
     //    NSURL *url = [NSURL URLWithString:@"http://api.ezendai.com:8888/ios/thumb_large.png"];

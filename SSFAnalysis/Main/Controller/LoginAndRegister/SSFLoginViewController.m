@@ -24,12 +24,16 @@
 
 #pragma mark - Action
 - (IBAction)registerButtonPressed:(id)sender {
-    
+    __weak typeof(self) weakSelf = self;
+    SSFLoginView *loginView = [[SSFLoginView alloc] initWithFrame:self.view.frame signType:SSFLoginViewSignUp loginHandler:^{
+        [weakSelf.delegate SSFLoginViewControllerDidSignInWithController:self];
+    }];
+    [self.view addSubview:loginView];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
     __weak typeof(self) weakSelf = self;
-    SSFLoginView *loginView = [[SSFLoginView alloc] initWithFrame:self.view.frame loginHandler:^{
+    SSFLoginView *loginView = [[SSFLoginView alloc] initWithFrame:self.view.frame signType:SSFLoginViewSignIn loginHandler:^{
         [weakSelf.delegate SSFLoginViewControllerDidSignInWithController:self];
     }];
     [self.view addSubview:loginView];

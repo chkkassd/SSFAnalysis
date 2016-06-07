@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
 typedef void(^LoginHandler)(void);
 
+typedef NS_ENUM(NSInteger,SignType) {
+    SSFLoginViewSignIn = 0,
+    SSFLoginViewSignUp = 1
+};
+
 @interface SSFLoginView : UIView
-- (instancetype)initWithFrame:(CGRect)frame loginHandler:(LoginHandler)logHandler;
+- (instancetype)initWithFrame:(CGRect)frame signType:(SignType)signType loginHandler:(LoginHandler)logHandler;
 @property (nonatomic, copy)LoginHandler loginHandler;
 @end

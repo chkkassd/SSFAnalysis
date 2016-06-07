@@ -12,6 +12,7 @@
 @interface SSFAnalysisManager : NSObject
 
 - (void)userLoginAndSaveWithEmail:(NSString *)email password:(NSString *)password completionHandler:(void(^)(NSString *description,BOOL success))handler;
+- (void)userSignUpAndSaveWithEmail:(NSString *)email displayName:(NSString *)displayName password:(NSString *)password completionHaneldr:(void(^)(NSString *description, BOOL success))handler;
 - (void)signOut;
 - (void)clearMyBills;
 

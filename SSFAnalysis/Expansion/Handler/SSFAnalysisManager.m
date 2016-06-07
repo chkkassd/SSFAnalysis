@@ -43,6 +43,23 @@
     }];
 }
 
+- (void)userSignUpAndSaveWithEmail:(NSString *)email displayName:(NSString *)displayName password:(NSString *)password completionHaneldr:(void(^)(NSString *, BOOL))handler {
+    [[SSFNetWork sharedNetWork] signUpWithEmail:email displayName:displayName password:password completion:^(NSString *obj, NSData *resumeData) {
+        if (obj) {
+            NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:[obj dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"%@",resultDic);
+            if ([resultDic[@"response_code"] integerValue] == 100 ) {
+                //sign up success
+                handler(nil,YES);
+            } else {
+                handler(@"注册失败，稍后再试",NO);
+            }
+        } else {
+            handler(@"网络异常，稍后再试",NO);
+        }
+    }];
+}
+
 - (void)signOut {
     [[CoreDataManager sharedManager] stopConnectCoreData];
     [[NSUserDefaults standardUserDefaults] setObject:NULL forKey:LoginUserIdKey];

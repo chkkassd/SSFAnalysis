@@ -14,6 +14,7 @@
 #import "BillTableViewCell.h"
 #import "SSFMoneyTypeManager.h"
 #import "NSString+Tony.h"
+#import "Constants.h"
 
 @interface SSFTodayViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *costLabel;
@@ -43,7 +44,7 @@
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Bill"];
     request.predicate = predicate;
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO]];
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.mainContext sectionNameKeyPath:@"day" cacheName:BILL_FETCHED_RESULTS_CACHE_NAME];
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.mainContext sectionNameKeyPath:@"day" cacheName:BIllFetchedResultsCacheName];
     self.fetchedResultsController = fetchedResultsController;
 }
 

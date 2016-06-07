@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9105ECE01D067BE40003D69F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9105ECDF1D067BE40003D69F /* Constants.m */; };
 		912D50851C8028220072401E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50841C8028220072401E /* main.m */; };
 		912D508E1C8028220072401E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912D508C1C8028220072401E /* Main.storyboard */; };
 		912D50901C8028220072401E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 912D508F1C8028220072401E /* Assets.xcassets */; };
@@ -84,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9105ECDE1D067BE40003D69F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		9105ECDF1D067BE40003D69F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		912D50801C8028220072401E /* SSFAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSFAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D50841C8028220072401E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		912D508D1C8028220072401E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				912D50911C8028220072401E /* LaunchScreen.storyboard */,
 				912D50841C8028220072401E /* main.m */,
 				912D50EF1C9946B00072401E /* PrefixHeader.pch */,
+				9105ECDE1D067BE40003D69F /* Constants.h */,
+				9105ECDF1D067BE40003D69F /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -665,6 +670,7 @@
 				912D51131C9BE2020072401E /* CoreDataManager.m in Sources */,
 				912D50FE1C9A85D30072401E /* NSString+Tony.m in Sources */,
 				91AF80721CF2E76B000F5D27 /* SSFPieChartView.m in Sources */,
+				9105ECE01D067BE40003D69F /* Constants.m in Sources */,
 				912D510F1C9BA7280072401E /* User+CoreDataProperties.m in Sources */,
 				9184CBF31CE5B816007F4C05 /* CalendarFlowLayout.m in Sources */,
 				9191CC6D1D0032620085AF4E /* SSFFlowStatisticTableViewController.m in Sources */,

@@ -10,6 +10,7 @@
 #import "AppDelegate+ShowLoginOrMain.h"
 #import "SSFLoginViewController.h"
 #import "CoreDataManager.h"
+#import "Constants.h"
 
 @interface AppDelegate ()<SSFLoginViewControllerDelegate>
 
@@ -19,7 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSNumber *userid = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_USER_ID_KEY];
+    NSNumber *userid = [[NSUserDefaults standardUserDefaults] objectForKey:LoginUserIdKey];
     if (!userid) {
         //show login
         [self showLoginAndRegisterView];

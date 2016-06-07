@@ -10,6 +10,7 @@
 #import "SSFNetWork.h"
 #import "CoreDataManager.h"
 #import "NSString+Tony.h"
+#import "Constants.h"
 
 @interface SSFAnalysisManager()
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainQueueContext;
@@ -30,7 +31,7 @@
                 [[CoreDataManager sharedManager] startConnectCoreData];
                 [User updateUserWithInfo:userDic inManagedObjectContext:self.mainQueueContext];
                 [self.mainQueueContext save:NULL];
-                [[NSUserDefaults standardUserDefaults] setObject:userDic[@"user_id"] forKey:LOGIN_USER_ID_KEY];
+                [[NSUserDefaults standardUserDefaults] setObject:userDic[@"user_id"] forKey:LoginUserIdKey];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 handler(nil,YES);
             } else {
@@ -44,9 +45,9 @@
 
 - (void)signOut {
     [[CoreDataManager sharedManager] stopConnectCoreData];
-    [[NSUserDefaults standardUserDefaults] setObject:NULL forKey:LOGIN_USER_ID_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:NULL forKey:LoginUserIdKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [NSFetchedResultsController deleteCacheWithName:BILL_FETCHED_RESULTS_CACHE_NAME];
+    [NSFetchedResultsController deleteCacheWithName:BIllFetchedResultsCacheName];
 }
 
 - (void)clearMyBills {
@@ -304,7 +305,7 @@
 }
 
 - (User *)currentUser {
-    NSNumber *userid = [[NSUserDefaults standardUserDefaults] objectForKey:LOGIN_USER_ID_KEY];
+    NSNumber *userid = [[NSUserDefaults standardUserDefaults] objectForKey:LoginUserIdKey];
     if (userid) {
         return [User userWithUserId:userid inManagedObjectContext:self.mainQueueContext];
     } else return nil;

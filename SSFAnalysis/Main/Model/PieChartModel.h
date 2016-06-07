@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
 @interface PieChartModel : NSObject
 @property (nonatomic, strong) NSString *nameString;
 @property (nonatomic, assign) float percent;

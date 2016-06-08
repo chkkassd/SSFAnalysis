@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *remarkTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *timeButton;
 @property (nonatomic, strong) NSDate *recordDate;
 @property (nonatomic, strong) NSArray *options;
 @property (nonatomic, strong) User *currentUser;
@@ -34,8 +34,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.textField becomeFirstResponder];
-    self.options = @[@"吃饭",@"交通",@"服饰",@"住宿",@"娱乐",@"购物",@"其他支出"];//@[@"工资",@"投资",@"兼职"];
+    [self setCostDefaultData];
     self.recordDate = [NSDate date];
+}
+
+- (void)setCostDefaultData {
+    self.options = @[@"吃饭",@"交通",@"服饰",@"住宿",@"娱乐",@"购物",@"其他支出"];
+    self.descriptionLabel.text = self.options[6];
+    self.subTypeNumber = [SSFMoneyTypeManager numberWithMoneyTypeString:self.options[6]];
+}
+
+- (void)setIncomeDefaultData {
+    self.options = @[@"工资",@"投资",@"兼职"];
+    self.descriptionLabel.text = self.options[0];
+    self.subTypeNumber = [SSFMoneyTypeManager numberWithMoneyTypeString:self.options[0]];
 }
 
 #pragma mark - properties
@@ -50,7 +62,14 @@
 
 - (void)setRecordDate:(NSDate *)recordDate {
     _recordDate = recordDate;
-    self.timeLabel.text = [NSString stringToDayTranslatedFromDate:_recordDate];
+    [self.timeButton setTitle:[NSString stringToDayTranslatedFromDate:_recordDate] forState:UIControlStateNormal];
+}
+
+- (void)setTimeButton:(UIButton *)timeButton {
+    _timeButton = timeButton;
+    _timeButton.layer.borderWidth = 0.5f;
+    _timeButton.layer.borderColor = [UIColor colorWithRed:255/255.0 green:160/255.0 blue:63/255.0 alpha:1.0].CGColor;
+    _timeButton.layer.cornerRadius = 3.0f;
 }
 
 #pragma mark - segue
@@ -69,16 +88,14 @@
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
-    self.subTypeNumber = nil;
-    self.descriptionLabel.text = @"";
+
     switch (sender.selectedSegmentIndex) {
         case 0:
-            self.options = @[@"吃饭",@"交通",@"服饰",@"住宿",@"娱乐",@"购物",@"其他支出"];
+            [self setCostDefaultData];
             break;
         case 1:
-            self.options = @[@"工资",@"投资",@"兼职"];
+            [self setIncomeDefaultData];
             break;
-
         default:
             break;
     }

@@ -8,6 +8,8 @@
 
 #import "SSFAnalysisChartTableViewController+Handler.h"
 #import "SSFMoneyTypeManager.h"
+#import "SSFAnalysisManager.h"
+#import "PieChartModel.h"
 
 @implementation SSFAnalysisChartTableViewController (Handler)
 

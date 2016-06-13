@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PieChartModel.h"
+
+@class PieChartModel;
 
 @interface AnalysisChartTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameStringLabel;

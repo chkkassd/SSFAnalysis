@@ -13,6 +13,7 @@
 #import "SSFMoneyTypeManager.h"
 #import "NSString+Tony.h"
 #import "SSFCalendarViewController.h"
+#import "User.h"
 
 @interface SSFRecordBillViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SSFCalendarViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

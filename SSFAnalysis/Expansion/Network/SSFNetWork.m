@@ -8,6 +8,7 @@
 
 #import "SSFNetWork.h"
 #import "NSString+Tony.h"
+#import "SSFNetWorkDelegate.h"
 
 #define SERVER_IP                     @"120.24.67.134"
 #define SERVER_WEB_SERVICE_PORT       8080

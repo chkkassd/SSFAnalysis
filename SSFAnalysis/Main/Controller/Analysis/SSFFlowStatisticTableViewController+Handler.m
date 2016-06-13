@@ -7,6 +7,8 @@
 //
 
 #import "SSFFlowStatisticTableViewController+Handler.h"
+#import "SSFAnalysisManager.h"
+#import "FlowStatisticModel.h"
 
 @implementation SSFFlowStatisticTableViewController (Handler)
 

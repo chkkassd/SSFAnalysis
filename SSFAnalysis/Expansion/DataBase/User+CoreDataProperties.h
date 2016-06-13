@@ -10,7 +10,8 @@
 //
 
 #import "User.h"
-#import "Bill+CoreDataProperties.h"
+
+@class Bill;
 
 NS_ASSUME_NONNULL_BEGIN
 

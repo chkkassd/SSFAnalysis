@@ -8,6 +8,9 @@
 
 #import "SSFFlowStatisticTableViewController.h"
 #import "SSFFlowStatisticTableViewController+Handler.h"
+#import "FlowStatisticTableViewCell.h"
+#import "NSString+Tony.h"
+#import "SSFAnalysisManager.h"
 
 @interface SSFFlowStatisticTableViewController()
 @property (weak, nonatomic) IBOutlet UILabel *incomeLabel;

@@ -7,7 +7,6 @@
 //
 
 #import "SSFAnalysisChartTableViewController.h"
-#import "SSFAnalysisManager.h"
 
 @interface SSFAnalysisChartTableViewController (Handler)
 

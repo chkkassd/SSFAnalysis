@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+Tony.h"
 
 typedef void(^ResultHandler)(NSString *obj,NSData *resumeData);
 typedef void(^ProgressHandler)(double progress);

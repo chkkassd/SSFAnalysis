@@ -11,6 +11,7 @@
 #import "CoreDataManager.h"
 #import "NSString+Tony.h"
 #import "Constants.h"
+#import "User.h"
 
 @interface SSFAnalysisManager()
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainQueueContext;

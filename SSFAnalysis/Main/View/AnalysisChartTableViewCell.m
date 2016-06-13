@@ -8,6 +8,7 @@
 
 #import "AnalysisChartTableViewCell.h"
 #import "NSString+Tony.h"
+#import "PieChartModel.h"
 
 @implementation AnalysisChartTableViewCell
 - (void)configureTableViewCellwithModel:(PieChartModel *)model {

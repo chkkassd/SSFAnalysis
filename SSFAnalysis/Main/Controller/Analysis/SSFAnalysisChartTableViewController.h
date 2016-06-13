@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PieChartModel.h"
 
 @interface SSFAnalysisChartTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray *pieChartData;

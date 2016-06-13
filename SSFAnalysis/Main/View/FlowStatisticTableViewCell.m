@@ -7,6 +7,7 @@
 //
 
 #import "FlowStatisticTableViewCell.h"
+#import "FlowStatisticModel.h"
 
 @implementation FlowStatisticTableViewCell
 - (void)configureCellWithModel:(FlowStatisticModel *)model {

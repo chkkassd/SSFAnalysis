@@ -8,6 +8,7 @@
 //
 
 #import "SSFNetWorkDelegate.h"
+#import "NSString+Tony.h"
 
 @interface SSFNetWorkDelegate()
 

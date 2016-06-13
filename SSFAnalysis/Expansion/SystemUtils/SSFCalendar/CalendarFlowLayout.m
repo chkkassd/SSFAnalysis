@@ -7,6 +7,7 @@
 //
 
 #import "CalendarFlowLayout.h"
+#import "SSFCalendarView.h"
 
 @interface CalendarFlowLayout()
 @property (nonatomic, weak) SSFCalendarView *calendarView;

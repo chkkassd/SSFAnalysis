@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlowStatisticModel.h"
+
+@class FlowStatisticModel;
 
 @interface FlowStatisticTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;

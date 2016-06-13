@@ -15,6 +15,7 @@
 #import "SSFMoneyTypeManager.h"
 #import "NSString+Tony.h"
 #import "Constants.h"
+#import "User.h"
 
 @interface SSFTodayViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *costLabel;

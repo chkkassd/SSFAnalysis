@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Bill+CoreDataProperties.h"
 
 typedef enum {
     LineChartType_Cost = 1,

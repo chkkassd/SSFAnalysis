@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h"
+#import "Bill+CoreDataProperties.h"
+
+@class User;
 
 @interface SSFAnalysisManager : NSObject
 

@@ -592,6 +592,7 @@
 		912D50781C8028220072401E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SSF;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "赛峰 施";
 				TargetAttributes = {

@@ -12,6 +12,8 @@
 #import "SSFPieChartView.h"
 #import "AnalysisChartTableViewCell.h"
 #import "SSFRecordBillViewController.h"
+#import "Bill+CoreDataProperties.h"
+
 
 @interface SSFAnalysisChartTableViewController ()
 @property (strong, nonatomic) SSFLineChartView *lineChartView;

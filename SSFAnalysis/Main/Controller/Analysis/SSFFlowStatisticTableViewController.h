@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlowStatisticTableViewCell.h"
-#import "NSString+Tony.h"
-#import "SSFAnalysisManager.h"
-#import "FlowStatisticModel.h"
 
 @interface SSFFlowStatisticTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray *dataArr;

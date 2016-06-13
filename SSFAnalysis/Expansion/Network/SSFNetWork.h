@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SSFNetWorkDelegate.h"
+
+@class SSFNetWorkDelegate;
 
 @interface SSFNetWork : NSObject
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SSFCalendarView.h"
+
+@class SSFCalendarView;
 
 @interface CalendarFlowLayout : UICollectionViewFlowLayout
 - (instancetype)initWithCalendarView:(SSFCalendarView *)view;

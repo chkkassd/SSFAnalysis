@@ -10,7 +10,6 @@
 #import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
-#define USER_USER_ID_KEY       @"user_id"
 
 @interface User : NSManagedObject
 

@@ -8,8 +8,6 @@
 
 #import "CZSShowSimpleAlert.h"
 
-#define CurrentSystemVersion  [[[UIDevice currentDevice] systemVersion] floatValue]
-
 @implementation CZSShowSimpleAlert
 
 + (void)showSimpleAlertWithTitle:(NSString *)title message:(NSString *)message controller:(UIViewController *)controller {

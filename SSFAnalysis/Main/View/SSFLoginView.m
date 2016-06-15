@@ -12,8 +12,8 @@
 #import "CZSShowSimpleAlert.h"
 
 IB_DESIGNABLE
-#define GapWidth 8
-#define DefaultComponentHeight  30
+static const NSInteger GapWidth = 8;
+static const NSInteger DefaultComponentHeight = 30;
 
 @interface SSFLoginView()
 @property (nonatomic, strong) UIView *alertView;

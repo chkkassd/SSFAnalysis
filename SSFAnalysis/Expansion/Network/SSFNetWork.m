@@ -10,8 +10,8 @@
 #import "NSString+Tony.h"
 #import "SSFNetWorkDelegate.h"
 
-#define SERVER_IP                     @"120.24.67.134"
-#define SERVER_WEB_SERVICE_PORT       8080
+static NSString * const SERVER_IP = @"120.24.67.134";
+static const NSInteger SERVER_WEB_SERVICE_PORT = 8080;
 
 @interface SSFNetWork()
 

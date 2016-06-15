@@ -15,6 +15,8 @@
 #import "SSFCalendarViewController.h"
 #import "User.h"
 
+NSString *const DefaultRecordSuccessNotification = @"DefaultRecordSuccessNotification";
+
 @interface SSFRecordBillViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,SSFCalendarViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -126,6 +128,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DefaultRecordSuccessNotification object:nil userInfo:@{BILL_TYPE_KEY:@(self.segment.selectedSegmentIndex)}];
     };
     [self dismissViewControllerAnimated:YES completion:NULL];
+    NSNumber *n = @2.34;
 }
 
 #pragma mark - collection data source

@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+static NSString * const USER_USER_ID_KEY = @"user_id";
 
 @implementation User
 

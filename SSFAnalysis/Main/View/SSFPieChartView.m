@@ -9,7 +9,7 @@
 #import "SSFPieChartView.h"
 #import "PieChartModel.h"
 
-#define DefaultWidth  80
+static const NSInteger DefaultWidth = 80;
 
 @interface SSFPieChartView()
 @property (strong, nonatomic) UIBezierPath *circlePath;

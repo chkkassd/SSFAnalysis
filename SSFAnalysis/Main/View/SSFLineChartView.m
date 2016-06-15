@@ -10,11 +10,11 @@
 #import "SSFAnalysisManager.h"
 #import "LineChartModel.h"
 
-#define DefaultLineGapWidth 5
-#define DefaultLineTopGapHeight 35
-#define DefaultLineBottomGapHeight 20
-#define DefaultDateGapWidth 20
-#define DefaultMoneyHeightRatio 50 //金钱比例尺
+static const NSInteger DefaultLineGapWidth = 5;
+static const NSInteger DefaultLineTopGapHeight = 35;
+static const NSInteger DefaultLineBottomGapHeight = 20;
+static const NSInteger DefaultDateGapWidth = 20;
+static const NSInteger DefaultMoneyHeightRatio = 50; //金钱比例尺
 
 IB_DESIGNABLE
 @interface SSFLineChartView()

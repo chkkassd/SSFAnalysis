@@ -34,8 +34,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DefaultRecordSuccessNotification object:nil];
 }
 
-#define DefaultMargin  10
-#define DefaultWidthHeightRatio  1.8
+static const NSInteger DefaultMargin = 10;
+static const CGFloat DefaultWidthHeightRatio =1.8;
 
 - (void)configureViews {
     //构建折线图

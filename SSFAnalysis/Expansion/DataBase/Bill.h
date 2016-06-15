@@ -10,17 +10,17 @@
 #import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
-#define BILL_BILL_ID_KEY  @"bill_id"
-#define BILL_USER_ID_KEY @"user_id"
-#define BILL_AMOUNT_KEY @"amount"
-#define BILL_TYPE_KEY @"type"
-#define BILL_SUBTYPE_KEY @"subtype"
-#define BILL_TIME_KEY @"time"
-#define BILL_REMARK_KEY @"remark"
-#define BILL_DAY_KEY @"day"
-#define BILL_MONTH_KEY @"month"
-#define BILL_YEAR_KEY @"year"
-#define BILL_OWNER_KEY @"owner"
+extern NSString *const BILL_BILL_ID_KEY;
+extern NSString *const BILL_USER_ID_KEY;
+extern NSString *const BILL_AMOUNT_KEY;
+extern NSString *const BILL_TYPE_KEY;
+extern NSString *const BILL_SUBTYPE_KEY;
+extern NSString *const BILL_TIME_KEY;
+extern NSString *const BILL_REMARK_KEY;
+extern NSString *const BILL_DAY_KEY;
+extern NSString *const BILL_MONTH_KEY;
+extern NSString *const BILL_YEAR_KEY;
+extern NSString *const BILL_OWNER_KEY;
 
 @interface Bill : NSManagedObject
 

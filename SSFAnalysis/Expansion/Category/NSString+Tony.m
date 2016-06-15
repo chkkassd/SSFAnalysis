@@ -563,7 +563,8 @@ static char base64EncodingTable[64] = {
 
 
 #pragma mark - base64解密
-#define xx 65
+//#define xx 65
+static const NSInteger xx = 65;
 static unsigned char base64DecodeLookup[256] =
 {
     xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx,
@@ -584,8 +585,11 @@ static unsigned char base64DecodeLookup[256] =
     xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx,
 };
 
-#define BINARY_UNIT_SIZE 3
-#define BASE64_UNIT_SIZE 4
+//#define BINARY_UNIT_SIZE 3
+//#define BASE64_UNIT_SIZE 4
+static const NSInteger BINARY_UNIT_SIZE = 3;
+static const NSInteger BASE64_UNIT_SIZE = 4;
+
 void *NewBase64Decode(
                       const char *inputBuffer,
                       size_t length,

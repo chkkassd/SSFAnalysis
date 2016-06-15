@@ -8,6 +8,18 @@
 
 #import "Bill.h"
 
+NSString *const BILL_BILL_ID_KEY = @"bill_id";
+NSString *const BILL_USER_ID_KEY = @"user_id";
+NSString *const BILL_AMOUNT_KEY = @"amount";
+NSString *const BILL_TYPE_KEY = @"type";
+NSString *const BILL_SUBTYPE_KEY = @"subtype";
+NSString *const BILL_TIME_KEY = @"time";
+NSString *const BILL_REMARK_KEY = @"remark";
+NSString *const BILL_DAY_KEY = @"day";
+NSString *const BILL_MONTH_KEY = @"month";
+NSString *const BILL_YEAR_KEY = @"year";
+NSString *const BILL_OWNER_KEY = @"owner";
+
 @implementation Bill
 
 + (Bill *)billWithBillId:(NSString *)billid inManagedObjectContext:(NSManagedObjectContext *)context {

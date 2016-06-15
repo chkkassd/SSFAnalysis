@@ -11,4 +11,3 @@
 
 NSString * const LoginUserIdKey = @"login_user_id_key";
 NSString * const BIllFetchedResultsCacheName = @"bill_fetched_results_cache_name";
-

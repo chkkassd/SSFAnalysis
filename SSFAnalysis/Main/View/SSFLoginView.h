@@ -11,11 +11,13 @@
 typedef void(^LoginHandler)(void);
 
 typedef NS_ENUM(NSInteger,SignType) {
-    SSFLoginViewSignIn = 0,
-    SSFLoginViewSignUp = 1
+    SSFLoginViewSignIn,
+    SSFLoginViewSignUp
 };
 
 @interface SSFLoginView : UIView
-- (instancetype)initWithFrame:(CGRect)frame signType:(SignType)signType loginHandler:(LoginHandler)logHandler;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame signType:(SignType)signType loginHandler:(LoginHandler)logHandler NS_DESIGNATED_INITIALIZER;
 @property (nonatomic, copy)LoginHandler loginHandler;
 @end

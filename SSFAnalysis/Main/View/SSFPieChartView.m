@@ -18,14 +18,6 @@ static const NSInteger DefaultWidth = 80;
 
 @implementation SSFPieChartView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame withModel:(NSArray *)modelArr {
     self = [super initWithFrame:frame];
     if (self) {

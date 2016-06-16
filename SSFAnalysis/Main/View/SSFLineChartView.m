@@ -55,7 +55,7 @@ IB_DESIGNABLE
 //绘制渐变背景
 - (void)setGradientBackgroundWithStartPoint:(CGPoint)startPoint endPoint:(CGPoint)endpoint {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    NSArray *gradientColors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:255/255.0 green:158/255.0 blue:69/255.0 alpha:1.0].CGColor, (id)[UIColor colorWithRed:255/255.0 green:85/255.0 blue:16/255.0 alpha:1.0].CGColor,nil];
+    NSArray *gradientColors = @[(id)[UIColor colorWithRed:255/255.0 green:158/255.0 blue:69/255.0 alpha:1.0].CGColor, (id)[UIColor colorWithRed:255/255.0 green:85/255.0 blue:16/255.0 alpha:1.0].CGColor];
     CGFloat gradientLocations[] = {0,1};
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
     
@@ -91,13 +91,13 @@ IB_DESIGNABLE
     if (self.lineChartType == LineChartType_Cost) {
         leftString = @"日均支出";
         rightString = @"本月总计支出";
-        averageMoney = [[SSFAnalysisManager sharedManager] averageOfCostThisMonthWithUser];
-        totalMoney = [[SSFAnalysisManager sharedManager] costOfThisMonthWithUser];
+        averageMoney = [SSFAnalysisManager sharedManager].averageOfCostThisMonthWithUser;
+        totalMoney = [SSFAnalysisManager sharedManager].costOfThisMonthWithUser;
     } else if (self.lineChartType == LineChartType_Income) {
         leftString = @"日均收入";
         rightString = @"本月总计收入";
-        averageMoney = [[SSFAnalysisManager sharedManager] averageOfIncomeThisMonthWithUser];
-        totalMoney = [[SSFAnalysisManager sharedManager] incomeOfThisMonthWithUser];
+        averageMoney = [SSFAnalysisManager sharedManager].averageOfIncomeThisMonthWithUser;
+        totalMoney = [SSFAnalysisManager sharedManager].incomeOfThisMonthWithUser;
     }
 
     //绘制顶部统计
@@ -192,7 +192,7 @@ IB_DESIGNABLE
 //构建数据模型
 - (NSArray *)setLineChartModelOfCost {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    NSArray *days = [[SSFAnalysisManager sharedManager] getAllDatesOfCostThisMonth];
+    NSArray *days = [SSFAnalysisManager sharedManager].allDatesOfCostThisMonth;
     if (!days.count) arr = nil;
     
     for (NSString * day in days) {
@@ -207,7 +207,7 @@ IB_DESIGNABLE
 
 - (NSArray *)setLineChartModelOfIncome {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    NSArray *days = [[SSFAnalysisManager sharedManager] getAllDatesOfIncomeThisMonth];
+    NSArray *days = [SSFAnalysisManager sharedManager].allDatesOfIncomeThisMonth;
     if (!days.count) arr = nil;
     
     for (NSString * day in days) {
@@ -224,8 +224,8 @@ IB_DESIGNABLE
 - (CGFloat)xValueForPotinTranslatedFromBill:(LineChartModel *)model {
     CGFloat x = 0.00;
     CGFloat average = (self.frame.size.width - DefaultDateGapWidth*2)/31.0;
-    NSString *dayString = [[model.dayString componentsSeparatedByString:@"-"] lastObject];
-    NSInteger day = [dayString integerValue];
+    NSString *dayString = [model.dayString componentsSeparatedByString:@"-"].lastObject;
+    NSInteger day = dayString.integerValue;
     x = DefaultDateGapWidth + average * day;
     return x;
 }

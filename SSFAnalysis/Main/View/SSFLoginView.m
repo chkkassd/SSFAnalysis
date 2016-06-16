@@ -21,7 +21,7 @@ static const NSInteger DefaultComponentHeight = 30;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) UITextField *displayNameTextField;
 @property (nonatomic, strong) UILabel *infoLabel;
-@property (nonatomic,assign) SignType signType;
+@property (nonatomic, assign) SignType signType;
 @end
 
 @implementation SSFLoginView

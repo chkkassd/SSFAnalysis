@@ -15,12 +15,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum {
+typedef NS_ENUM(unsigned int, BILL_TYPE) {
     BILL_TYPE_COST = 0,
     BILL_TYPE_INCOME = 1
-}BILL_TYPE;
+};
 
-typedef enum {
+typedef NS_ENUM(unsigned int, BILL_SUBTYPE) {
     BILL_SUBTYPE_EAT = 0,
     BILL_SUBTYPE_TRAFFIC = 1,
     BILL_SUBTYPE_CLOTHES = 2,
@@ -31,7 +31,7 @@ typedef enum {
     BILL_SUBTYPE_SALARY = 7,
     BILL_SUBTYPE_INVESTMENT = 8,
     BILL_SUBTYPE_PART_TIME_JOB = 9
-}BILL_SUBTYPE;
+};
 
 @interface Bill (CoreDataProperties)
 

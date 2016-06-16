@@ -33,8 +33,8 @@ static const NSInteger SERVER_WEB_SERVICE_PORT = 8080;
 - (void)sendHttpRequestWithUrl:(NSURL *)url body:(NSData *)body completion:(void(^)(NSString *obj))handler {
     NSMutableURLRequest *request = [NSMutableURLRequest
                                     requestWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:body];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = body;
     
     [[self.defaultSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
@@ -58,8 +58,8 @@ static const NSInteger SERVER_WEB_SERVICE_PORT = 8080;
 - (void)sendHttpRequestWithUrl:(NSURL *)url body:(NSData *)body withCompletion:(void(^)(NSString *obj,NSData *resumeData))handler {
     NSMutableURLRequest *request = [NSMutableURLRequest
                                     requestWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:body];
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = body;
     
     NSURLSessionDataTask *dataTask = [self.defaultSession dataTaskWithRequest:request];
     [self.defaultSessionDelegate addCompletionHandler:handler progressHandler:nil forTaskIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)dataTask.taskIdentifier]];
@@ -107,8 +107,8 @@ static const NSInteger SERVER_WEB_SERVICE_PORT = 8080;
         //cache
         NSString *cachePath = @"/MyCacheDirectory";
         NSArray *myPathList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *myPath    = [myPathList  objectAtIndex:0];
-        NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+        NSString *myPath    = myPathList[0];
+        NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
         NSString *fullCachePath = [[myPath stringByAppendingPathComponent:bundleIdentifier] stringByAppendingPathComponent:cachePath];
         NSURLCache *myCache = [[NSURLCache alloc] initWithMemoryCapacity:16384 diskCapacity:268435456 diskPath:fullCachePath];
         

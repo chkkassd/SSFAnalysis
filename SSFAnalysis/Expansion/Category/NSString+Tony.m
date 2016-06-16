@@ -93,14 +93,14 @@ static char base64EncodingTable[64] = {
             timeString = [NSString stringWithFormat:@"00 : %lu", (unsigned long)time];
         }
     } else if (time >= 60) {
-        int minute = time/60;
+        NSUInteger minute = time/60;
         int second = time % 60;
         NSString *minuteString;
         NSString *secondString;
         if (minute < 10) {
-            minuteString = [NSString stringWithFormat:@"0%d", minute];
+            minuteString = [NSString stringWithFormat:@"0%lu", (unsigned long)minute];
         } else {
-            minuteString = [NSString stringWithFormat:@"%d", minute];
+            minuteString = [NSString stringWithFormat:@"%lu", (unsigned long)minute];
         }
         if (second < 10) {
             secondString = [NSString stringWithFormat:@"0%d", second];

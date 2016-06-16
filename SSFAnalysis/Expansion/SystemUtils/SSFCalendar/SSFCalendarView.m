@@ -81,17 +81,17 @@
 
 //这个月一共几天
 - (NSUInteger)numberOfMonthForDate:(NSDate *)date {
-    return [date numberOfDayInCurrentMonth];
+    return date.numberOfDayInCurrentMonth;
 }
 
 //这个月第一天
 - (NSDate *)firstDayOfMonthForDate:(NSDate *)date {
-    return [date firstDayOfCurrentMonth];
+    return date.firstDayOfCurrentMonth;
 }
 
 //这个月第一天是周几
 - (NSUInteger)weeklyOrdinalityForDate:(NSDate *)date {
-    return [date weeklyOrdinality];
+    return date.weeklyOrdinality;
 }
 
 //获取上个月1号date
@@ -103,8 +103,8 @@
     
     currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
     
-    NSInteger currentYear = [currentComps year];
-    NSInteger currentMonth = [currentComps month];
+    NSInteger currentYear = currentComps.year;
+    NSInteger currentMonth = currentComps.month;
     if (currentMonth <= 1) {
         currentYear-=1;
         currentMonth = 12;
@@ -112,9 +112,9 @@
         currentMonth-=1;
     }
     NSDateComponents *resultComps = [[NSDateComponents alloc] init];
-    [resultComps setYear:currentYear];
-    [resultComps setMonth:currentMonth];
-    [resultComps setDay:1];
+    resultComps.year = currentYear;
+    resultComps.month = currentMonth;
+    resultComps.day = 1;
     
     return [currentCalendar dateFromComponents:resultComps];
 }
@@ -128,8 +128,8 @@
     
     currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
     
-    NSInteger currentYear = [currentComps year];
-    NSInteger currentMonth = [currentComps month];
+    NSInteger currentYear = currentComps.year;
+    NSInteger currentMonth = currentComps.month;
     if (currentMonth >= 12) {
         currentYear+=1;
         currentMonth = 1;
@@ -137,9 +137,9 @@
         currentMonth+=1;
     }
     NSDateComponents *resultComps = [[NSDateComponents alloc] init];
-    [resultComps setYear:currentYear];
-    [resultComps setMonth:currentMonth];
-    [resultComps setDay:1];
+    resultComps.year = currentYear;
+    resultComps.month = currentMonth;
+    resultComps.day = 1;
     
     return [currentCalendar dateFromComponents:resultComps];
 }

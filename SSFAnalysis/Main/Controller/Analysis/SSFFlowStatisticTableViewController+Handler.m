@@ -15,7 +15,7 @@
 - (void)configureTableViewData {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     
-    NSArray *monthsOfThisYear = [[SSFAnalysisManager sharedManager] getAllMonthsOfThisYear];
+    NSArray *monthsOfThisYear = [SSFAnalysisManager sharedManager].allMonthsOfThisYear;
     if (!monthsOfThisYear.count) {arr = nil; return;}
     
     for (int i = 0; i < monthsOfThisYear.count; i++) {

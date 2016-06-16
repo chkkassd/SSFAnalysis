@@ -11,5 +11,7 @@
 @class SSFCalendarView;
 
 @interface CalendarFlowLayout : UICollectionViewFlowLayout
-- (instancetype)initWithCalendarView:(SSFCalendarView *)view;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCalendarView:(SSFCalendarView *)view NS_DESIGNATED_INITIALIZER;
 @end

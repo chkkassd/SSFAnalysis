@@ -20,26 +20,26 @@
 @implementation SSFNetWorkDelegate
 
 - (void)addCompletionHandler:(ResultHandler)handler progressHandler:(ProgressHandler)progressHandler forTaskIdentifier:(NSString *)identifier {
-    if (handler) [self.completionHandlerDirectory setObject:handler forKey:identifier];
+    if (handler) (self.completionHandlerDirectory)[identifier] = handler;
     if (progressHandler)
-        [self.progressHandlerDirectory setObject:progressHandler forKey:identifier];
+        (self.progressHandlerDirectory)[identifier] = progressHandler;
     else
-        [self.resultDataDirectrory setObject:[[NSMutableData alloc] init] forKey:identifier];
+        (self.resultDataDirectrory)[identifier] = [[NSMutableData alloc] init];
     
     NSLog(@"add completion count:%lu \n add resultData count:%lu \n add progress count:%lu \n",(unsigned long)self.completionHandlerDirectory.count,(unsigned long)self.resultDataDirectrory.count,(unsigned long)self.progressHandlerDirectory.count);
 }
 
 - (void)callCompletionHandlerForTaskIdentifier:(NSString *)identifier withResultString:(NSString *)string resumeData:(NSData *)resumeData {
-    ResultHandler resultHandler = [self.completionHandlerDirectory objectForKey:identifier];
+    ResultHandler resultHandler = (self.completionHandlerDirectory)[identifier];
     if (resultHandler) {
         resultHandler(string,resumeData);
     }
 }
 
 - (void)removeCompletionHandlerAndResultDataForIdentifier:(NSString *)identifier {
-    if ([self.completionHandlerDirectory objectForKey:identifier]) [self.completionHandlerDirectory removeObjectForKey:identifier];
-    if ([self.resultDataDirectrory objectForKey:identifier]) [self.resultDataDirectrory removeObjectForKey:identifier];
-    if ([self.progressHandlerDirectory objectForKey:identifier]) [self.progressHandlerDirectory removeObjectForKey:identifier];
+    if ((self.completionHandlerDirectory)[identifier]) [self.completionHandlerDirectory removeObjectForKey:identifier];
+    if ((self.resultDataDirectrory)[identifier]) [self.resultDataDirectrory removeObjectForKey:identifier];
+    if ((self.progressHandlerDirectory)[identifier]) [self.progressHandlerDirectory removeObjectForKey:identifier];
     NSLog(@"remove completion count:%lu \n remove resultData count:%lu \n remove progress count:%lu \n",(unsigned long)self.completionHandlerDirectory.count,(unsigned long)self.resultDataDirectrory.count,(unsigned long)self.progressHandlerDirectory.count);
 }
 
@@ -69,7 +69,7 @@
 #pragma mark - NSURLSessionDataDelegate
 //require
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    NSMutableData *resultData = [self.resultDataDirectrory objectForKey:[NSString stringWithFormat:@"%lu",(unsigned long)dataTask.taskIdentifier]];
+    NSMutableData *resultData = (self.resultDataDirectrory)[[NSString stringWithFormat:@"%lu",(unsigned long)dataTask.taskIdentifier]];
     [resultData appendData:data];
 }
 
@@ -79,7 +79,7 @@
     if (!error) {
         if ([task isKindOfClass:[NSURLSessionDataTask class]]) {
             //dataTask complete
-            NSString *result = [NSString decode:[self.resultDataDirectrory objectForKey:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier]]];
+            NSString *result = [NSString decode:(self.resultDataDirectrory)[[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier]]];
             NSLog(@"result: %@\n", result);
             [self callCompletionHandlerForTaskIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier] withResultString:result resumeData:nil];
             [self removeCompletionHandlerAndResultDataForIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier]];
@@ -94,7 +94,7 @@
             [self callCompletionHandlerForTaskIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier] withResultString:nil resumeData:nil];
             [self removeCompletionHandlerAndResultDataForIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier]];
         } else {
-            NSData *resumeData = [error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData];
+            NSData *resumeData = (error.userInfo)[NSURLSessionDownloadTaskResumeData];
             [self callCompletionHandlerForTaskIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier] withResultString:@"fail" resumeData:resumeData];
             [self removeCompletionHandlerAndResultDataForIdentifier:[NSString stringWithFormat:@"%lu",(unsigned long)task.taskIdentifier]];
         }
@@ -129,7 +129,7 @@
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *cacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
     NSString *downloadFilePath = [cacheDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"downloadFile%lu",(unsigned long)downloadTask.taskIdentifier]];
     NSURL *downloadFilePathUrl = [NSURL fileURLWithPath:downloadFilePath];
     
@@ -146,7 +146,7 @@
           session, downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     double a = totalBytesWritten/1000.0;
     double b = totalBytesExpectedToWrite/1000.0;
-    ProgressHandler progressHandler = [self.progressHandlerDirectory objectForKey:[NSString stringWithFormat:@"%lu",(unsigned long)downloadTask.taskIdentifier]];
+    ProgressHandler progressHandler = (self.progressHandlerDirectory)[[NSString stringWithFormat:@"%lu",(unsigned long)downloadTask.taskIdentifier]];
     progressHandler(a/b);
 }
 

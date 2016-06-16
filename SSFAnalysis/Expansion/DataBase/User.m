@@ -13,7 +13,7 @@ static NSString * const USER_USER_ID_KEY = @"user_id";
 
 +(User *)userWithUserId:(NSNumber *)userid inManagedObjectContext:(NSManagedObjectContext *)context {
     User *obj = nil;
-    if ([userid integerValue] > 0) {
+    if (userid.integerValue > 0) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
         request.predicate = [NSPredicate predicateWithFormat:@"user_id = %@",userid];
         request.sortDescriptors = nil;
@@ -31,21 +31,21 @@ static NSString * const USER_USER_ID_KEY = @"user_id";
 
 +(User *)updateUserWithInfo:(NSDictionary *)info inManagedObjectContext:(NSManagedObjectContext *)context {
     User *obj = nil;
-    NSNumber *userid = [info objectForKey:USER_USER_ID_KEY];
-    if ([userid integerValue] > 0) {
+    NSNumber *userid = info[USER_USER_ID_KEY];
+    if (userid.integerValue > 0) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
         request.predicate = [NSPredicate predicateWithFormat:@"user_id = %@",userid];
         request.sortDescriptors = nil;
         
         NSError *error = nil;
         NSArray *results = [context executeFetchRequest:request error:&error];
-        if (!results || [results count] > 1) {
+        if (!results || results.count > 1) {
             // error
-        } else if ([results count] == 0) {
+        } else if (results.count == 0) {
             obj = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
             obj.user_id = userid;
         } else {
-            obj = [results firstObject];
+            obj = results.firstObject;
         }
         [obj setValuesForKeysWithDictionary:info];
     }

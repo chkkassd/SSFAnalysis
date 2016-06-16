@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface LineChartModel : NSObject
-@property (nonatomic, strong) NSString *dayString;//2013-02-03
-@property (nonatomic, assign) float amount;
+@property (nonatomic, copy) NSString *dayString;//2013-02-03
+@property (nonatomic, assign) CGFloat amount;
 @end

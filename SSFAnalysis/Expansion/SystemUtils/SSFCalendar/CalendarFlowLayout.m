@@ -36,7 +36,7 @@
 - (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray* attributes = [[super layoutAttributesForElementsInRect:rect] mutableCopy];
     
-    for(int i = 1; i < [attributes count]; ++i) {
+    for(int i = 1; i < attributes.count; ++i) {
         //当前attributes
         UICollectionViewLayoutAttributes *currentLayoutAttributes = attributes[i];
         //上一个attributes

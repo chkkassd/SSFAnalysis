@@ -30,9 +30,9 @@
 
 - (void)configureHeadView {
     self.yearLabel.text = [NSString stringToYearTranslatedFromDate:[NSDate date]];
-    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] incomeOfThisYearWithUser]];
-    self.costLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] costOfThisYearWithUser]];
-    self.surplusLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] surplesOfThisYearWithUser]];
+    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].incomeOfThisYearWithUser];
+    self.costLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].costOfThisYearWithUser];
+    self.surplusLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].surplesOfThisYearWithUser];
 }
 
 #pragma mark - properties

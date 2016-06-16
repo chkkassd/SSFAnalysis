@@ -13,7 +13,7 @@
 - (NSString *)stringForKey:(NSString *)key {
     id obj = self[key];
     if ([obj isKindOfClass:[NSNumber class]]) {
-        return [((NSNumber *)obj) stringValue];
+        return ((NSNumber *)obj).stringValue;
     } else if ([obj isKindOfClass:[NSString class]]) {
         return obj;
     } else {
@@ -24,9 +24,9 @@
 - (NSInteger)integerForKey:(NSString *)key {
     id obj = self[key];
     if ([obj isKindOfClass:[NSNumber class]]) {
-        return [((NSNumber *)obj) integerValue];
+        return ((NSNumber *)obj).integerValue;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        return [((NSString *)obj) integerValue];
+        return ((NSString *)obj).integerValue;
     } else {
         return NSNotFound;
     }

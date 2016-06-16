@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(unsigned int, PageKind) {
     PageKindUp,
     PageKindDown
-}PageKind;
+};
 
 @protocol CalendarHeadViewDelegate;
 @interface CalendarHeadView : UICollectionReusableView

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SSFPieChartView : UIView
-- (instancetype)initWithFrame:(CGRect)frame withModel:(NSArray *)modelArr;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame withModel:(NSArray *)modelArr NS_DESIGNATED_INITIALIZER;
 - (void)drawSubregionWithModel:(NSArray *)modelArr;
 @end

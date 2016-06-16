@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SSFGravityCollisionBehavior : UIDynamicBehavior
-- (instancetype)initWithItems:(NSArray *)items refrenceView:(UIView *)refrenceView;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithItems:(NSArray *)items refrenceView:(UIView *)refrenceView NS_DESIGNATED_INITIALIZER;
 @end

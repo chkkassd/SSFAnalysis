@@ -31,7 +31,7 @@
 }
 
 - (NSString *)dayStringWithString:(NSString *)dayString {
-    NSInteger a = [dayString integerValue];
+    NSInteger a = dayString.integerValue;
     if (a < 10 && a > 0) {
         dayString = [NSString stringWithFormat:@"-0%@",dayString];
     } else if (a >= 10) {

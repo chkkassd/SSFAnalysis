@@ -14,7 +14,7 @@
 @implementation SSFAnalysisChartTableViewController (Handler)
 
 - (void)configureCostPieChartData {
-    NSArray *subtypes = [[SSFAnalysisManager sharedManager] getAllSubTypesOfCostThisMonth];
+    NSArray *subtypes = [SSFAnalysisManager sharedManager].allSubTypesOfCostThisMonth;
     if (!subtypes.count) {self.pieChartData = nil; return;}
     
     self.pieChartData = nil;
@@ -22,15 +22,15 @@
     for (NSNumber *subtype in subtypes) {
         PieChartModel *model = [[PieChartModel alloc] init];
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
-        model.percent = [[SSFAnalysisManager sharedManager] percentOfCostThisMonthWithSubtype:[subtype integerValue]];
+        model.percent = [[SSFAnalysisManager sharedManager] percentOfCostThisMonthWithSubtype:subtype.integerValue];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
-        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:[subtype integerValue]];
+        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:subtype.integerValue];
         [self.pieChartData addObject:model];
     }
 }
 
 - (void)configureIncomePieChartData {
-    NSArray *subtypes = [[SSFAnalysisManager sharedManager] getAllSubTypesOfIncomeThisMonth];
+    NSArray *subtypes = [SSFAnalysisManager sharedManager].allSubTypesOfIncomeThisMonth;
     if (!subtypes.count) {self.pieChartData = nil; return;}
     
     self.pieChartData = nil;
@@ -38,9 +38,9 @@
     for (NSNumber *subtype in subtypes) {
         PieChartModel *model = [[PieChartModel alloc] init];
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
-        model.percent = [[SSFAnalysisManager sharedManager] percentOfIncomeThisMonthWithSubtype:[subtype integerValue]];
+        model.percent = [[SSFAnalysisManager sharedManager] percentOfIncomeThisMonthWithSubtype:subtype.integerValue];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
-        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:[subtype integerValue]];
+        model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:subtype.integerValue];
         [self.pieChartData addObject:model];
     }
 }

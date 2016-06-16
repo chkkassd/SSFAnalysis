@@ -13,7 +13,7 @@
 
 @synthesize reachability;
 
--(id) init {
+-(instancetype) init {
     self = [super init];
     if (self) {
         self.reachability = [Reachability reachabilityForInternetConnection];
@@ -34,7 +34,7 @@
 }
 
 - (void)reachabilityChanged:(NSNotification *)note {
-    Reachability* curReach = [note object];
+    Reachability* curReach = note.object;
     NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
     NetworkStatus status = [curReach currentReachabilityStatus];
     
@@ -94,6 +94,7 @@
 }
 
 -(void) dealloc {
+    [super dealloc];
     [self cancelNotification];
     self.reachability = nil;
 }

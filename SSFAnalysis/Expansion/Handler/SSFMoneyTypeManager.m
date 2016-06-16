@@ -35,7 +35,7 @@
 }
 
 + (NSString *)moneyTypeStringWithNumber:(NSNumber *)number {
-    NSInteger integerNumber = [number integerValue];
+    NSInteger integerNumber = number.integerValue;
     if (integerNumber == BILL_SUBTYPE_EAT) {
         return @"吃饭";
     } else if (integerNumber == BILL_SUBTYPE_TRAFFIC) {
@@ -60,7 +60,7 @@
 }
 
 + (UIColor *)colorOfSubtypeWithNumber:(NSNumber *)number {
-    NSInteger integerNumber = [number integerValue];
+    NSInteger integerNumber = number.integerValue;
     if (integerNumber == BILL_SUBTYPE_EAT) {
         return [UIColor redColor];
     } else if (integerNumber == BILL_SUBTYPE_TRAFFIC) {

@@ -42,7 +42,7 @@ NSString *const BILL_OWNER_KEY = @"owner";
 
 + (Bill *)updateBillWithInfo:(NSDictionary *)info inManagedObjectContext:(NSManagedObjectContext *)context {
     Bill *obj = nil;
-    NSString *billid = [info objectForKey:BILL_BILL_ID_KEY];
+    NSString *billid = info[BILL_BILL_ID_KEY];
     if (billid.length) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Bill"];
         request.predicate = [NSPredicate predicateWithFormat:@"bill_id = %@",billid];
@@ -50,13 +50,13 @@ NSString *const BILL_OWNER_KEY = @"owner";
         
         NSError *error = nil;
         NSArray *results = [context executeFetchRequest:request error:&error];
-        if (!results || [results count] > 1) {
+        if (!results || results.count > 1) {
             // error
-        } else if ([results count] == 0) {
+        } else if (results.count == 0) {
             obj = [NSEntityDescription insertNewObjectForEntityForName:@"Bill" inManagedObjectContext:context];
             obj.bill_id = billid;
         } else {
-            obj = [results firstObject];
+            obj = results.firstObject;
         }
         [obj setValuesForKeysWithDictionary:info];
     }

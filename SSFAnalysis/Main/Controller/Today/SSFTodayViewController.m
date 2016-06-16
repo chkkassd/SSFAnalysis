@@ -50,9 +50,9 @@
 }
 
 - (void)updateHeadView {
-    self.costLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] costOfTodayWithUser]];
-    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] incomeOfTodayWithUser]];
-    self.monthSurplesLabel.text = [NSString stringWithFormat:@"%.2f",[[SSFAnalysisManager sharedManager] surplesOfThisMonthWithUser]];
+    self.costLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].costOfTodayWithUser];
+    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].incomeOfTodayWithUser];
+    self.monthSurplesLabel.text = [NSString stringWithFormat:@"%.2f",[SSFAnalysisManager sharedManager].surplesOfThisMonthWithUser];
     self.yearLabel.text = [NSString getTimeYearFromDate:[NSDate date]];
     self.monthLabel.text = [NSString stringWithFormat:@"%@月",[NSString getTimeMonthFromDate:[NSDate date]]];
 }
@@ -71,7 +71,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *nameString = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+    NSString *nameString = (self.fetchedResultsController).sections[section].name;
     return [nameString componentsSeparatedByString:@" "][0];
 }
 
@@ -86,9 +86,9 @@
     Bill *bill = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.nameLabel.text = [SSFMoneyTypeManager moneyTypeStringWithNumber:bill.subtype];
     cell.moneyLabel.text = [NSString stringWithFormat:@"%.2f",bill.amount.floatValue];
-    if ([bill.type integerValue] == BILL_TYPE_COST) {
+    if ((bill.type).integerValue == BILL_TYPE_COST) {
         cell.moneyLabel.textColor = [UIColor blackColor];
-    } else if ([bill.type integerValue] == BILL_TYPE_INCOME) {
+    } else if ((bill.type).integerValue == BILL_TYPE_INCOME) {
         cell.moneyLabel.textColor = [UIColor colorWithRed:13/255.0 green:185/255.0 blue:63/255.0 alpha:1.0];
     }
     return cell;
@@ -97,7 +97,7 @@
 #pragma mark - action
 -(IBAction)loginOut {
     [[SSFAnalysisManager sharedManager] signOut];
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate showLoginAndRegisterView];
 }
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (Calendar)
-- (NSUInteger)numberOfDayInCurrentMonth;
-- (NSDate *)firstDayOfCurrentMonth;
-- (NSUInteger)weeklyOrdinality;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger numberOfDayInCurrentMonth;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSDate *firstDayOfCurrentMonth;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger weeklyOrdinality;
 @end

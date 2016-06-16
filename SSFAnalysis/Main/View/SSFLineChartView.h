@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM (NSInteger,LineChartType) {
     LineChartType_Cost = 1,
     LineChartType_Income = 2
-}LineChartType;
+};
 
 @interface SSFLineChartView : UIView
 - (void)drawLineChartWithMonth:(NSInteger)month chartType:(LineChartType)type;

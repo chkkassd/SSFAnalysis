@@ -25,12 +25,12 @@ NSString *const DefaultRecordSuccessNotification = @"DefaultRecordSuccessNotific
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
 @property (nonatomic, strong) NSDate *recordDate;
-@property (nonatomic, strong) NSArray *options;
+@property (nonatomic, copy) NSArray *options;
 @property (nonatomic, strong) User *currentUser;
 @property (nonatomic, strong) NSManagedObjectContext *mainContext;
 @property (nonatomic, strong) NSNumber *subTypeNumber;
-@end
 
+@end
 
 @implementation SSFRecordBillViewController
 
@@ -106,11 +106,11 @@ NSString *const DefaultRecordSuccessNotification = @"DefaultRecordSuccessNotific
 }
 
 - (IBAction)recordButtonPressed:(id)sender {
-    NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *uuid = [NSUUID UUID].UUIDString;
     NSString *dayString = [NSString stringToDayTranslatedFromDate:self.recordDate];
     NSString *monthString = [NSString stringToMonthTranslatedFromDate:self.recordDate];
     NSString *yearString = [NSString stringToYearTranslatedFromDate:self.recordDate];
-    NSDictionary *info = @{BILL_AMOUNT_KEY:@([self.textField.text floatValue]),
+    NSDictionary *info = @{BILL_AMOUNT_KEY:@((self.textField.text).floatValue),
                            BILL_BILL_ID_KEY:uuid,
                            BILL_REMARK_KEY:self.remarkTextField.text,
                            BILL_SUBTYPE_KEY:self.subTypeNumber,
@@ -128,7 +128,6 @@ NSString *const DefaultRecordSuccessNotification = @"DefaultRecordSuccessNotific
         [[NSNotificationCenter defaultCenter] postNotificationName:DefaultRecordSuccessNotification object:nil userInfo:@{BILL_TYPE_KEY:@(self.segment.selectedSegmentIndex)}];
     };
     [self dismissViewControllerAnimated:YES completion:NULL];
-    NSNumber *n = @2.34;
 }
 
 #pragma mark - collection data source

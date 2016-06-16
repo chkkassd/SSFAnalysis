@@ -86,20 +86,20 @@
 }
 
 - (float)surplesOfTodayWithUser {
-    return ([self incomeOfTodayWithUser] - [self costOfTodayWithUser]);
+    return (self.incomeOfTodayWithUser - self.costOfTodayWithUser);
 }
 
-- (float)costWithUserOfDay:(NSString *)day {
+- (CGFloat)costWithUserOfDay:(NSString *)day {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",day,@(BILL_TYPE_COST)];
     return [self getTotalWithPredicate:predicate];
 }
 
-- (float)incomeWithUserOfDay:(NSString *)day {
+- (CGFloat)incomeWithUserOfDay:(NSString *)day {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %@ && type = %@",day,@(BILL_TYPE_INCOME)];
     return [self getTotalWithPredicate:predicate];
 }
 
-- (float)surplesWithUserOfDay:(NSString *)day {
+- (CGFloat)surplesWithUserOfDay:(NSString *)day {
     return ([self incomeWithUserOfDay:day] - [self costWithUserOfDay:day]);
 }
 
@@ -116,7 +116,7 @@
 
 - (float)surplesOfThisMonthWithUser {
     NSLog(@"==========%f,%f",[self incomeOfThisMonthWithUser],[self costOfThisMonthWithUser]);
-    return ([self incomeOfThisMonthWithUser] - [self costOfThisMonthWithUser]);
+    return (self.incomeOfThisMonthWithUser - self.costOfThisMonthWithUser);
 }
 
 - (float)averageOfCostThisMonthWithUser {
@@ -129,23 +129,23 @@
     return [self getAverageWithPredicate:predicate];
 }
 
-- (float)costWithUserOfMonth:(NSString *)month {
+- (CGFloat)costWithUserOfMonth:(NSString *)month {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",month,@(BILL_TYPE_COST)];
     return [self getTotalWithPredicate:predicate];
 }
 
-- (float)incomeWithUserOfMonth:(NSString *)month {
+- (CGFloat)incomeWithUserOfMonth:(NSString *)month {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && type = %@",month,@(BILL_TYPE_INCOME)];
     return [self getTotalWithPredicate:predicate];
 }
 
-- (float)surplesWithUserOfMonth:(NSString *)month {
+- (CGFloat)surplesWithUserOfMonth:(NSString *)month {
     NSLog(@"==========%f,%f",[self incomeOfThisMonthWithUser],[self costOfThisMonthWithUser]);
     return ([self incomeWithUserOfMonth:month] - [self costWithUserOfMonth:month]);
 }
 
 - (NSArray *)getAllSubTypesOfCostThisMonth {
-    NSArray *bills = [self getAllMyCostBillOfCurrentMonth];
+    NSArray *bills = self.allMyCostBillOfCurrentMonth;
     if (!bills.count) return nil;
     
     NSMutableArray *subTypes = [[NSMutableArray alloc] init];
@@ -159,7 +159,7 @@
 }
 
 - (NSArray *)getAllSubTypesOfIncomeThisMonth {
-    NSArray *bills = [self getAllMyIncomeBillOfCurrentMonth];
+    NSArray *bills = self.allMyIncomeBillOfCurrentMonth;
     if (!bills.count) return nil;
     
     NSMutableArray *subTypes = [[NSMutableArray alloc] init];
@@ -172,26 +172,26 @@
     return subTypes;
 }
 
-- (float)percentOfCostThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+- (CGFloat)percentOfCostThisMonthWithSubtype:(NSUInteger)subtype {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
     float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
-    return totalMoneyOfSubtype/[self costOfThisMonthWithUser];
+    return totalMoneyOfSubtype/self.costOfThisMonthWithUser;
 }
 
-- (float)percentOfIncomeThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+- (CGFloat)percentOfIncomeThisMonthWithSubtype:(NSUInteger)subtype {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
     float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
-    return totalMoneyOfSubtype/[self incomeOfThisMonthWithUser];
+    return totalMoneyOfSubtype/self.incomeOfThisMonthWithUser;
 }
 
-- (float)moneyOfThisMonthWithSubtype:(BILL_SUBTYPE)subtype {
+- (CGFloat)moneyOfThisMonthWithSubtype:(NSUInteger)subtype {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %@ && subtype = %@",[NSString stringToMonthTranslatedFromDate:[NSDate date]],@(subtype)];
     float totalMoneyOfSubtype = [self getTotalWithPredicate:predicate];
     return totalMoneyOfSubtype;
 }
 
 - (NSArray *)getAllDatesOfCostThisMonth {
-    NSArray *bills = [self getAllMyCostBillOfCurrentMonth];
+    NSArray *bills = self.allMyCostBillOfCurrentMonth;
     if (!bills.count) return nil;
     
     NSMutableArray *days = [[NSMutableArray alloc] init];
@@ -205,7 +205,7 @@
 }
 
 - (NSArray *)getAllDatesOfIncomeThisMonth {
-    NSArray *bills = [self getAllMyIncomeBillOfCurrentMonth];
+    NSArray *bills = self.allMyIncomeBillOfCurrentMonth;
     if (!bills.count) return nil;
     
     NSMutableArray *days = [[NSMutableArray alloc] init];
@@ -240,7 +240,7 @@
 }
 
 - (float)surplesOfThisYearWithUser {
-    return ([self incomeOfThisYearWithUser] - [self costOfThisYearWithUser]);
+    return (self.incomeOfThisYearWithUser - self.costOfThisYearWithUser);
 }
 
 - (NSArray *)getAllMonthsOfThisYear {
@@ -264,7 +264,7 @@
     NSArray *filteredBills = [bills filteredArrayUsingPredicate:predicate];
     if (filteredBills.count) {
         for (Bill * obj in filteredBills) {
-            total += [obj.amount floatValue];
+            total += (obj.amount).floatValue;
         }
     }
     return total;
@@ -276,7 +276,7 @@
     NSArray *filteredBills = [bills filteredArrayUsingPredicate:predicate];
     if (filteredBills.count) {
         for (Bill * obj in filteredBills) {
-            total += [obj.amount floatValue];
+            total += (obj.amount).floatValue;
         }
         return total/filteredBills.count;
     } else return 0.0;
@@ -319,7 +319,7 @@
 #pragma mark - properties
 
 - (NSManagedObjectContext *)mainQueueContext {
-    return [[CoreDataManager sharedManager] mainQueueContext];
+    return [CoreDataManager sharedManager].mainQueueContext;
 }
 
 - (User *)currentUser {

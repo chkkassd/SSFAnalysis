@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FlowStatisticModel : NSObject
-@property (nonatomic, strong) NSString *month;
-@property (nonatomic, assign) float monthIncome;
-@property (nonatomic, assign) float monthCost;
-@property (nonatomic, assign) float monthSurplus;
+@property (nonatomic, copy) NSString *month;
+@property (nonatomic, assign) CGFloat monthIncome;
+@property (nonatomic, assign) CGFloat monthCost;
+@property (nonatomic, assign) CGFloat monthSurplus;
 @end

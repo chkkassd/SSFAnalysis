@@ -18,15 +18,17 @@
     if (!subtypes.count) {self.pieChartData = nil; return;}
     
     self.pieChartData = nil;
-    self.pieChartData = [[NSMutableArray alloc] init];
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     for (NSNumber *subtype in subtypes) {
         PieChartModel *model = [[PieChartModel alloc] init];
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
         model.percent = [[SSFAnalysisManager sharedManager] percentOfCostThisMonthWithSubtype:subtype.integerValue];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
         model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:subtype.integerValue];
-        [self.pieChartData addObject:model];
+        [arr addObject:model];
     }
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"percent" ascending:NO];
+    self.pieChartData = [arr sortedArrayUsingDescriptors:@[descriptor]];
 }
 
 - (void)configureIncomePieChartData {
@@ -34,15 +36,17 @@
     if (!subtypes.count) {self.pieChartData = nil; return;}
     
     self.pieChartData = nil;
-    self.pieChartData = [[NSMutableArray alloc] init];
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     for (NSNumber *subtype in subtypes) {
         PieChartModel *model = [[PieChartModel alloc] init];
         model.nameString = [SSFMoneyTypeManager moneyTypeStringWithNumber:subtype];
         model.percent = [[SSFAnalysisManager sharedManager] percentOfIncomeThisMonthWithSubtype:subtype.integerValue];
         model.color = [SSFMoneyTypeManager colorOfSubtypeWithNumber:subtype];
         model.money = [[SSFAnalysisManager sharedManager] moneyOfThisMonthWithSubtype:subtype.integerValue];
-        [self.pieChartData addObject:model];
+        [arr addObject:model];
     }
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"percent" ascending:NO];
+    self.pieChartData = [arr sortedArrayUsingDescriptors:@[descriptor]];
 }
 
 @end

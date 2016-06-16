@@ -46,11 +46,6 @@ static const NSInteger DefaultComponentHeight = 30;
     
     self.alertView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/6, frame.size.height/6, frame.size.width*2/3, 0)];
     
-//    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(-10, -10, 20, 20)];
-//    [cancelButton setImage:[UIImage imageNamed:@"close_loding"] forState:UIControlStateNormal];
-//    [cancelButton addTarget:self action:@selector(cancelButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-//    [_alertView addSubview:cancelButton];
-    
     _nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(GapWidth, GapWidth, _alertView.frame.size.width - GapWidth*2, DefaultComponentHeight)];
     _nameTextField.placeholder = @"请输入邮箱";
     _nameTextField.borderStyle = UITextBorderStyleRoundedRect;

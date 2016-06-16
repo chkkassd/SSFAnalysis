@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SSFAnalysisChartTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *pieChartData;
+@property (nonatomic, copy) NSArray *pieChartData;
 @end

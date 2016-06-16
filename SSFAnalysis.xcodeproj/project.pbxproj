@@ -293,11 +293,11 @@
 		912D50B61C8031750072401E /* Expansion */ = {
 			isa = PBXGroup;
 			children = (
-				912D50B71C8031750072401E /* Category */,
-				912D50B81C8031750072401E /* DataBase */,
 				912D50B91C8031750072401E /* Handler */,
 				912D50BA1C8031750072401E /* Network */,
+				912D50B81C8031750072401E /* DataBase */,
 				912D50BB1C8031750072401E /* SystemUtils */,
+				912D50B71C8031750072401E /* Category */,
 			);
 			path = Expansion;
 			sourceTree = "<group>";

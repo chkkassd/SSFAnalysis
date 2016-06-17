@@ -10,5 +10,5 @@
 #import "CoreDataFetchedResultsTableViewController.h"
 
 @interface SSFTodayViewController : CoreDataFetchedResultsTableViewController
-
+@property (nonatomic, readwrite, copy) NSString *titleString;
 @end

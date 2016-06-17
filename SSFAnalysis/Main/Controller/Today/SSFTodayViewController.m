@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.currentUser.display_name;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user_id = %@ && month = %@",self.currentUser.user_id,[NSString stringToMonthTranslatedFromDate:[NSDate date]]];
     [self setUpFetchedResultsControllerWithPredicate:predicate];
 }
@@ -65,6 +64,11 @@
 
 - (NSManagedObjectContext *)mainContext {
     return [CoreDataManager sharedManager].mainQueueContext;
+}
+
+- (void)setTitleString:(NSString *)titleString {
+    _titleString = [titleString copy];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@%@",self.currentUser.display_name,_titleString];
 }
 
 #pragma mark - table data source

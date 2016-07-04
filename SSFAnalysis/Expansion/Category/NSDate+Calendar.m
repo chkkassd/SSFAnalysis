@@ -23,6 +23,6 @@
 
 //给定的date在对应周中的顺序，即周几（nsuinteger）
 - (NSUInteger)weeklyOrdinality {
-    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSWeekCalendarUnit forDate:self];
+    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfMonth forDate:self];
 }
 @end

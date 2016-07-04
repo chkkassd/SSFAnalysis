@@ -406,7 +406,7 @@ static char base64EncodingTable[64] = {
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
 //    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
-    NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit  fromDate:date];
+    NSDateComponents *components = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:date];
 //    int iYear = components.year;
 //    int iMonth = components.month;
     NSInteger iDay = components.day;

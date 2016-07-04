@@ -10,6 +10,11 @@
 		910168A71D13986F00CEA2B4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 910168A61D13986F00CEA2B4 /* Reachability.m */; };
 		910168A91D1398E500CEA2B4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910168A81D1398E500CEA2B4 /* SystemConfiguration.framework */; };
 		9105ECE01D067BE40003D69F /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9105ECDF1D067BE40003D69F /* Constants.m */; };
+		912B88821D13E4B900C6F507 /* libGrowing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 912B88811D13E4B900C6F507 /* libGrowing.a */; };
+		912B88841D13E4FC00C6F507 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 912B88831D13E4FC00C6F507 /* libsqlite3.tbd */; };
+		912B88861D13E51100C6F507 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 912B88851D13E51100C6F507 /* libicucore.tbd */; };
+		912B88881D13E52800C6F507 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912B88871D13E52800C6F507 /* CoreTelephony.framework */; };
+		912B888A1D13E54600C6F507 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912B88891D13E54600C6F507 /* Security.framework */; };
 		912D50851C8028220072401E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D50841C8028220072401E /* main.m */; };
 		912D508E1C8028220072401E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912D508C1C8028220072401E /* Main.storyboard */; };
 		912D50901C8028220072401E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 912D508F1C8028220072401E /* Assets.xcassets */; };
@@ -90,6 +95,12 @@
 		910168A81D1398E500CEA2B4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9105ECDE1D067BE40003D69F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9105ECDF1D067BE40003D69F /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		912B88801D13E4B900C6F507 /* Growing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Growing.h; sourceTree = "<group>"; };
+		912B88811D13E4B900C6F507 /* libGrowing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGrowing.a; sourceTree = "<group>"; };
+		912B88831D13E4FC00C6F507 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		912B88851D13E51100C6F507 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		912B88871D13E52800C6F507 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		912B88891D13E54600C6F507 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		912D50801C8028220072401E /* SSFAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSFAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D50841C8028220072401E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		912D508D1C8028220072401E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,7 +216,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912B888A1D13E54600C6F507 /* Security.framework in Frameworks */,
+				912B88881D13E52800C6F507 /* CoreTelephony.framework in Frameworks */,
+				912B88861D13E51100C6F507 /* libicucore.tbd in Frameworks */,
+				912B88841D13E4FC00C6F507 /* libsqlite3.tbd in Frameworks */,
 				910168A91D1398E500CEA2B4 /* SystemConfiguration.framework in Frameworks */,
+				912B88821D13E4B900C6F507 /* libGrowing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,10 +242,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		912B887F1D13E4B900C6F507 /* Growing */ = {
+			isa = PBXGroup;
+			children = (
+				912B88801D13E4B900C6F507 /* Growing.h */,
+				912B88811D13E4B900C6F507 /* libGrowing.a */,
+			);
+			path = Growing;
+			sourceTree = "<group>";
+		};
 		912D50771C8028220072401E = {
 			isa = PBXGroup;
 			children = (
 				910168A81D1398E500CEA2B4 /* SystemConfiguration.framework */,
+				912B88891D13E54600C6F507 /* Security.framework */,
+				912B88871D13E52800C6F507 /* CoreTelephony.framework */,
+				912B88851D13E51100C6F507 /* libicucore.tbd */,
+				912B88831D13E4FC00C6F507 /* libsqlite3.tbd */,
 				912D50821C8028220072401E /* SSFAnalysis */,
 				912D509C1C8028220072401E /* SSFAnalysisTests */,
 				912D50A71C8028220072401E /* SSFAnalysisUITests */,
@@ -440,6 +469,7 @@
 		912D50C41C8031750072401E /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				912B887F1D13E4B900C6F507 /* Growing */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -597,6 +627,7 @@
 				TargetAttributes = {
 					912D507F1C8028220072401E = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 4YB2GQAF4F;
 					};
 					912D50981C8028220072401E = {
 						CreatedOnToolsVersion = 7.2;
@@ -852,13 +883,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang ji min (4YB2GQAF4F)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SSFAnalysis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SSFAnalysis/Vender/Growing",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "deeedfe6-4bfc-4200-afa4-398bed2174b6";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -866,13 +904,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang ji min (4YB2GQAF4F)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SSFAnalysis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SSFAnalysis/Vender/Growing",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "deeedfe6-4bfc-4200-afa4-398bed2174b6";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -972,13 +1017,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang ji min (4YB2GQAF4F)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = SSFAnalysis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SSFAnalysis/Vender/Growing",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.SSFAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "deeedfe6-4bfc-4200-afa4-398bed2174b6";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = UAT;
 		};

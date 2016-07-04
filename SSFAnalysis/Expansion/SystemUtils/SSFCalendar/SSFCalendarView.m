@@ -97,11 +97,10 @@
 //获取上个月1号date
 - (NSDate *)getLastMonth {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *currentComps = [[NSDateComponents alloc] init];
     
-    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     
-    currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
+    NSDateComponents *currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
     
     NSInteger currentYear = currentComps.year;
     NSInteger currentMonth = currentComps.month;
@@ -122,11 +121,10 @@
 //获取下个月1号date
 - (NSDate *)getNextMonth {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *currentComps = [[NSDateComponents alloc] init];
     
-    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     
-    currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
+    NSDateComponents *currentComps = [currentCalendar components:unitFlags fromDate:self.dateOfMonth];
     
     NSInteger currentYear = currentComps.year;
     NSInteger currentMonth = currentComps.month;

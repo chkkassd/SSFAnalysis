@@ -61,6 +61,9 @@ IB_DESIGNABLE
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextDrawLinearGradient(context, gradient, startPoint, endpoint, 0);
+    
+    CGColorSpaceRelease(colorSpace);
+    CGGradientRelease(gradient);
 }
 
 //绘制分割线

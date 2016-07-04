@@ -11,6 +11,7 @@
 #import "SSFLoginViewController.h"
 #import "CoreDataManager.h"
 #import "Constants.h"
+#import "Growing.h"
 
 @interface AppDelegate ()<SSFLoginViewControllerDelegate>
 
@@ -20,6 +21,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Growing startWithAccountId:@"b1bbe8bc60ad14e5"];//growing
+    
     NSNumber *userid = [[NSUserDefaults standardUserDefaults] objectForKey:LoginUserIdKey];
     if (!userid) {
         //show login
@@ -28,6 +31,15 @@
         [[CoreDataManager sharedManager] startConnectCoreData];
     }
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    //growing
+    if ([Growing handleUrl:url]) // 请务必确保该函数被调用
+    {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - SSFLoginViewControllerDelegate
